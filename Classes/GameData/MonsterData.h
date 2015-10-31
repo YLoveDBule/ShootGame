@@ -4,13 +4,13 @@
 enum MonsterDataSate
 {
 	Monster_ShowTerm= 0, //出现条件 和 人物当前的分数有关系
-	Monster_Res = 1,
-	Monster_Hp,
-	Monster_MoveSpeed,
-	Monster_SkillGrade,
-	Monster_SkillReward,
-	Monster_Hurt,
-	Monster_FreshSpeed,
+	Monster_Res = 1, //资源路径
+	Monster_Hp, //怪物血量
+	Monster_MoveSpeed, //怪物从上到下移动的速度
+	Monster_SkillGrade, //杀死怪物获得的分数
+	Monster_SkillReward, //杀死怪物获得的血量
+	Monster_Hurt, //怪物走到下方没被杀死对玩家造成的伤害
+	Monster_FreshSpeed, //刷新频率  
 };
 
 class MonsterData
