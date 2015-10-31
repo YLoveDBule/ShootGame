@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="win32">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Classes\XmlReader">
+      <UniqueIdentifier>{cde449a8-ae94-4048-acf7-e05a76e13c5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\CsvReader">
+      <UniqueIdentifier>{440c7be9-2dc0-4853-8089-1efcddc03f6a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\XmlReader\XmlReader.cpp">
+      <Filter>Classes\XmlReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CsvReader\CsvReader.cpp">
+      <Filter>Classes\CsvReader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\XmlReader\XmlReader.h">
+      <Filter>Classes\XmlReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\XmlReader\rapidxml_print.hpp">
+      <Filter>Classes\XmlReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\XmlReader\rapidxml_utils.hpp">
+      <Filter>Classes\XmlReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\XmlReader\rapidxml.hpp">
+      <Filter>Classes\XmlReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\XmlReader\rapidxml_iterators.hpp">
+      <Filter>Classes\XmlReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CsvReader\CsvReader.h">
+      <Filter>Classes\CsvReader</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
