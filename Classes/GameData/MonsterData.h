@@ -10,7 +10,7 @@ enum MonsterDataSate
 	Monster_SkillGrade, //杀死怪物获得的分数
 	Monster_SkillReward, //杀死怪物获得的血量
 	Monster_Hurt, //怪物走到下方没被杀死对玩家造成的伤害
-	Monster_FreshSpeed, //刷新频率 
+	Monster_FreshSpeed, //刷新频率  
 };
 
 class MonsterData
