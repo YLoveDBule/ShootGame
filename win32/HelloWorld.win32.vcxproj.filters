@@ -15,6 +15,9 @@
     <Filter Include="Classes\CsvReader">
       <UniqueIdentifier>{440c7be9-2dc0-4853-8089-1efcddc03f6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GameData">
+      <UniqueIdentifier>{81f693a1-5e8a-442e-94a2-2c8451de34f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -31,6 +34,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\CsvReader\CsvReader.cpp">
       <Filter>Classes\CsvReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameData\PlayerData.cpp">
+      <Filter>Classes\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameData\MonsterData.cpp">
+      <Filter>Classes\GameData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +69,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CsvReader\CsvReader.h">
       <Filter>Classes\CsvReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameData\MonsterData.h">
+      <Filter>Classes\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameData\PlayerData.h">
+      <Filter>Classes\GameData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
