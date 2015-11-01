@@ -1,4 +1,5 @@
 #include "LoginScene.h"
+#include "Component/GamingLayer.h"
 bool LoginScene::init()
 {
 	_nowSate = MenuState_Star;
@@ -6,6 +7,7 @@ bool LoginScene::init()
 	{
 		return false;
 	}
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("common/common.plist");
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	CCSprite *bg = CCSprite::spriteWithFile("denglu.png");
 	bg->setPosition(ccp(size.width / 2, size.height / 2));
@@ -121,6 +123,7 @@ void LoginScene::onClickS(cocos2d::CCKeypadStatus key_status)
 		_nowSate = MenuState_Star;
 	}
 	ChangeRowPosition();
+
 }
 
 void LoginScene::onClickD(cocos2d::CCKeypadStatus key_status)
@@ -154,7 +157,7 @@ void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 	{
 	case MenuState_Star:
 	{
-
+		
 	}
 		break;
 	case MenuState_Exit:
@@ -179,6 +182,7 @@ void LoginScene::onClickK(cocos2d::CCKeypadStatus key_status)
 void LoginScene::clickStar(CCObject* pSender)
 {
 	CCLog("sart");
+	this->addChild(GamingLayer::createGamingLayer());
 }
 
 void LoginScene::clickExit(CCObject* pSender)
