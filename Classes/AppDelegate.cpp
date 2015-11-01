@@ -27,7 +27,7 @@ bool AppDelegate::initInstance() {
 		CCEGLView * pMainWnd = new CCEGLView();
 		CC_BREAK_IF(! pMainWnd
 				|| ! pMainWnd->Create(TEXT("cocos2d: Hello World"), 1024, 768));
-
+		
 #endif  // CC_PLATFORM_WIN32
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
@@ -114,11 +114,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//init data
 	MonsterData::getInstance()->init();
 	PlayerData::getInstance()->Init();
-
 	CCScene *pScene = LoginScene::scene();
 	// run
 	pDirector->runWithScene(pScene);
-
 	return true;
 }
 

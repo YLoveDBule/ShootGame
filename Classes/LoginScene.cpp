@@ -1,4 +1,6 @@
 #include "LoginScene.h"
+#include "GameData/PlayerMrg.h"
+#include "Component/GamingLayer.h"
 bool LoginScene::init()
 {
 	_nowSate = MenuState_Star;
@@ -36,6 +38,9 @@ bool LoginScene::init()
 	_rowSp->setAnchorPoint(ccp(1, 0.5));
 	ChangeRowPosition();
 	addChild(_rowSp);
+
+	//init data 
+	PlayerMrg::getInstance()->Init();
 	return true;
 }
 
@@ -154,7 +159,10 @@ void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 	{
 	case MenuState_Star:
 	{
-
+		CCScene *sence = CCScene::node();
+		GamingLayer*layer = GamingLayer::createGamingLayer();
+		scene()->addChild(layer);
+		CCDirector::sharedDirector()->replaceScene(sence);
 	}
 		break;
 	case MenuState_Exit:

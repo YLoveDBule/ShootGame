@@ -115,6 +115,7 @@
     <ClCompile Include="..\Classes\CsvReader\CsvReader.cpp" />
     <ClCompile Include="..\Classes\GameData\MonsterData.cpp" />
     <ClCompile Include="..\Classes\GameData\PlayerData.cpp" />
+    <ClCompile Include="..\Classes\GameData\PlayerMrg.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
     <ClCompile Include="..\Classes\XmlReader\XmlReader.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="..\Classes\CsvReader\CsvReader.h" />
     <ClInclude Include="..\Classes\GameData\MonsterData.h" />
     <ClInclude Include="..\Classes\GameData\PlayerData.h" />
+    <ClInclude Include="..\Classes\GameData\PlayerMrg.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\LoginScene.h" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml.hpp" />
