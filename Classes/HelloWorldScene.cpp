@@ -1,5 +1,7 @@
 #include "HelloWorldScene.h"
 #include "XmlReader\XmlReader.h"
+#include "Component\Cannon.h"
+#include "Component\GamingLayer.h"
 
 USING_NS_CC;
 
@@ -50,7 +52,7 @@ bool HelloWorld::init()
 
 	// add a label shows "Hello World"
 	// create and initialize a label
-    CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Hello World", "Arial", 24);
+    CCLabelTTF* pLabel = CCLabelTTF::labelWithString("your sister!", "Arial", 24);
 	// ask director the window size
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 
@@ -68,6 +70,18 @@ bool HelloWorld::init()
 
 	// add the sprite as a child to this layer
 	this->addChild(pSprite, 0);
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("common/common.plist");
+	//Cannon *cannon = Cannon::createCannon();
+	//this->addChild(cannon->getConnon(),1);
+	//cannon->getConnon()->setPosition(ccp(size.width / 2, size.height / 2));
+	GamingLayer* gaminglayer = GamingLayer::createGamingLayer();
+	if (gaminglayer != NULL)
+	{	
+		this->addChild(gaminglayer);
+	}
+	
+	
 	
 	return true;
 }
