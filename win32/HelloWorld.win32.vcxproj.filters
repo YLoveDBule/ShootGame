@@ -18,6 +18,9 @@
     <Filter Include="Classes\GameData">
       <UniqueIdentifier>{81f693a1-5e8a-442e-94a2-2c8451de34f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Component">
+      <UniqueIdentifier>{cf6d08ec-55f2-442d-bc91-da5d209c4cd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,6 +43,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GameData\MonsterData.cpp">
       <Filter>Classes\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Component\Cannon.cpp">
+      <Filter>Classes\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Component\GamingLayer.cpp">
+      <Filter>Classes\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Component\ControllPanel.cpp">
+      <Filter>Classes\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +87,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameData\PlayerData.h">
       <Filter>Classes\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Component\Cannon.h">
+      <Filter>Classes\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Component\GamingLayer.h">
+      <Filter>Classes\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Component\ControllPanel.h">
+      <Filter>Classes\Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
