@@ -8,8 +8,6 @@ public:
 
 	void rotateToPoint(CCPoint pt);
 
-	void fire();
-
 	virtual ~Cannon();
 
 	CCLayer* getConnon();
@@ -26,6 +24,7 @@ private:
 	CCPoint m_pDirection;
 	void  setRotationLeft(CCObject *pSender);
 	void  setRotationRight(CCObject *pSender);
+	void fire(CCObject *pSender);
 	void setRotation(float rotation);
 	bool initCannon();
 	

@@ -124,6 +124,8 @@
     <ClInclude Include="..\Classes\Component\Cannon.h" />
     <ClInclude Include="..\Classes\Component\ControllPanel.h" />
     <ClInclude Include="..\Classes\Component\GamingLayer.h" />
+    <ClInclude Include="..\Classes\Config\KeyCodeConfig.h" />
+    <ClInclude Include="..\Classes\Config\NotificationNameConfig.h" />
     <ClInclude Include="..\Classes\CsvReader\CsvReader.h" />
     <ClInclude Include="..\Classes\GameData\MonsterData.h" />
     <ClInclude Include="..\Classes\GameData\PlayerData.h" />

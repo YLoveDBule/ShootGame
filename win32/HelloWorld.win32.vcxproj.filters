@@ -21,6 +21,9 @@
     <Filter Include="Classes\Component">
       <UniqueIdentifier>{cf6d08ec-55f2-442d-bc91-da5d209c4cd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Config">
+      <UniqueIdentifier>{ae64e09f-3c48-462b-a532-782ad79dcc97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,6 +99,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Component\ControllPanel.h">
       <Filter>Classes\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Config\KeyCodeConfig.h">
+      <Filter>Classes\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Config\NotificationNameConfig.h">
+      <Filter>Classes\Config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

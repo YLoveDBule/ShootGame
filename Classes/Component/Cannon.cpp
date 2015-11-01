@@ -1,4 +1,6 @@
 #include "Cannon.h"
+#include "Config/KeyCodeCOnfig.h"
+#include "Config/NotificationNameConfig.h"
 
 USING_NS_CC;
 
@@ -19,15 +21,17 @@ Cannon* Cannon::createCannon()
 
 Cannon::Cannon():m_fRotation(0.0f)
 {
-	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationLeft), "PRESSKEY_37", NULL);
-	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationRight), "PRESSKEY_39", NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationLeft), NOTIFY_BARREL_TURN_LEFT, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationRight), NOTIFY_BARREL_TURN_RIGHT, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::fire), NOTIFY_BARREL_FIRE, NULL);
 }
 
 Cannon::~Cannon() 
 {
 	this->m_pCannon->removeFromParentAndCleanup(true);
-	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, "PRESSKEY_37");
-	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, "PRESSKEY_39");
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_TURN_LEFT);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_TURN_RIGHT);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_FIRE);
 }
 
 
@@ -76,9 +80,9 @@ void Cannon::setRotation(float rotation)
 	this->m_pBarrel->runAction(pAction);
 }
 
-void Cannon::fire()
+void Cannon::fire(CCObject *pSender)
 {
-	CCLOG("shoot!!!!")
+	CCLog("shoot!!!!");
 
 }
 
@@ -95,15 +99,17 @@ void Cannon::keyboardHook(UINT message, WPARAM wParam, LPARAM lParam)
 		return;
 	case WM_KEYUP:
 		CCLog("key code:%d",wParam);
-		if (wParam == 37) {
-			CCLog("wParam == 37");
-			CCNotificationCenter::sharedNotifCenter()->postNotification("PRESSKEY_37");
-		}
-		else if (wParam == 39) 
+		switch (wParam)
 		{
-			CCLog("wParam == 39");
-			CCNotificationCenter::sharedNotifCenter()->postNotification("PRESSKEY_39");
-			
+		case KEY_CODE_LEFT:
+			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_LEFT);
+			break;
+		case KEY_CODE_RIGHT:
+			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_RIGHT);
+			break;
+		case KEY_CODE_FIRE:
+			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+			break;
 		}
 		break;
 	}
