@@ -5,6 +5,8 @@
 #include "LoginScene.h"
 
 #include "CCEGLView.h"
+#include "GameData/MonsterData.h"
+#include "GameData/PlayerData.h"
 
 USING_NS_CC;
 
@@ -109,6 +111,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	// create a scene. it's an autorelease object
 	//CCScene *pScene = HelloWorld::scene();
+	//init data
+	MonsterData::getInstance()->init();
+	PlayerData::getInstance()->Init();
+
 	CCScene *pScene = LoginScene::scene();
 	// run
 	pDirector->runWithScene(pScene);
