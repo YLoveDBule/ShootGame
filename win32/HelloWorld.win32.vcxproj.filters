@@ -18,12 +18,6 @@
     <Filter Include="Classes\GameData">
       <UniqueIdentifier>{81f693a1-5e8a-442e-94a2-2c8451de34f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Component">
-      <UniqueIdentifier>{cf6d08ec-55f2-442d-bc91-da5d209c4cd7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\Config">
-      <UniqueIdentifier>{ae64e09f-3c48-462b-a532-782ad79dcc97}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,14 +41,8 @@
     <ClCompile Include="..\Classes\GameData\MonsterData.cpp">
       <Filter>Classes\GameData</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Component\Cannon.cpp">
-      <Filter>Classes\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Component\GamingLayer.cpp">
-      <Filter>Classes\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Component\ControllPanel.cpp">
-      <Filter>Classes\Component</Filter>
+    <ClCompile Include="..\Classes\LoginScene.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,20 +79,8 @@
     <ClInclude Include="..\Classes\GameData\PlayerData.h">
       <Filter>Classes\GameData</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Component\Cannon.h">
-      <Filter>Classes\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Component\GamingLayer.h">
-      <Filter>Classes\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Component\ControllPanel.h">
-      <Filter>Classes\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Config\KeyCodeConfig.h">
-      <Filter>Classes\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Config\NotificationNameConfig.h">
-      <Filter>Classes\Config</Filter>
+    <ClInclude Include="..\Classes\LoginScene.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
