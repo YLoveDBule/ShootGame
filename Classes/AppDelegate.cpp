@@ -3,9 +3,10 @@
 #include "cocos2d.h"
 #include "HelloWorldScene.h"
 #include "LoginScene.h"
-#include "Component/Cannon.h"
 
 #include "CCEGLView.h"
+#include "GameData/MonsterData.h"
+#include "GameData/PlayerData.h"
 
 USING_NS_CC;
 
@@ -26,7 +27,7 @@ bool AppDelegate::initInstance() {
 		CCEGLView * pMainWnd = new CCEGLView();
 		CC_BREAK_IF(! pMainWnd
 				|| ! pMainWnd->Create(TEXT("cocos2d: Hello World"), 1024, 768));
-
+		
 #endif  // CC_PLATFORM_WIN32
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
@@ -99,7 +100,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	// enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
 //     pDirector->enableRetinaDisplay(true);
-	//pDirector->getOpenGLView()->setAccelerometerKeyHook(Cannon::keyboardHook);
 
 	// turn on display FPS
 	pDirector->setDisplayFPS(true);
@@ -110,11 +110,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	pDirector->setAnimationInterval(1.0 / 60);
 
 	// create a scene. it's an autorelease object
-	CCScene *pScene = HelloWorld::scene();
-	//CCScene *pScene = LoginScene::scene();
+	//CCScene *pScene = HelloWorld::scene();
+	//init data
+	MonsterData::getInstance()->init();
+	PlayerData::getInstance()->Init();
+	CCScene *pScene = LoginScene::scene();
 	// run
 	pDirector->runWithScene(pScene);
-
 	return true;
 }
 
