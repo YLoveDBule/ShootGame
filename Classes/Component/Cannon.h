@@ -25,6 +25,7 @@ private:
 	void  setRotationLeft(CCObject *pSender);
 	void  setRotationRight(CCObject *pSender);
 	void fire(CCObject *pSender);
+	void magicFire(CCObject *pSender);
 	void setRotation(float rotation);
 	bool initCannon();
 	

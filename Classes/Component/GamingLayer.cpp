@@ -1,12 +1,15 @@
 #include "GamingLayer.h"
 #include "ControllPanel.h"
 #include "cocos2d.h"
+#include "Config/NotificationNameConfig.h"
+USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
 {
 	GamingLayer *pGamingLayer = new GamingLayer();
 	if (pGamingLayer && pGamingLayer->initGamingLayer())
 	{
+		pGamingLayer->autorelease();
 		return pGamingLayer;
 	}
 	else
@@ -25,6 +28,7 @@ bool GamingLayer::initGamingLayer()
 	this->initGameBg();
 	this->initHudPanel();
 	this->initControllPanel();
+	CCLayer::setIsKeypadEnabled(true);
 	return true;
 }
 
@@ -51,4 +55,105 @@ void GamingLayer::initControllPanel()
 	{
 		CCLog("GamingLayer===> ControllPanel is null");
 	}
+}
+
+bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
+{
+	switch (iKeyID)
+	{
+	case 'w':
+	case 'W':
+		//	case KEY_UP:
+		onClickW(key_status);
+		break;
+	case 's':
+	case 'S':
+		//	case KEY_DOWN:
+		onClickS(key_status);
+		break;
+	case 'a':
+	case 'A':
+		//	case KEY_LEFT:
+		onClickA(key_status);
+		break;
+	case 'd':
+	case 'D':
+		//	case KEY_RIGHT:
+		onClickD(key_status);
+		break;
+
+	case 'i':
+	case 'I':
+		//	case KEY_A:
+		onClickI(key_status);
+		break;
+	case 'k':
+	case 'K':
+		//	case KEY_B:
+		onClickK(key_status);
+		break;
+	case 'l':
+	case 'L':
+		//	case KEY_X:
+		onClickL(key_status);
+		break;
+	case 'j':
+	case 'J':
+		//	case KEY_Y:
+		onClickJ(key_status);
+		break;
+
+	default:
+		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, key_status);
+		break;
+	}
+
+	return true;
+}
+
+void GamingLayer::onClickA(CCKeypadStatus key_status)
+{
+	CCLog("onClickA");
+	if (key_status == EVENT_KEY_DOWN){
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_LEFT);
+	}
+}
+
+void GamingLayer::onClickS(CCKeypadStatus key_status)
+{
+}
+
+void GamingLayer::onClickW(CCKeypadStatus key_status)
+{
+	
+}
+
+void GamingLayer::onClickD(CCKeypadStatus key_status)
+{
+	if (key_status == EVENT_KEY_DOWN){
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_RIGHT);
+	}
+}
+
+void GamingLayer::onClickJ(CCKeypadStatus key_status)
+{
+	if (key_status == EVENT_KEY_DOWN){
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+	}
+}
+
+void GamingLayer::onClickK(CCKeypadStatus key_status)
+{
+	if (key_status == EVENT_KEY_DOWN){
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_MAGIC_FIRE);
+	}
+}
+
+void GamingLayer::onClickL(CCKeypadStatus key_status)
+{
+}
+
+void GamingLayer::onClickI(CCKeypadStatus key_status)
+{
+	
 }

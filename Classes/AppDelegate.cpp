@@ -99,7 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	// enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
 //     pDirector->enableRetinaDisplay(true);
-	pDirector->getOpenGLView()->setAccelerometerKeyHook(Cannon::keyboardHook);
+	//pDirector->getOpenGLView()->setAccelerometerKeyHook(Cannon::keyboardHook);
 
 	// turn on display FPS
 	pDirector->setDisplayFPS(true);

@@ -24,6 +24,7 @@ Cannon::Cannon():m_fRotation(0.0f)
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationLeft), NOTIFY_BARREL_TURN_LEFT, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationRight), NOTIFY_BARREL_TURN_RIGHT, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::fire), NOTIFY_BARREL_FIRE, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::magicFire), NOTIFY_BARREL_MAGIC_FIRE, NULL);
 }
 
 Cannon::~Cannon() 
@@ -32,6 +33,7 @@ Cannon::~Cannon()
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_TURN_LEFT);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_TURN_RIGHT);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_FIRE);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_MAGIC_FIRE);
 }
 
 
@@ -86,31 +88,36 @@ void Cannon::fire(CCObject *pSender)
 
 }
 
+void Cannon::magicFire(CCObject *pSender)
+{
+	CCLog("magic fire");
+}
+
 CCLayer* Cannon::getConnon() 
 {
 	return this->m_pCannon;
 }
 
-void Cannon::keyboardHook(UINT message, WPARAM wParam, LPARAM lParam)
-{
-	switch (message)
-	{
-	case WM_KEYDOWN:
-		return;
-	case WM_KEYUP:
-		CCLog("key code:%d",wParam);
-		switch (wParam)
-		{
-		case KEY_CODE_LEFT:
-			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_LEFT);
-			break;
-		case KEY_CODE_RIGHT:
-			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_RIGHT);
-			break;
-		case KEY_CODE_FIRE:
-			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
-			break;
-		}
-		break;
-	}
-}
+//void Cannon::keyboardHook(UINT message, WPARAM wParam, LPARAM lParam)
+//{
+//	switch (message)
+//	{
+//	case WM_KEYDOWN:
+//		return;
+//	case WM_KEYUP:
+//		CCLog("key code:%d",wParam);
+//		switch (wParam)
+//		{
+//		case KEY_CODE_LEFT:
+//			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_LEFT);
+//			break;
+//		case KEY_CODE_RIGHT:
+//			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_RIGHT);
+//			break;
+//		case KEY_CODE_FIRE:
+//			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+//			break;
+//		}
+//		break;
+//	}
+//}
