@@ -9,6 +9,8 @@ class ControllPanel : public CCLayer {
 public:
 	static ControllPanel* createControllPanel();
 	virtual ~ControllPanel();
+	CCPoint getMuzzleWorldPos();
+	float getConnonBarrelRotation();
 private:
 	CCSprite* m_pBg;		//操作台背景
 	Cannon* m_pCannon;		//操作台加农炮

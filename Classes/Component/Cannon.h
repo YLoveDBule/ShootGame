@@ -12,7 +12,11 @@ public:
 
 	CCLayer* getConnon();
 
-	static void keyboardHook(UINT message, WPARAM wParam, LPARAM lParam);
+	float getBarrelRotation();
+
+	CCPoint getMuzzleWorldPos();		//炮口的世界坐标
+
+	//static void keyboardHook(UINT message, WPARAM wParam, LPARAM lParam);
 
 private:
 	Cannon();
@@ -27,6 +31,5 @@ private:
 	void fire(CCObject *pSender);
 	void magicFire(CCObject *pSender);
 	void setRotation(float rotation);
-	bool initCannon();
-	
+	bool initCannon();	
 };

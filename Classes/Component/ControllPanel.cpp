@@ -47,6 +47,16 @@ void ControllPanel::initCannon()
 	}
 }
 
+CCPoint ControllPanel::getMuzzleWorldPos()
+{
+	return this->m_pCannon->getMuzzleWorldPos();
+}
+
+float ControllPanel::getConnonBarrelRotation()
+{
+	return this->m_pCannon->getBarrelRotation();
+}
+
 void ControllPanel::createAttackButton()
 {
 	//ÆÕÍ¨¹¥»÷item

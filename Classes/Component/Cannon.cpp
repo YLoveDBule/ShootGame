@@ -77,12 +77,14 @@ void Cannon::setRotation(float rotation)
 	float duration = absf_rotation / 180.0f*0.2f;
 	CCFiniteTimeAction *pAction = CCRotateTo::actionWithDuration(duration, m_fRotation);
 	this->m_pBarrel->runAction(pAction);
+	CCPoint p = getMuzzleWorldPos();
+	
+	CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
 }
 
 void Cannon::fire(CCObject *pSender)
 {
 	CCLog("shoot!!!!");
-
 }
 
 void Cannon::magicFire(CCObject *pSender)
@@ -93,6 +95,19 @@ void Cannon::magicFire(CCObject *pSender)
 CCLayer* Cannon::getConnon() 
 {
 	return this->m_pCannon;
+}
+
+float Cannon::getBarrelRotation()
+{
+	return this->m_pBarrel->getRotation();
+}
+
+CCPoint Cannon::getMuzzleWorldPos()
+{
+	CCPoint barrelWorldPos = this->m_pBarrel->convertToWorldSpaceAR(ccp(0, 0));
+	CCSize barrelSize = this->m_pBarrel->getContentSize();
+	//return ccp(barrelWorldPos.x, barrelWorldPos.y + barrelSize.height);
+	return barrelWorldPos;
 }
 
 //void Cannon::keyboardHook(UINT message, WPARAM wParam, LPARAM lParam)

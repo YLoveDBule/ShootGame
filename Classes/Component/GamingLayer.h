@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "ControllPanel.h"
 
 USING_NS_CC;
 
@@ -23,7 +24,7 @@ private:
 
 	CCSprite *m_pBg;		//背景sprite
 	CCNode *m_pHud;			//hud节点
-	CCNode *m_pControllPanel; //controll Panel
+	ControllPanel* m_pControllPanel; //controll Panel
 
 	void initGameBg();		//游戏背景
 	void initHudPanel();		//游戏hud Paenl

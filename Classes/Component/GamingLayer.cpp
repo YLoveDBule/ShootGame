@@ -2,6 +2,7 @@
 #include "ControllPanel.h"
 #include "cocos2d.h"
 #include "Config/NotificationNameConfig.h"
+#include "Bullet.h"
 USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
@@ -47,9 +48,10 @@ void GamingLayer::initHudPanel()
 
 void GamingLayer::initControllPanel()
 {
-	m_pControllPanel = ControllPanel::createControllPanel();
-	if (m_pControllPanel != NULL) {
-		this->addChild(m_pControllPanel);
+	this->m_pControllPanel = ControllPanel::createControllPanel();
+	if (this->m_pControllPanel != NULL) {
+		this->m_pControllPanel->autorelease();
+		this->addChild(this->m_pControllPanel);
 	}
 	else
 	{
@@ -139,6 +141,16 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 {
 	if (key_status == EVENT_KEY_DOWN){
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+		Bullet* pBullet = Bullet::createBullet();
+		//根据炮口的位置和炮管的方向创建子弹
+		CCPoint p = this->m_pControllPanel->getMuzzleWorldPos();
+		float rotation = this->m_pControllPanel->getConnonBarrelRotation();
+		pBullet->setPosition(p);
+		//CCLog("pBullet rotation:%f",rotation);
+		//CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
+		pBullet->setRotation(rotation);
+		this->addChild(pBullet);
+		pBullet->shootBullet();
 	}
 }
 
