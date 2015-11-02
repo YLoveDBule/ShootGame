@@ -30,7 +30,7 @@ bool ControllPanel::initControllPanel()
 
 void ControllPanel::initBg()
 {
-	this->m_pBg = CCSprite::spriteWithSpriteFrameName("actor_controllBg.png");
+	this->m_pBg = CCSprite::spriteWithFile("common/actor_controllBg.png");
 	CCSize bgSize = this->m_pBg->getContentSize();
 	this->m_pBg->setPosition(ccp(bgSize.width/2,bgSize.height/2));
 	this->addChild(this->m_pBg);
@@ -49,18 +49,16 @@ void ControllPanel::initCannon()
 
 void ControllPanel::createAttackButton()
 {
-	CCSprite *pNormalAttSprite = CCSprite::spriteWithSpriteFrameName("actor_btn_noramlAtt.png");
-	CCSprite *pMagicAttSprite = CCSprite::spriteWithSpriteFrameName("actor_btn_magicAtt.png");
 	//ÆÕÍ¨¹¥»÷item
-	CCMenuItemSprite *pNormalItem = CCMenuItemSprite::itemFromNormalSprite(
-		pNormalAttSprite,
-		NULL,
+	CCMenuItemImage *pNormalItem = CCMenuItemImage::itemFromNormalImage(
+		"common/actor_btn_noramlAtt.png",
+		"common/actor_btn_noramlAtt.png",
 		this,
 		menu_selector(ControllPanel::normalAttackClick));
 	//ÆÕÍ¨¹¥»÷item
-	CCMenuItemSprite *pMagicItem = CCMenuItemSprite::itemFromNormalSprite(
-		pMagicAttSprite,
-		NULL,
+	CCMenuItemImage *pMagicItem = CCMenuItemImage::itemFromNormalImage(
+		"common/actor_btn_magicAtt.png",
+		"common/actor_btn_magicAtt.png",
 		this,
 		menu_selector(ControllPanel::magicAttackClick));
 	CCMenu *pAttackMenu = CCMenu::menuWithItems(pNormalItem, pMagicItem, NULL);
@@ -68,7 +66,7 @@ void ControllPanel::createAttackButton()
 	CCSize bgSize = this->m_pBg->getContentSize();
 
 	pAttackMenu->alignItemsHorizontally();
-	pAttackMenu->setPosition(ccp(bgSize.width-200, bgSize.height/2-pNormalAttSprite->getContentSize().height/2-30));
+	pAttackMenu->setPosition(ccp(bgSize.width - 200, bgSize.height / 2 - pNormalItem->getContentSize().height / 2 - 30));
 	this->addChild(pAttackMenu);
 
 }

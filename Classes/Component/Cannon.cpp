@@ -39,12 +39,9 @@ Cannon::~Cannon()
 
 bool Cannon::initCannon()
 {	
-	CCSpriteFrame *pCannonPedestalSpriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("actor_cannon_pedestal.png");
-	CCSpriteFrame *pCannonBarrelSpriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("actor_cannon_barrel.png");
-
-	this->m_pCannon = new CCLayer();
-	this->m_pPedestal = CCSprite::spriteWithSpriteFrame(pCannonPedestalSpriteFrame);
-	this->m_pBarrel = CCSprite::spriteWithSpriteFrame(pCannonBarrelSpriteFrame);
+	this->m_pCannon = CCLayer::node();
+	this->m_pPedestal = CCSprite::spriteWithFile("common/actor_cannon_pedestal.png");
+	this->m_pBarrel = CCSprite::spriteWithFile("common/actor_cannon_barrel.png");
 
 	this->m_pCannon->addChild(this->m_pBarrel);
 	this->m_pCannon->addChild(this->m_pPedestal);

@@ -71,7 +71,6 @@ bool HelloWorld::init()
 	// add the sprite as a child to this layer
 	this->addChild(pSprite, 0);
 
-	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("common/common.plist");
 	//Cannon *cannon = Cannon::createCannon();
 	//this->addChild(cannon->getConnon(),1);
 	//cannon->getConnon()->setPosition(ccp(size.width / 2, size.height / 2));
