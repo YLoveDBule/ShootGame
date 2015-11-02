@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "cocos2d.h"
 #include "math.h"
+#include "Config/BaseConfig.h"
 
 USING_NS_CC;
 
@@ -44,26 +45,40 @@ void Bullet::shootBullet()
 	CCLog("toScreenLeftRotation:%f,toScreenRightRotation:%f", toScreenLeftRotation, toScreenRightRotation);
 
 	float fBulletRotation = this->getRotation();						//角度
+	CCPoint endPoint = ccp(0,0);
 	if (fBulletRotation < toScreenLeftRotation) {
 		//屏幕左边
 		CCLog("Screen left :%f", fBulletRotation);
 		float fVerticalSideLength = this->getPositionX();	//垂直边的长度
 		float fObliqueSideLength = fVerticalSideLength / cos(90 - fBulletRotation);	//斜边长
-		float bottomSideLength = tan((90-fabs(fBulletRotation))*M_PI/180)*fVerticalSideLength;
-		CCLog("tan(90+fBulletRotation):%f,fVerticalSideLength:%f,bottomSideLength:%f", tan(90 + fBulletRotation),fVerticalSideLength, bottomSideLength);
-		this->runAction(CCMoveTo::actionWithDuration(3.0f, CCPointMake(0, bottomSideLength)));
+		float fBottomSideLength = tan((90-fabs(fBulletRotation))*M_PI/180)*fVerticalSideLength;
+		endPoint = ccp(0, fBottomSideLength);
 	}
 	else if (fBulletRotation >= toScreenLeftRotation && fBulletRotation <= toScreenRightRotation)
 	{
 		//屏幕顶部
 		CCLog("Screen top");
+		float fVerticalSideLength = winSize.height - this->getPositionY();//垂直边的长度
+		float fBottomSideLength = tan(fabs(fBulletRotation)*M_PI / 180)*fVerticalSideLength;
+		endPoint = ccp(winSize.width / 2 - fBottomSideLength, winSize.height);
+		if (fBulletRotation > 0)
+		{
+			endPoint = ccp(winSize.width / 2 + fBottomSideLength, winSize.height);
+			
+		}
 	}
 	else if (fBulletRotation > toScreenRightRotation)
 	{
 		//屏幕右边
 		CCLog("Screen right");
+		float fVerticalSideLength = winSize.width - this->getPositionX();//垂直边的长度
+		float fBottomSideLength = tan((90-fabs(fBulletRotation))*M_PI / 180)*fVerticalSideLength;
+		endPoint = ccp(winSize.width, fBottomSideLength);		
 	}
-
+	//移动的距离
+	float fDistance = sqrt(powf(endPoint.x - this->getPositionX(),2) + powf(endPoint.y - this->getPositionY(),2));
+	float duration = fDistance / BULLET_SPEED;
+	this->runAction(CCMoveTo::actionWithDuration(duration, endPoint));
 
 	//float fVerticalSideLength = this->getPositionX();	//垂直边的长度
 	//float fObliqueSide = fVerticalSideLength / cos(90 - fBulletRotation);	//斜边长

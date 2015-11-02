@@ -1,5 +1,4 @@
 #include "Cannon.h"
-#include "Config/KeyCodeCOnfig.h"
 #include "Config/NotificationNameConfig.h"
 
 USING_NS_CC;
