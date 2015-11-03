@@ -2,7 +2,9 @@
 #define  _APP_DELEGATE_H_
 
 #include "CCApplication.h"
-
+#include "GameData/PlayerData.h"
+#include "GameData/MonsterData.h"
+#include "LoginScene.h"
 /**
 @brief	The cocos2d Application.
 

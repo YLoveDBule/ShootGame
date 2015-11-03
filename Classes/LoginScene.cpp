@@ -1,6 +1,7 @@
 #include "LoginScene.h"
 #include "GameData/PlayerMrg.h"
 #include "Component/GamingLayer.h"
+#include "Config/NotificationNameConfig.h"
 bool LoginScene::init()
 {
 	_nowSate = MenuState_Star;
@@ -40,7 +41,7 @@ bool LoginScene::init()
 	addChild(_rowSp);
 
 	//init data 
-	PlayerMrg::getInstance()->Init();
+	//PlayerMrg::getInstance()->Init();
 	return true;
 }
 
@@ -159,10 +160,13 @@ void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 	{
 	case MenuState_Star:
 	{
-		CCScene *sence = CCScene::node();
+		/*CCScene *sence = CCScene::node();
 		GamingLayer*layer = GamingLayer::createGamingLayer();
 		scene()->addChild(layer);
-		CCDirector::sharedDirector()->replaceScene(sence);
+		CCDirector::sharedDirector()->replaceScene(sence);*/
+		PlayerMrg::getInstance()->Init();
+		CCString str = CCString("100");
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);
 	}
 		break;
 	case MenuState_Exit:
