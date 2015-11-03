@@ -30,9 +30,14 @@ bool GamingLayer::initGamingLayer()
 	this->initHudPanel();
 	this->initControllPanel();
 	CCLayer::setIsKeypadEnabled(true);
+	this->scheduleUpdate();
 	return true;
 }
 
+void GamingLayer::update(ccTime dt)
+{
+	CCLog("scheduleUpdate:%f",dt);
+}
 void GamingLayer::initGameBg() 
 {
 	m_pBg = CCSprite::spriteWithFile("common/actor_gamingbg.png");
