@@ -1,14 +1,15 @@
 #pragma once
 #include "cocos2d.h"
 #include "ControllPanel.h"
-
+//#include <vector>
 USING_NS_CC;
-
+class Bullet;
 class GamingLayer : public CCLayer, public CCKeypadDelegate{
 public:
 	static GamingLayer* createGamingLayer();
 	virtual ~GamingLayer();
 	virtual bool keyAllClicked(int iKeyID, CCKeypadStatus key_status);
+	vector<Bullet*> m_pBulletVector;
 protected:
 	void onClickA(cocos2d::CCKeypadStatus key_status);
 	void onClickS(cocos2d::CCKeypadStatus key_status);

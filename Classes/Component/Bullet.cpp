@@ -2,13 +2,17 @@
 #include "cocos2d.h"
 #include "math.h"
 #include "Config/BaseConfig.h"
+#include "Config/NotificationNameConfig.h"
+#include "GamingLayer.h"
+#include <iostream>
 
+using namespace std;
 USING_NS_CC;
 
-Bullet* Bullet::createBullet()
+Bullet* Bullet::createBullet(GamingLayer* gamingLayer)
 {
 	Bullet *pBullet = new Bullet();
-	if (pBullet && pBullet->initBullet())
+	if (pBullet && pBullet->initBullet(gamingLayer))
 	{
 		pBullet->autorelease();
 		return pBullet;
@@ -23,10 +27,11 @@ Bullet* Bullet::createBullet()
 Bullet::Bullet(){}
 Bullet::~Bullet(){}
 
-bool Bullet::initBullet()
+bool Bullet::initBullet(GamingLayer* gamingLayer)
 {
 	this->initWithFile("common/actor_bullet.png");
 	this->setAnchorPoint(ccp(0.5, 0));
+	this->m_pGamingLayer = gamingLayer;
 	return true;
 }
 
@@ -78,14 +83,20 @@ void Bullet::shootBullet()
 	//移动的距离
 	float fDistance = sqrt(powf(endPoint.x - this->getPositionX(),2) + powf(endPoint.y - this->getPositionY(),2));
 	float duration = fDistance / BULLET_SPEED;
-	this->runAction(CCMoveTo::actionWithDuration(duration, endPoint));
+	CCCallFunc *pCallfunc = CCCallFunc::actionWithTarget(this, callfunc_selector(Bullet::destroyBullet));
+	this->runAction(CCSequence::actions(CCMoveTo::actionWithDuration(duration, endPoint), pCallfunc, NULL));
+}
 
-	//float fVerticalSideLength = this->getPositionX();	//垂直边的长度
-	//float fObliqueSide = fVerticalSideLength / cos(90 - fBulletRotation);	//斜边长
-	////初始Bullet位置
-	//CCPoint startBullet = this->getPosition();
-	////结束位置
-	//CCPoint endBullet = ccpNormalize(startBullet) * fObliqueSide;
-	//
-	//this->runAction(CCMoveBy::actionWithDuration(3.0f, CCPointMake(0, fObliqueSide)));
+void Bullet::destroyBullet()
+{
+	//移除子弹，并从子弹容器里删除
+	for (vector<Bullet*>::iterator it = m_pGamingLayer->m_pBulletVector.begin(); it != m_pGamingLayer->m_pBulletVector.end();it++)
+	{
+		if (*it == this)
+		{
+			m_pGamingLayer->m_pBulletVector.erase(it);
+			break;			
+		}
+	}		
+	this->removeFromParentAndCleanup(true);
 }

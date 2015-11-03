@@ -138,10 +138,11 @@ void GamingLayer::onClickD(CCKeypadStatus key_status)
 }
 
 void GamingLayer::onClickJ(CCKeypadStatus key_status)
-{
+{	
+	CCLog("onClickJ==>key_status:%d",key_status);
 	if (key_status == EVENT_KEY_DOWN){
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
-		Bullet* pBullet = Bullet::createBullet();
+		Bullet* pBullet = Bullet::createBullet(this);
 		//根据炮口的位置和炮管的方向创建子弹
 		CCPoint p = this->m_pControllPanel->getMuzzleWorldPos();
 		float rotation = this->m_pControllPanel->getConnonBarrelRotation();
@@ -150,6 +151,7 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 		//CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
 		pBullet->setRotation(rotation);
 		this->addChild(pBullet);
+		m_pBulletVector.push_back(pBullet);
 		pBullet->shootBullet();
 	}
 }
