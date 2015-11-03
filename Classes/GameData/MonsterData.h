@@ -28,7 +28,7 @@ public:
 	int getSkillGrade(const int id);
 	int getSkillReward(const int id);
 	int getHurt(const int id);
-	int FreshSpeed(const int id);
+	int getFreshSpeed(const int id);
 	int getShowGrade(const int id);
 protected:
 	int getRow(const int id);

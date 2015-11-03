@@ -62,7 +62,7 @@ int MonsterData::getHurt(const int id)
 	return atoi(_csvParse->getData(row, Monster_Hurt));
 }
 
-int MonsterData::FreshSpeed(const int id)
+int MonsterData::getFreshSpeed(const int id)
 {
 	size_t row = getRow(id);
 	return atoi(_csvParse->getData(row, Monster_FreshSpeed));
