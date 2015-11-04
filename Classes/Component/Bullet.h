@@ -10,6 +10,7 @@ public:
 	//void setBulletDirection(float rotation);
 	void shootBullet();
 	void destroyBullet();
+	CC_SYNTHESIZE(bool, m_bHit, Hit);
 private:
 	Bullet();
 	bool initBullet(GamingLayer* gamingLayer);

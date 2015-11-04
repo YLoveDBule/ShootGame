@@ -5,12 +5,18 @@
 #include <map>
 USING_NS_CC;
 class Bullet;
+class MonsterMrg;
 class GamingLayer : public CCLayer, public CCKeypadDelegate{
 public:
 	static GamingLayer* createGamingLayer();
 	virtual ~GamingLayer();
 	virtual bool keyAllClicked(int iKeyID, CCKeypadStatus key_status);
-	vector<Bullet*> m_pBulletVector;
+	//vector<Bullet*> m_pBulletVector;
+	//vector<MonsterMrg*> m_pMonsterVector;
+	CCArray *m_pBullets;
+	CCArray *m_pMonsters;
+	//CC_SYNTHESIZE_RETAIN(cocos2d::CCArray *, m_pBullets, Bullets);
+	//CC_SYNTHESIZE_RETAIN(cocos2d::CCArray *, m_pMonsters, Monsters);
 protected:
 	void onClickA(cocos2d::CCKeypadStatus key_status);
 	void onClickS(cocos2d::CCKeypadStatus key_status);
@@ -29,8 +35,8 @@ private:
 	ControllPanel* m_pControllPanel; //controll Panel
 	map<int, int> m_mMonsterFreshInfo;		//怪物刷新信息
 
-	//void onEnter();
-	//void onExit();
+	virtual void onEnter();
+	virtual void onExit();
 
 	void initGameBg();		//游戏背景
 	void initHudPanel();		//游戏hud Paenl
@@ -43,5 +49,6 @@ private:
 	
 	void checkMonsterFresh(int dt);					//检查怪物刷新
 	void freshMonster(int monsterId);					//刷新怪物
+	void checkHitMonster();						//检测是否击中怪物
 	void update(ccTime dt);
 };

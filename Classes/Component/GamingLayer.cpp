@@ -28,6 +28,11 @@ GamingLayer::~GamingLayer(){}
 
 bool GamingLayer::initGamingLayer()
 {
+	m_pBullets = CCArray::array();
+	m_pBullets->retain();
+	m_pMonsters = CCArray::array();
+	m_pMonsters->retain();
+
 	this->initGameBg();
 	this->initHudPanel();
 	this->initControllPanel();
@@ -44,20 +49,22 @@ bool GamingLayer::initGamingLayer()
 	return true;
 }
 
-//void GamingLayer::onEnter()
-//{
-//	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEGRADE, NULL);
-//}
-//
-//void GamingLayer::onExit()
-//{
-//	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEGRADE);
-//}
+void GamingLayer::onEnter()
+{
+	CCLayer::onEnter();
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEGRADE, NULL);
+}
+
+void GamingLayer::onExit()
+{
+	CCLayer::onExit();
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEGRADE);
+}
 
 void GamingLayer::update(ccTime dt)
 {
-	CCLog("dt:%f", dt * 1000);
 	this->checkMonsterFresh(dt*1000);
+	this->checkHitMonster();
 }
 void GamingLayer::initGameBg() 
 {
@@ -98,7 +105,7 @@ void GamingLayer::checkMonsterFresh(int dt)
 		int nMosterId = it->first;
 		
 		int nFreshSpeed = MonsterData::getInstance()->getFreshSpeed(nMosterId)*1000;	//转换成毫秒
-		CCLog("checkMonsterFresh nCurrentTime:%d, nFreshSpeed:%d", (int)(nCurrentTime), nFreshSpeed);
+		//CCLog("checkMonsterFresh nCurrentTime:%d, nFreshSpeed:%d", (int)(nCurrentTime), nFreshSpeed);
 		if (nCurrentTime >= nFreshSpeed)
 		{
 			this->freshMonster(nMosterId);
@@ -114,8 +121,73 @@ void GamingLayer::checkMonsterFresh(int dt)
 /*刷新怪物*/
 void GamingLayer::freshMonster(int monsterId)
 {
-	MonsterMrg *monster = MonsterMrg::Create(monsterId);
-	this->addChild(monster);
+	MonsterMrg *pMonster = MonsterMrg::Create(monsterId);
+	this->addChild(pMonster);
+	this->m_pMonsters->addObject(pMonster);
+	//this->m_pMonsterVector.push_back(pMonster);
+}
+
+/*
+*检测是否击中怪物
+*/
+
+void GamingLayer::checkHitMonster()
+{
+	CCObject *pBulletObj = NULL;
+	CCObject *pMonsterObj = NULL;
+	CCARRAY_FOREACH(m_pBullets, pBulletObj)
+	{
+		Bullet *pBullet = (Bullet*)pBulletObj;
+		if (pBullet->getHit())
+			continue;
+		bool bIsHit = false;
+		CCARRAY_FOREACH(m_pMonsters, pMonsterObj)
+		{
+			MonsterMrg *pMonster = (MonsterMrg*)pMonsterObj;
+			if (CCRect::CCRectIntersectsRect(pBullet->boundingBox(), pMonster->boundingBox()))
+			{
+				bIsHit = true;
+				pMonster->setmonsterHp(pMonster->getmonsterHp()-1);
+				if (pMonster->getmonsterHp() <= 0)
+				{
+					pMonster->DestroyMonster();
+					break;
+				}					
+			}
+		}
+		if (bIsHit)
+			pBullet->destroyBullet();
+		
+	}
+
+	//Bullet* bullet = nullptr;
+	//MonsterMrg* monster = nullptr;
+	//vector<int> destroyBulletIndex;
+	//vector<int> destroyMonsterIndex;
+	//for (int i = 0; i < m_pBulletVector.size(); i++)
+	//{
+	//	for (int j = 0; j < m_pMonsterVector.size(); j++)
+	//	{	
+	//		if (CCRect::CCRectIntersectsRect(m_pBulletVector[i]->boundingBox(), m_pMonsterVector[j]->boundingBox()))
+	//		{
+	//			CCLog("hit monster!");		
+	//			destroyBulletIndex.push_back(i);
+	//			/*(*monsterIt)->setmonsterHp((*monsterIt)->getmonsterHp() - 1);
+	//			if ((*monsterIt)->getmonsterHp() <= 0)
+	//				(*monsterIt)->DestroyMonster();*/
+	//		}
+	//	}			
+	//}
+
+	//for (int i = 0; i < destroyBulletIndex.size(); i++)
+	//{
+	//	int nIdx = destroyBulletIndex[i];
+	//	CCLog("nIdx:%d",nIdx);
+	//	bullet = m_pBulletVector[i];
+	//	
+	//	m_pBulletVector.erase(m_pBulletVector.begin()+nIdx);
+	//	bullet->removeFromParentAndCleanup(true);
+	//}
 }
 
 //玩家分数改变
@@ -213,11 +285,10 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 		CCPoint p = this->m_pControllPanel->getMuzzleWorldPos();
 		float rotation = this->m_pControllPanel->getConnonBarrelRotation();
 		pBullet->setPosition(p);
-		//CCLog("pBullet rotation:%f",rotation);
-		//CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
 		pBullet->setRotation(rotation);
 		this->addChild(pBullet,99);
-		m_pBulletVector.push_back(pBullet);
+		this->m_pBullets->addObject(pBullet);
+		//m_pBulletVector.push_back(pBullet);
 		pBullet->shootBullet();
 	}
 }

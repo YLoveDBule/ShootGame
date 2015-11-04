@@ -86,7 +86,7 @@ void MonsterMrg::freshPos(float dt)
 	{
 		DestroyMonster();
 	}
-	CCLog("posx == %f, posy ==== %f", _NowPos.x, _NowPos.y);
+	//CCLog("posx == %f, posy ==== %f", _NowPos.x, _NowPos.y);
 }
 
 

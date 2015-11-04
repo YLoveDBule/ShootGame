@@ -29,6 +29,7 @@ Bullet::~Bullet(){}
 
 bool Bullet::initBullet(GamingLayer* gamingLayer)
 {
+	this->m_bHit = false;
 	this->initWithFile("common/actor_bullet.png");
 	this->setAnchorPoint(ccp(0.5, 0));
 	this->m_pGamingLayer = gamingLayer;
@@ -89,14 +90,19 @@ void Bullet::shootBullet()
 
 void Bullet::destroyBullet()
 {
+	this->m_bHit = true;
+	this->stopAllActions();
+	
 	//移除子弹，并从子弹容器里删除
-	for (vector<Bullet*>::iterator it = m_pGamingLayer->m_pBulletVector.begin(); it != m_pGamingLayer->m_pBulletVector.end();it++)
+	/*for (vector<Bullet*>::iterator it = m_pGamingLayer->m_pBulletVector.begin(); it != m_pGamingLayer->m_pBulletVector.end(); it++)
 	{
 		if (*it == this)
 		{
-			m_pGamingLayer->m_pBulletVector.erase(it);
-			break;			
+			it = m_pGamingLayer->m_pBulletVector.erase(it);
+			break;
 		}
-	}		
+	}*/
+	m_pGamingLayer->m_pBullets->removeObject(this);
 	this->removeFromParentAndCleanup(true);
+	
 }
