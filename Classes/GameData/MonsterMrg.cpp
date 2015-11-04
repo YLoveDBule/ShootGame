@@ -63,14 +63,14 @@ bool MonsterMrg::MonsterInit(const int monsterId)
 
 void MonsterMrg::InitMonsterData(const int monsterId)
 {
-	_FreshSpeed = CCDirector::sharedDirector()->getWinSize().height / MonsterData::getInstance()->getFreshSpeed(monsterId);
+	_FreshSpeed = MonsterData::getInstance()->getFreshSpeed(monsterId);
 	_Hurt = MonsterData::getInstance()->getHurt(monsterId);
 	_Hp = MonsterData::getInstance()->getHp(monsterId);
 	_resfile = MonsterData::getInstance()->getRes(monsterId);
 	_showGrade = MonsterData::getInstance()->getShowGrade(monsterId);
 	_SkillGrade = MonsterData::getInstance()->getSkillGrade(monsterId);
 	_SkillReward = MonsterData::getInstance()->getSkillReward(monsterId);
-	_MoveSpeed = MonsterData::getInstance()->getMoveSpeed(monsterId);
+	_MoveSpeed = CCDirector::sharedDirector()->getWinSize().height / MonsterData::getInstance()->getMoveSpeed(monsterId);
 
 	// beigin pos
 	_NowPos = MonsterPosCreate::getInstance()->getRandomPoint();
