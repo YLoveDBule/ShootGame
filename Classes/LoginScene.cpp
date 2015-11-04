@@ -2,6 +2,7 @@
 #include "GameData/PlayerMrg.h"
 #include "Component/GamingLayer.h"
 #include "Config/NotificationNameConfig.h"
+#include "GameData/MonsterMrg.h"
 bool LoginScene::init()
 {
 	_nowSate = MenuState_Star;
@@ -67,43 +68,53 @@ bool LoginScene::keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus iKeyState)
 	case 'w':
 	case 'W':
 //	case KEY_UP:
-		onClickW(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		{
+			onClickW(iKeyState);
+		}
 		break;
 	case 's':
 	case 'S':
 //	case KEY_DOWN:
-		onClickS(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickS(iKeyState);
 		break;
 	case 'a':
 	case 'A':
 //	case KEY_LEFT:
-		onClickA(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickA(iKeyState);
 		break;
 	case 'd':
 	case 'D':
 //	case KEY_RIGHT:
-		onClickD(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickD(iKeyState);
 		break;
 
 	case 'i':
 	case 'I':
 //	case KEY_A:
-		onClickI(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickI(iKeyState);
 		break;
 	case 'k':
 	case 'K':
 //	case KEY_B:
-		onClickK(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickK(iKeyState);
 		break;
 	case 'l':
 	case 'L':
 //	case KEY_X:
-		onClickL(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickL(iKeyState);
 		break;
 	case 'j':
 	case 'J':
 //	case KEY_Y:
-		onClickJ(iKeyState);
+		if (iKeyState == EVENT_KEY_DOWN)
+		    onClickJ(iKeyState);
 		break;
 
 	default:
@@ -160,13 +171,15 @@ void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 	{
 	case MenuState_Star:
 	{
-		CCScene *scene = CCScene::node();
-		GamingLayer *layer = GamingLayer::createGamingLayer();
-		scene->addChild(layer);
-		CCDirector::sharedDirector()->replaceScene(scene);
-		//PlayerMrg::getInstance()->Init();
-		//CCString str = CCString("100");
-		//CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);
+		/*CCScene *sence = CCScene::node();
+		GamingLayer*layer = GamingLayer::createGamingLayer();
+		scene()->addChild(layer);
+		CCDirector::sharedDirector()->replaceScene(sence);*/
+		/*PlayerMrg::getInstance()->Init();
+		CCString str = CCString("100");
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);*/
+		MonsterMrg *monster = MonsterMrg::Create(1001);
+		addChild(monster);
 	}
 		break;
 	case MenuState_Exit:
