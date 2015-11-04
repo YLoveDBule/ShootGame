@@ -1,6 +1,8 @@
 #include "PlayerMrg.h"
 #include "PlayerData.h"
 #include "Config/NotificationNameConfig.h"
+#include <sstream>
+#include "MonsterData.h"
 static PlayerMrg* s_playerMrg = nullptr;
 PlayerMrg::PlayerMrg()
 {
@@ -24,11 +26,13 @@ PlayerMrg * PlayerMrg::getInstance()
 void PlayerMrg::Init()
 {
 	_player = new Player();
+	_monsterkindVec = new MonsterKindVector();
 }
 
 void PlayerMrg::Delete()
 {
 	CC_SAFE_DELETE(_player);
+	CC_SAFE_DELETE(_monsterkindVec);
 }
 
 
@@ -54,12 +58,23 @@ void Player::UpdatePlayerGrade(CCObject *pSender)
 	CCString* str = static_cast<CCString*>(pSender);
 	_grade += str->toInt();
 	UpdateData();
+	PostFreshMonsterVec();
 }
 
 void Player::UpdatePlayerNowHp(CCObject *pSender)
 {
 	CCString* str = static_cast<CCString*>(pSender);
 	_nowHp += str->toInt();
+}
+
+void Player::PostFreshMonsterVec()
+{
+	stringstream ss;
+	ss >> _grade;
+	CCString str = CCString(ss.str().c_str());
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_MONSTER_UPDATEKIND,&str);
+	ss.str("");
+	ss.clear();
 }
 
 void Player::initData()
@@ -75,4 +90,49 @@ void Player::UpdateData()
 	_nowAtt = PlayerData::getInstance()->getAtt(_grade);
 	_skillCd = PlayerData::getInstance()->getAoeCd(_grade);
 	_aoeAtt = PlayerData::getInstance()->getAoe(_grade);
+}
+
+
+
+////////////////////////////////
+MonsterKindVector::MonsterKindVector()
+{
+	for (size_t i = 0; i < Monster_KindNumber; ++i)
+	{
+		_monsterId[i] = 1000 + i + 1;
+	}
+	_monsterKindId.clear();
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(MonsterKindVector::UpdateMonsterKind), NOTIFY_MONSTER_UPDATEKIND, NULL);
+}
+
+MonsterKindVector::~MonsterKindVector()
+{
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_MONSTER_UPDATEKIND);
+}
+
+void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
+{
+	CCString* str = static_cast<CCString*>(pSender);
+	int nowGrade = str->toInt();
+	for (size_t i = 0; i < Monster_KindNumber; ++i)
+	{
+		if (std::find(_monsterKindId.begin(),_monsterKindId.end(), _monsterId[i]) != _monsterKindId.end())
+		{
+			int showGrade = MonsterData::getInstance()->getShowGrade(_monsterId[i]);
+			if (nowGrade < showGrade)
+			{
+				break;
+			}
+			else
+			{
+				_monsterKindId.push_back(_monsterId[i]);
+			}
+		}
+		continue;
+	}
+}
+
+std::vector<int > MonsterKindVector::getMonsterKindId()
+{
+	return _monsterKindId;
 }

@@ -3,13 +3,6 @@
 
 USING_NS_CC;
 
-#define MONSTER_A_ID       1001
-#define MONSTER_B_ID       1002
-#define MONSTER_C_ID       1003
-#define MONSTER_D_ID       1004
-#define MONSTER_E_ID       1005
-#define MONSTER_F_ID       1006
-
 class MonsterMrg : public CCSprite
 {
 public:

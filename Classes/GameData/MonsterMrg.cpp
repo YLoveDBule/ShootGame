@@ -23,8 +23,8 @@ MonsterMrg * MonsterMrg::Create(const int monsterId)
 	else
 	{
 		delete monster;
-		monster = nullptr;
-		return nullptr;
+		monster = NULL;
+		return NULL;
 	}
 }
 
