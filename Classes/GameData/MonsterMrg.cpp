@@ -70,7 +70,7 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	_showGrade = MonsterData::getInstance()->getShowGrade(monsterId);
 	_SkillGrade = MonsterData::getInstance()->getSkillGrade(monsterId);
 	_SkillReward = MonsterData::getInstance()->getSkillReward(monsterId);
-	_MoveSpeed = MonsterData::getInstance()->getMoveSpeed(monsterId);
+	_MoveSpeed = MonsterData::getInstance()->getMoveSpeed(monsterId) / 10;
 
 	// beigin pos
 	_NowPos = MonsterPosCreate::getInstance()->getRandomPoint();
@@ -98,17 +98,10 @@ static MonsterPosCreate* s_monsterPosCreate = nullptr;
 MonsterPosCreate::MonsterPosCreate()
 {
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	CCPoint beginPos = ccp(size.width / 2, size.height);
+	float offsetX = size.width / 7;
 	for (size_t i = 0; i < 6; ++i)
 	{
-		if (i < 3)
-		{
-			_point[i] = ccp(beginPos.x - i * 100,beginPos.y);
-		}
-		else
-		{
-			_point[i] = ccp(beginPos.x + (i - 3) * 100, beginPos.y);
-		}
+		_point[i] = ccp(offsetX * (i + 1), size.height);
 	}
 	_beforeIndex = 0;
 }
