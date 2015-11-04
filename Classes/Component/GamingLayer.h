@@ -1,7 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "ControllPanel.h"
-//#include <vector>
+#include <vector>
+#include <map>
 USING_NS_CC;
 class Bullet;
 class GamingLayer : public CCLayer, public CCKeypadDelegate{
@@ -26,11 +27,21 @@ private:
 	CCSprite *m_pBg;		//背景sprite
 	CCNode *m_pHud;			//hud节点
 	ControllPanel* m_pControllPanel; //controll Panel
+	map<int, int> m_mMonsterFreshInfo;		//怪物刷新信息
+
+	//void onEnter();
+	//void onExit();
 
 	void initGameBg();		//游戏背景
 	void initHudPanel();		//游戏hud Paenl
 	void initControllPanel();	//游戏操作panel
 
 	bool initGamingLayer();		//初始化
+
+	void playerScoreChange(CCObject *pSender);
+
+	
+	void checkMonsterFresh(int dt);					//检查怪物刷新
+	void freshMonster(int monsterId);					//刷新怪物
 	void update(ccTime dt);
 };

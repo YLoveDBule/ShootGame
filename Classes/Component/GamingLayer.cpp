@@ -3,6 +3,8 @@
 #include "cocos2d.h"
 #include "Config/NotificationNameConfig.h"
 #include "Bullet.h"
+#include "GameData/MonsterMrg.h"
+#include "GameData/MonsterData.h"
 USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
@@ -29,14 +31,33 @@ bool GamingLayer::initGamingLayer()
 	this->initGameBg();
 	this->initHudPanel();
 	this->initControllPanel();
+	//填充怪物进怪物刷新map
+	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1001, 0));
+	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1002, 0));
+	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1003, 0));
+	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1004, 0));
+	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1005, 0));
+	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1006, 0));
+
 	CCLayer::setIsKeypadEnabled(true);
 	this->scheduleUpdate();
 	return true;
 }
 
+//void GamingLayer::onEnter()
+//{
+//	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEGRADE, NULL);
+//}
+//
+//void GamingLayer::onExit()
+//{
+//	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEGRADE);
+//}
+
 void GamingLayer::update(ccTime dt)
 {
-	CCLog("scheduleUpdate:%f",dt);
+	CCLog("dt:%f", dt * 1000);
+	this->checkMonsterFresh(dt*1000);
 }
 void GamingLayer::initGameBg() 
 {
@@ -63,6 +84,46 @@ void GamingLayer::initControllPanel()
 		CCLog("GamingLayer===> ControllPanel is null");
 	}
 }
+
+/*
+* 检测怪物刷新
+* 返回值为怪物的ID
+*/
+void GamingLayer::checkMonsterFresh(int dt)
+{
+	//CCLog("checkMonsterFresh:%d",dt);
+	for (map<int, int>::iterator it = this->m_mMonsterFreshInfo.begin(); it != this->m_mMonsterFreshInfo.end(); ++it)
+	{
+		int nCurrentTime = it->second + dt;
+		int nMosterId = it->first;
+		
+		int nFreshSpeed = MonsterData::getInstance()->getFreshSpeed(nMosterId)*1000;	//转换成毫秒
+		CCLog("checkMonsterFresh nCurrentTime:%d, nFreshSpeed:%d", (int)(nCurrentTime), nFreshSpeed);
+		if (nCurrentTime >= nFreshSpeed)
+		{
+			this->freshMonster(nMosterId);
+			it->second = 0;
+		}
+		else
+		{
+			it->second = nCurrentTime;
+		}
+	}
+}
+
+/*刷新怪物*/
+void GamingLayer::freshMonster(int monsterId)
+{
+	MonsterMrg *monster = MonsterMrg::Create(monsterId);
+	this->addChild(monster);
+}
+
+//玩家分数改变
+void GamingLayer::playerScoreChange(CCObject *pSender)
+{
+	
+}
+
 
 bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
 {
@@ -155,7 +216,7 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 		//CCLog("pBullet rotation:%f",rotation);
 		//CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
 		pBullet->setRotation(rotation);
-		this->addChild(pBullet);
+		this->addChild(pBullet,99);
 		m_pBulletVector.push_back(pBullet);
 		pBullet->shootBullet();
 	}

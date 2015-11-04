@@ -70,7 +70,7 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	_showGrade = MonsterData::getInstance()->getShowGrade(monsterId);
 	_SkillGrade = MonsterData::getInstance()->getSkillGrade(monsterId);
 	_SkillReward = MonsterData::getInstance()->getSkillReward(monsterId);
-	_MoveSpeed = CCDirector::sharedDirector()->getWinSize().height / MonsterData::getInstance()->getMoveSpeed(monsterId);
+	_MoveSpeed = MonsterData::getInstance()->getMoveSpeed(monsterId);
 
 	// beigin pos
 	_NowPos = MonsterPosCreate::getInstance()->getRandomPoint();
