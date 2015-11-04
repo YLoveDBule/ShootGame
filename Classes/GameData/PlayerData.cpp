@@ -8,7 +8,7 @@ PlayerData::PlayerData()
 
 PlayerData::~PlayerData()
 {
-	delete _csvParse;
+	delete _csvParse; 
 }
 
 PlayerData* PlayerData::getInstance()
