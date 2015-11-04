@@ -32,6 +32,5 @@ private:
 	void initControllPanel();	//游戏操作panel
 
 	bool initGamingLayer();		//初始化
-	void updateGamingLayer(float dt);
 	void update(ccTime dt);
 };
