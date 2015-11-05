@@ -2,9 +2,12 @@
 #include "ControllPanel.h"
 #include "cocos2d.h"
 #include "Config/NotificationNameConfig.h"
+#include "Config/BaseConfig.h"
 #include "Bullet.h"
 #include "GameData/MonsterMrg.h"
 #include "GameData/MonsterData.h"
+#include "Utils/Utils.h"
+#include "GameData/PlayerMrg.h"
 USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
@@ -37,12 +40,7 @@ bool GamingLayer::initGamingLayer()
 	this->initHudPanel();
 	this->initControllPanel();
 	//填充怪物进怪物刷新map
-	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1001, 0));
-	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1002, 0));
-	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1003, 0));
-	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1004, 0));
-	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1005, 0));
-	this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(1006, 0));
+	updateMonsterFreshPool(NULL);
 
 	CCLayer::setIsKeypadEnabled(true);
 	this->scheduleUpdate();
@@ -53,12 +51,14 @@ void GamingLayer::onEnter()
 {
 	CCLayer::onEnter();
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEGRADE, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::updateMonsterFreshPool), NOTIFY_MONSTER_UPDATEFRESHPOOL, NULL);
 }
 
 void GamingLayer::onExit()
 {
 	CCLayer::onExit();
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEGRADE);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_MONSTER_UPDATEFRESHPOOL);
 }
 
 void GamingLayer::update(ccTime dt)
@@ -84,7 +84,7 @@ void GamingLayer::initControllPanel()
 	this->m_pControllPanel = ControllPanel::createControllPanel();
 	if (this->m_pControllPanel != NULL) {
 		this->m_pControllPanel->autorelease();
-		this->addChild(this->m_pControllPanel);
+		this->addChild(this->m_pControllPanel,CONTROLLPANEL_ZORDER);
 	}
 	else
 	{
@@ -122,7 +122,7 @@ void GamingLayer::checkMonsterFresh(int dt)
 void GamingLayer::freshMonster(int monsterId)
 {
 	MonsterMrg *pMonster = MonsterMrg::Create(monsterId, this);
-	this->addChild(pMonster);
+	this->addChild(pMonster,MONSTER_ZORDER);
 	this->m_pMonsters->addObject(pMonster);
 	//this->m_pMonsterVector.push_back(pMonster);
 }
@@ -144,7 +144,7 @@ void GamingLayer::checkHitMonster()
 		CCARRAY_FOREACH(m_pMonsters, pMonsterObj)
 		{
 			MonsterMrg *pMonster = (MonsterMrg*)pMonsterObj;
-			if (CCRect::CCRectIntersectsRect(pBullet->boundingBox(), pMonster->boundingBox()))
+			if (Utils::IsRectContianPointCollision(pBullet, pMonster))
 			{
 				bIsHit = true;
 				pMonster->setmonsterHp(pMonster->getmonsterHp()-1);
@@ -194,6 +194,34 @@ void GamingLayer::checkHitMonster()
 void GamingLayer::playerScoreChange(CCObject *pSender)
 {
 	
+}
+
+//更新怪物刷新池
+void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
+{
+	MonsterKindVector *pMonsterKindVector = PlayerMrg::getInstance()->_monsterkindVec;
+	vector<int> vMosterKindId = pMonsterKindVector->getMonsterKindId();
+	vector<int> diffKindId;
+	//筛选出pool里没有的kindId;
+	for (vector<int>::iterator it = vMosterKindId.begin(); it != vMosterKindId.end(); it++)
+	{
+		bool bIsfound = false;
+		for (map<int, int>::iterator poolIt = this->m_mMonsterFreshInfo.begin(); poolIt != this->m_mMonsterFreshInfo.end(); poolIt++)
+		{
+			if ((*it) == poolIt->first)
+			{
+				bIsfound = true;
+				break;
+			}
+		}
+		if (!bIsfound)
+			diffKindId.push_back(*it);
+	}
+	//将没有的kindId添加进pool;
+	for (vector<int>::iterator it = diffKindId.begin(); it != diffKindId.end(); it++)
+	{
+		this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(*it, 0));
+	}
 }
 
 
@@ -286,7 +314,7 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 		float rotation = this->m_pControllPanel->getConnonBarrelRotation();
 		pBullet->setPosition(p);
 		pBullet->setRotation(rotation);
-		this->addChild(pBullet,99);
+		this->addChild(pBullet,BULLET_ZORDER);
 		this->m_pBullets->addObject(pBullet);
 		//m_pBulletVector.push_back(pBullet);
 		pBullet->shootBullet();

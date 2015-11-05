@@ -50,5 +50,6 @@ private:
 	void checkMonsterFresh(int dt);					//检查怪物刷新
 	void freshMonster(int monsterId);					//刷新怪物
 	void checkHitMonster();						//检测是否击中怪物
+	void updateMonsterFreshPool(CCObject* pSender);	//更新怪物刷新池
 	void update(ccTime dt);
 };
