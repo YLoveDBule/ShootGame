@@ -121,7 +121,7 @@ void GamingLayer::checkMonsterFresh(int dt)
 /*Ë¢ÐÂ¹ÖÎï*/
 void GamingLayer::freshMonster(int monsterId)
 {
-	MonsterMrg *pMonster = MonsterMrg::Create(monsterId);
+	MonsterMrg *pMonster = MonsterMrg::Create(monsterId, this);
 	this->addChild(pMonster);
 	this->m_pMonsters->addObject(pMonster);
 	//this->m_pMonsterVector.push_back(pMonster);
@@ -156,7 +156,7 @@ void GamingLayer::checkHitMonster()
 			}
 		}
 		if (bIsHit)
-			pBullet->destroyBullet();
+			pBullet->collision();
 		
 	}
 

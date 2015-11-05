@@ -2,16 +2,17 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
-
+class GamingLayer;
 class MonsterMrg : public CCSprite
 {
 public:
 	MonsterMrg();
 	virtual ~MonsterMrg();
-	static MonsterMrg *Create(const int monsterId);
+	static MonsterMrg *Create(const int monsterId, GamingLayer* gamingLayer);
+	GamingLayer *_gamingLayer;
 public:
 	virtual void DestroyMonster();
-	bool MonsterInit(const int monsterId);
+	bool MonsterInit(const int monsterId, GamingLayer* gamingLayer);
 	virtual void InitMonsterData(const int monsterId);
 	void freshPos(float dt);
 protected:

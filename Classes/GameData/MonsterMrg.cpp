@@ -2,6 +2,7 @@
 #include <sstream>
 #include "Config\NotificationNameConfig.h"
 #include "MonsterData.h"
+#include "Component\GamingLayer.h"
 
 MonsterMrg::MonsterMrg()
 {
@@ -13,10 +14,10 @@ MonsterMrg::~MonsterMrg()
 	
 }
 
-MonsterMrg * MonsterMrg::Create(const int monsterId)
+MonsterMrg * MonsterMrg::Create(const int monsterId, GamingLayer* gamingLayer)
 {
 	MonsterMrg * monster = new MonsterMrg();
-	if (monster && monster->MonsterInit(monsterId)) {
+	if (monster && monster->MonsterInit(monsterId, gamingLayer)) {
 		monster->autorelease();
 		return monster;
 	}
@@ -47,9 +48,10 @@ void MonsterMrg::DestroyMonster()
 	stream.clear();
 
 	removeFromParentAndCleanup(true);	
+	_gamingLayer->m_pMonsters->removeObject(this);
 }
 
-bool MonsterMrg::MonsterInit(const int monsterId)
+bool MonsterMrg::MonsterInit(const int monsterId, GamingLayer* gamingLayer)
 {
 	if (!CCSprite::init())
 	{
@@ -58,6 +60,7 @@ bool MonsterMrg::MonsterInit(const int monsterId)
 	this->initWithFile("guai1.png");
 	InitMonsterData(monsterId);
 	this->schedule(schedule_selector(MonsterMrg::freshPos));
+	_gamingLayer = gamingLayer;
 	return true;
 }
 

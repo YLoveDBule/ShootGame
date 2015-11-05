@@ -88,6 +88,13 @@ void Bullet::shootBullet()
 	this->runAction(CCSequence::actions(CCMoveTo::actionWithDuration(duration, endPoint), pCallfunc, NULL));
 }
 
+void Bullet::collision()
+{
+	this->m_bHit = true;
+	CCCallFunc *pCallfunc = CCCallFunc::actionWithTarget(this, callfunc_selector(Bullet::destroyBullet));
+	this->runAction(CCSequence::actions(CCFadeOut::actionWithDuration(0.2), pCallfunc, NULL));
+}
+
 void Bullet::destroyBullet()
 {
 	this->m_bHit = true;
