@@ -22,7 +22,7 @@ protected:
 	CC_SYNTHESIZE(int, _Hurt, monsterHurt);
 	CC_SYNTHESIZE(int, _FreshSpeed, monsterFreshSpeed); 
 	CC_SYNTHESIZE(int, _showGrade, monsterShowGrade);
-	CC_SYNTHESIZE(int, _MoveSpeed, monsterMoveSpeed);
+	CC_SYNTHESIZE(float, _MoveSpeed, monsterMoveSpeed);
 	CC_SYNTHESIZE(const char *, _resfile, monsterResFile);
 	CC_SYNTHESIZE(CCPoint, _NowPos, monsterNowPos);
 };

@@ -162,7 +162,24 @@ void LoginScene::onClickI(cocos2d::CCKeypadStatus key_status)
 
 void LoginScene::onClickL(cocos2d::CCKeypadStatus key_status)
 {
-
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	cache->addSpriteFramesWithFile("werewolf.plist","werewolf.png");
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	char str[64] = {};
+	for (size_t i = 0; i < 4;++i)
+	{
+		sprintf(str, "%d.png", i);
+		CCSpriteFrame *frame = cache->spriteFrameByName(str); 
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames,0.1);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	CCSprite* grossini = CCSprite::spriteWithSpriteFrameName("0.png");
+	//CCSpriteFrame* frame = frameCache->spriteFrameByName("grossini_dance_01.png");
+	//grossini->setDisplayFrame(frame);
+	grossini->setPosition(ccp(500,400));
+	addChild(grossini, 0);
+	grossini->runAction(animate);
 }
 
 void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
