@@ -6,6 +6,7 @@
 
 
 
-#define NOTIFY_PLAYER_UPDATEGRADE        "200001"            //更新玩家数据
-#define NOTIFY_PLAYER_UPDATENOWHP        "200002"            //更新血量
-#define NOTIFY_MONSTER_UPDATEKIND        "200003"            //更新怪物种类
+#define NOTIFY_PLAYER_UPDATEGRADE			"200001"            //更新玩家数据
+#define NOTIFY_PLAYER_UPDATENOWHP			"200002"            //更新血量
+#define NOTIFY_MONSTER_UPDATEKIND			"200003"            //更新怪物种类
+#define NOTIFY_MONSTER_UPDATEFRESHPOOL		"200004"			//更新怪物刷新池

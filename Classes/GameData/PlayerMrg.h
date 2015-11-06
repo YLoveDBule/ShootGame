@@ -10,12 +10,13 @@ public:
 	PlayerMrg();
 	virtual ~PlayerMrg();
 	static PlayerMrg *getInstance();
+	MonsterKindVector * _monsterkindVec;
 public:
 	void Init();
 	void Delete();
 private:
 	Player *_player;
-	MonsterKindVector * _monsterkindVec;
+	
 };
 
 

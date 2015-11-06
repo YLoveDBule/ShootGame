@@ -6,12 +6,10 @@
 static PlayerMrg* s_playerMrg = nullptr;
 PlayerMrg::PlayerMrg()
 {
-
 }
 
 PlayerMrg::~PlayerMrg()
 {
-
 }
 
 PlayerMrg * PlayerMrg::getInstance()
@@ -114,6 +112,7 @@ void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
 {
 	CCString* str = static_cast<CCString*>(pSender);
 	int nowGrade = str->toInt();
+	bool bIsAdded = false;
 	for (size_t i = 0; i < Monster_KindNumber; ++i)
 	{
 		if (std::find(_monsterKindId.begin(),_monsterKindId.end(), _monsterId[i]) != _monsterKindId.end())
@@ -126,10 +125,13 @@ void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
 			else
 			{
 				_monsterKindId.push_back(_monsterId[i]);
+				bIsAdded = true;
 			}
 		}
 		continue;
 	}
+	if(bIsAdded)
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_MONSTER_UPDATEFRESHPOOL);
 }
 
 std::vector<int > MonsterKindVector::getMonsterKindId()
