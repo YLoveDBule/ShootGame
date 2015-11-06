@@ -100,6 +100,7 @@ MonsterKindVector::MonsterKindVector()
 		_monsterId[i] = 1000 + i + 1;
 	}
 	_monsterKindId.clear();
+	UpdateMonsterKind(NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(MonsterKindVector::UpdateMonsterKind), NOTIFY_MONSTER_UPDATEKIND, NULL);
 }
 
@@ -110,12 +111,17 @@ MonsterKindVector::~MonsterKindVector()
 
 void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
 {
-	CCString* str = static_cast<CCString*>(pSender);
-	int nowGrade = str->toInt();
+	int nowGrade = 0;
+	if (pSender)
+	{
+		CCString* str = static_cast<CCString*>(pSender);
+		nowGrade = str->toInt();
+	}
+
 	bool bIsAdded = false;
 	for (size_t i = 0; i < Monster_KindNumber; ++i)
 	{
-		if (std::find(_monsterKindId.begin(),_monsterKindId.end(), _monsterId[i]) != _monsterKindId.end())
+		if (std::find(_monsterKindId.begin(),_monsterKindId.end(), _monsterId[i]) == _monsterKindId.end())
 		{
 			int showGrade = MonsterData::getInstance()->getShowGrade(_monsterId[i]);
 			if (nowGrade < showGrade)
