@@ -89,4 +89,5 @@ void ControllPanel::normalAttackClick(CCObject* pSender)
 void ControllPanel::magicAttackClick(CCObject* pSender)
 {
 	CCLog("magicAttackClick!!");
+
 }

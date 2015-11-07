@@ -14,6 +14,10 @@ public:
 public:
 	void Init();
 	void Delete();
+	Player *getPlayer()
+	{
+		return _player;
+	}
 private:
 	Player *_player;
 	
@@ -32,12 +36,12 @@ protected:
 	void initData();
 	void UpdateData();
 private:
-	int _grade;
-	int _nowHp;
-	int _nowAtt;
-	int _skillCd;
-	int _HpLimit;
-	int _aoeAtt;
+	CC_SYNTHESIZE(int, _grade,PlayerGrade);
+	CC_SYNTHESIZE(int, _nowHp, PlayerNowHp);
+	CC_SYNTHESIZE(int, _nowAtt, PlayerNowAtt);
+	CC_SYNTHESIZE(int, _skillCd, PlayerSkillCd);
+	CC_SYNTHESIZE(int, _HpLimit, PlayerHpLimit);
+	CC_SYNTHESIZE(int, _aoeAtt, PlayerAoeAtt);
 };
 
 #define Monster_KindNumber  6

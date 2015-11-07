@@ -6,6 +6,7 @@
 #include "CCEGLView.h"
 #include "GameData\PlayerData.h"
 #include "GameData\MonsterData.h"
+#include "Utils\Utils.h"
 
 USING_NS_CC;
 
@@ -25,7 +26,7 @@ bool AppDelegate::initInstance() {
 		// The HelloWorld is designed as HVGA.
 		CCEGLView * pMainWnd = new CCEGLView();
 		CC_BREAK_IF(! pMainWnd
-				|| ! pMainWnd->Create(TEXT("cocos2d: Hello World"), 960, 640));
+				|| ! pMainWnd->Create(TEXT("cocos2d: Hello World"), 1024, 600));
 
 #endif  // CC_PLATFORM_WIN32
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -115,7 +116,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	CCScene *pScene = LoginScene::scene();
 	// run
 	pDirector->runWithScene(pScene);
-
+	Utils::InitLoadPlist("guiren");
+	Utils::InitLoadPlist("jiaxuegu");
+	Utils::InitLoadPlist("langren");
+	Utils::InitLoadPlist("nijiangguai");
+	Utils::InitLoadPlist("shitou");
+	Utils::InitLoadPlist("shouji");
+	Utils::InitLoadPlist("dazhao1");
+	Utils::InitLoadPlist("dazhao2");
 	return true;
 }
 

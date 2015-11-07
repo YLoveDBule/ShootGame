@@ -12,3 +12,12 @@ bool Utils::IsRectContianPointCollision(CCNode *obj1, CCNode *obj2)
 	CCPoint point = obj2->getPosition();
 	return (CCRect::CCRectContainsPoint(obj1->boundingBox(), point));
 }
+
+void Utils::InitLoadPlist(const char*fileName)
+{
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	string ss = fileName;
+	string sss = fileName;
+	cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
+}
+

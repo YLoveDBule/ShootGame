@@ -46,7 +46,9 @@ bool Cannon::initCannon()
 	this->m_pCannon->addChild(this->m_pPedestal);
 
 	//this->m_pBarrel->setPositionY(this->m_pPedestal->getContentSize().height/2);
+	this->m_pPedestal->setPosition(ccp(-40, -50));
 	this->m_pBarrel->setAnchorPoint(ccp(0.5, 0));
+	this->m_pBarrel->setPosition(ccp(-40, -10));
 	return true;
 
 }
