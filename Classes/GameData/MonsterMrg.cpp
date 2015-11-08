@@ -86,9 +86,9 @@ void MonsterMrg::freshPos(float dt)
 {
 	_NowPos = ccpAdd(_NowPos, ccp(0, -_MoveSpeed));
 	setPosition(_NowPos);
-	if (_NowPos.y < 0)
+	if (_NowPos.y < 100)
 	{
-		DestroyMonster();
+		MonsterHurtPlayerHp();
 	}
 	//CCLog("posx == %f, posy ==== %f", _NowPos.x, _NowPos.y);
 }
@@ -185,6 +185,46 @@ void MonsterMrg::shouJiEffect()
 void MonsterMrg::RemoveShoujiEffect(CCNode *pSender)
 {
 	((CCSprite *)pSender)->removeFromParentAndCleanup(true);
+}
+
+void MonsterMrg::MonsterSuicideEffect()
+{
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	char str[20] = {};
+	for (size_t i = 0; i < 12; ++i)
+	{
+		sprintf(str, "%s_%d.png", "zibao", i);
+		CCSpriteFrame *frame = cache->spriteFrameByName(str);
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames,0.01);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	CCSprite * zibao = CCSprite::spriteWithSpriteFrameName("zibao_0.png");
+	zibao->setPosition(ccp(getContentSize().width / 2, getContentSize().height / 2));
+	addChild(zibao);
+	CCCallFuncN *callback = CCCallFuncN::actionWithTarget(this, callfuncN_selector(MonsterMrg::RemoveSuicideEffect));
+	CCFiniteTimeAction *seq = CCSequence::actions(animate, callback, NULL);
+	zibao->runAction(seq);
+}
+
+void MonsterMrg::MonsterHurtPlayerHp()
+{
+	this->unschedule(schedule_selector(MonsterMrg::freshPos));
+	stringstream stream;
+	stream << (-1 *_Hurt);
+	CCString str = CCString(stream.str().c_str());
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATENOWHP, &str);
+	stream.str("");
+	stream.clear();
+	MonsterSuicideEffect();
+}
+
+void MonsterMrg::RemoveSuicideEffect(CCNode *pSender)
+{
+	((CCSprite *)pSender)->removeFromParentAndCleanup(true);
+	removeFromParentAndCleanup(true);
+	_gamingLayer->m_pMonsters->removeObject(this);
 }
 
 //////////////////////////
