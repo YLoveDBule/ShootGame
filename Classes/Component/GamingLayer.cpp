@@ -319,10 +319,10 @@ void GamingLayer::InitPlayerGradeUI()
 	gradeBg->setAnchorPoint(ccp(0, 1));
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	gradeBg->setPosition(ccp(10, size.height - 10));
-	addChild(gradeBg);
+	addChild(gradeBg,100);
 	_gradeLabel->setAnchorPoint(ccp(0, 1));
 	_gradeLabel->setPosition(ccp(15 + gradeBg->getContentSize().width, size.height - 10));
-	addChild(_gradeLabel);
+	addChild(_gradeLabel,100);
 }
 
 void GamingLayer::InitPlayerHpUI()
@@ -337,11 +337,11 @@ void GamingLayer::InitPlayerHpUI()
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	hpBg->setAnchorPoint(ccp(0, 1));
 	hpBg->setPosition(ccp(size.width / 2 - 50, size.height - 10));
-	addChild(hpBg);
+	addChild(hpBg, 100);
 
 	_PlayerCurHpLabel->setAnchorPoint(ccp(0, 1));
 	_PlayerCurHpLabel->setPosition(ccp(size.width / 2 - 45 + hpBg->getContentSize().width, size.height - 10));
-	addChild(_PlayerCurHpLabel);
+	addChild(_PlayerCurHpLabel,100);
 }
 
 void GamingLayer::UpdatePlayerNowHpUI(CCObject *pSender)

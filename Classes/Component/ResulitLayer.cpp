@@ -24,6 +24,7 @@ ResulitLayer::~ResulitLayer()
 
 bool ResulitLayer::initResulitLayer()
 {
+	CCLayer::setIsKeypadEnabled(true);
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	this->setContentSize(winSize);
 
