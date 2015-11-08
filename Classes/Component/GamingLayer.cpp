@@ -501,8 +501,9 @@ void GamingLayer::onClickK(CCKeypadStatus key_status)
 {
 	if (key_status == EVENT_KEY_DOWN){
 		//createMagicFire(NULL);
-		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_MAGIC_FIRE);
-		
+		if (!this->m_pControllPanel->getMagicCD()){
+			CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_MAGIC_FIRE);
+		}	
 	}
 }
 

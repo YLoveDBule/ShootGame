@@ -13,11 +13,11 @@ public:
 	float getConnonBarrelRotation();
 	virtual void onEnter();
 	virtual void onExit();
+	CC_SYNTHESIZE(bool, m_bMagicCDing, MagicCD)
 private:
 	CCSprite* m_pBg;		//操作台背景
 	Cannon* m_pCannon;		//操作台加农炮
-	CCMenu* m_pNormalAttack;	//操作台普通攻击按钮
-	CCMenu* m_pMagicAttack;		//操作台魔法攻击按钮
+	CCMenuItemImage *m_pMagicItem;
 	
 	ControllPanel();
 	bool initControllPanel();
@@ -31,4 +31,7 @@ private:
 	virtual void normalAttackClick(CCObject* pSender);
 	virtual void magicAttackClick(CCObject* pSender);
 	virtual void pauseBtnClick(CCObject* pSender);
+
+	void makeSkillCD(CCObject *pSender); //技能冷却
+	void endSkillCD(CCNode* sender, void *item);
 };
