@@ -57,4 +57,7 @@ private:
 	void restartGame(CCObject *pSender);
 	void setBulletsState(int state);
 	void update(ccTime dt);
+
+	void daZhaoEffect();
+	void RemovedaZhaoEffect(CCNode *pSender);
 };

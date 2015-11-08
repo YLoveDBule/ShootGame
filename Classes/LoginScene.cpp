@@ -11,24 +11,31 @@ bool LoginScene::init()
 		return false;
 	}
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	CCSprite *bg = CCSprite::spriteWithFile("denglu.png");
+	CCSprite *bg = CCSprite::spriteWithFile("common/actor_gamingbg.png");
 	bg->setPosition(ccp(size.width / 2, size.height / 2));
 	addChild(bg);
+	//logo
+	CCSprite *logo = CCSprite::spriteWithFile("logo.png");
+	logo->setPosition(ccp(size.width / 2, size.height / 2 + size.height / 4));
+	addChild(logo);
 
-
+	//chenbao
+	CCSprite *chenbao = CCSprite::spriteWithFile("common/actor_controllBg.png");
+	chenbao->setAnchorPoint(ccp(0, 0));
+	addChild(chenbao);
 	//menu
 	_pStarMenu = CCMenuItemImage::itemFromNormalImage(
 		"kaishi.png",
 		NULL,
 		this,
 		menu_selector(LoginScene::clickStar));
-	_pStarMenu->setPosition(ccp(size.width / 2, size.height / 2));
+	_pStarMenu->setPosition(ccp(size.width / 2, size.height / 2 - 15));
 	_pExitMenu = CCMenuItemImage::itemFromNormalImage(
 		"tuichu.png",
 		NULL,
 		this,
 		menu_selector(LoginScene::clickExit));
-	_pExitMenu->setPosition(ccp(size.width / 2, size.height / 2 - _pStarMenu->getContentSize().height));
+	_pExitMenu->setPosition(ccp(size.width / 2, size.height / 2  - 20 - _pStarMenu->getContentSize().height));
 	CCMenu *pMenu = CCMenu::menuWithItems(_pStarMenu, _pExitMenu, NULL);
 	pMenu->setPosition(CCPointZero);
 	addChild(pMenu);
@@ -162,24 +169,7 @@ void LoginScene::onClickI(cocos2d::CCKeypadStatus key_status)
 
 void LoginScene::onClickL(cocos2d::CCKeypadStatus key_status)
 {
-	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
-	cache->addSpriteFramesWithFile("werewolf.plist","werewolf.png");
-	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
-	char str[64] = {};
-	for (size_t i = 0; i < 4;++i)
-	{
-		sprintf(str, "%d.png", i);
-		CCSpriteFrame *frame = cache->spriteFrameByName(str); 
-		animFrames->addObject(frame);
-	}
-	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames,0.1);
-	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
-	CCSprite* grossini = CCSprite::spriteWithSpriteFrameName("0.png");
-	//CCSpriteFrame* frame = frameCache->spriteFrameByName("grossini_dance_01.png");
-	//grossini->setDisplayFrame(frame);
-	grossini->setPosition(ccp(500,400));
-	addChild(grossini, 0);
-	grossini->runAction(animate);
+
 }
 
 void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
@@ -239,12 +229,12 @@ void LoginScene::ChangeRowPosition()
 	{
 	case MenuState_Star:
 	    {
-			_rowSp->setPosition(ccp(_pStarMenu->getPosition().x - _pStarMenu->getContentSize().width / 2 - 50, _pStarMenu->getPosition().y));
+			_rowSp->setPosition(ccp(_pStarMenu->getPosition().x - _pStarMenu->getContentSize().width / 2 - 20, _pStarMenu->getPosition().y));
 	    }
 		break;
 	case MenuState_Exit:
 	   {
-		   _rowSp->setPosition(ccp(_pExitMenu->getPosition().x - _pExitMenu->getContentSize().width / 2 - 50, _pExitMenu->getPosition().y));
+		   _rowSp->setPosition(ccp(_pExitMenu->getPosition().x - _pExitMenu->getContentSize().width / 2 - 20, _pExitMenu->getPosition().y));
 	   }
 		break;
 	default:

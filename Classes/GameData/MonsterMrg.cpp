@@ -34,14 +34,14 @@ void MonsterMrg::DestroyMonster()
 	this->unschedule(schedule_selector(MonsterMrg::freshPos));
 	//֪ͨ
 	stringstream stream;
-	stream >> _SkillGrade;
+	stream << _SkillGrade;
 	CCString str = CCString(stream.str().c_str());
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);
 	stream.str("");
 	stream.clear();
 	if (_SkillReward != 0)
 	{
-		stream >> _SkillReward;
+		stream << _SkillReward;
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATENOWHP, &str);
 	}
 	stream.str("");
@@ -57,7 +57,6 @@ bool MonsterMrg::MonsterInit(const int monsterId, GamingLayer* gamingLayer)
 	{
 		return false;
 	}
-	this->initWithFile("guai1.png");
 	InitMonsterData(monsterId);
 	this->schedule(schedule_selector(MonsterMrg::freshPos));
 	_gamingLayer = gamingLayer;
@@ -68,7 +67,7 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 {
 	_FreshSpeed = MonsterData::getInstance()->getFreshSpeed(monsterId);
 	_Hurt = MonsterData::getInstance()->getHurt(monsterId);
-	_Hp = MonsterData::getInstance()->getHp(monsterId);
+	_Hp = _NowHp = MonsterData::getInstance()->getHp(monsterId);
 	_resfile = MonsterData::getInstance()->getRes(monsterId);
 	_showGrade = MonsterData::getInstance()->getShowGrade(monsterId);
 	_SkillGrade = MonsterData::getInstance()->getSkillGrade(monsterId);
@@ -79,6 +78,8 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	_NowPos = MonsterPosCreate::getInstance()->getRandomPoint();
 	setAnchorPoint(ccp(0.5, 0));
 	setPosition(_NowPos);
+    runAction(CCRepeatForever::actionWithAction(getMonsterAction(_resfile)));
+	addHpProgress();
 }
 
 void MonsterMrg::freshPos(float dt)
@@ -102,6 +103,89 @@ void MonsterMrg::resume()
 
 }
 
+
+CCAnimate * MonsterMrg::getMonsterAction(const char *filename)
+{
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	//string ss = filename;
+	//string sss = filename;
+	//cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	char str[20] = {};
+	for (size_t i = 0; i < 2; ++i)
+	{
+		sprintf(str, "%s_%d.png",filename,i);
+		CCSpriteFrame *frame = cache->spriteFrameByName(str);
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.2);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	char fileStr[20] = {};
+	sprintf(fileStr, "%s_0.png",filename);
+	CCSprite::initWithSpriteFrameName(fileStr);
+	return animate;
+}
+
+void MonsterMrg::addHpProgress()
+{
+	CCSprite *hpBack = CCSprite::spriteWithFile("hpBack.png");
+	CCSprite *hp = CCSprite::spriteWithFile("hp.png");
+	hp->setContentSize(hpBack->getContentSize());
+	_hpProgress = CCProgressTimer::progressWithTexture(hp->getTexture());
+	addChild(hpBack);
+	hpBack->setAnchorPoint(ccp(0.5, 0));
+	float posy = getContentSize().height - 10; 
+	hpBack->setPosition(ccp(getContentSize().width / 2, posy));
+	hpBack->addChild(_hpProgress);
+	_hpProgress->setAnchorPoint(ccp(0, 0));
+	_hpProgress->setPosition(ccp(4, 2));
+	_hpProgress->setType(kCCProgressTimerTypeHorizontalBarLR);
+	_hpProgress->setPercentage(100);
+}
+
+void MonsterMrg::freshMonsterHp(const int playerAtt)
+{
+	_NowHp -= playerAtt;
+	if (_NowHp <= 0)
+	{
+		DestroyMonster();
+	}
+	else
+	{
+		float percent = float(_NowHp) /float( _Hp) * 100;
+		_hpProgress->setPercentage(percent);
+		shouJiEffect();
+	}
+}
+
+void MonsterMrg::shouJiEffect()
+{
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	//string ss = filename;
+	//string sss = filename;
+	//cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	char str[20] = {};
+	for (size_t i = 0; i < 5; ++i)
+	{
+		sprintf(str, "%s_%d.png", "shouji", i);
+		CCSpriteFrame *frame = cache->spriteFrameByName(str);
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.2);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	CCSprite * shouji = CCSprite::spriteWithSpriteFrameName("shouji_0.png");
+	shouji->setPosition(ccp(getContentSize().width / 2, getContentSize().height / 2));
+	addChild(shouji);
+	CCCallFuncN *callback = CCCallFuncN::actionWithTarget(this, callfuncN_selector(MonsterMrg::RemoveShoujiEffect));
+	CCFiniteTimeAction *seq = CCSequence::actions(animate, callback , NULL);
+	shouji->runAction(seq);
+}
+
+void MonsterMrg::RemoveShoujiEffect(CCNode *pSender)
+{
+	((CCSprite *)pSender)->removeFromParentAndCleanup(true);
+}
 
 //////////////////////////
 //////////////////////////////////////////////////////////////////////////

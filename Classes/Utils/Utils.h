@@ -2,7 +2,7 @@
 USING_NS_CC;
 class Utils {
 public:
-	static bool IsRectCollision(CCNode* obj1, CCNode* obj2);					//两物体矩形碰撞
-	static bool IsRectContianPointCollision(CCNode* obj1, CCNode* obj2);		//一个物体是否包含另外一个物体的中心碰撞
-	static float getPointToPointDisatance(CCPoint point1, CCPoint point2);		//两个点间的距离公式
+	static bool IsRectCollision(CCNode* obj1, CCNode* obj2);					//脕陆脦茂脤氓戮脴脨脦脜枚脳虏
+	static bool IsRectContianPointCollision(CCNode* obj1, CCNode* obj2);		//脪禄赂枚脦茂脤氓脢脟路帽掳眉潞卢脕铆脥芒脪禄赂枚脦茂脤氓碌脛脰脨脨脛脜枚脳虏
+	static float getPointToPointDisatance(CCPoint point1, CCPoint point2);		//脕陆赂枚碌茫录盲碌脛戮脿脌毛鹿芦脢陆
 };

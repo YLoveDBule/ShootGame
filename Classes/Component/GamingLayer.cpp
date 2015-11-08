@@ -73,7 +73,34 @@ void GamingLayer::update(ccTime dt)
 	this->checkMonsterFresh(dt*1000);
 	this->checkHitMonster();
 }
-void GamingLayer::initGameBg() 
+
+void GamingLayer::daZhaoEffect()
+{
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	char str[20] = {};
+	for (size_t i = 0; i < 12; ++i)
+	{
+		sprintf(str, "%s_%d.png", "zibao", i);
+		CCSpriteFrame *frame = cache->spriteFrameByName(str);
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.2);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	CCSprite * dazhao = CCSprite::spriteWithSpriteFrameName("zibao_0.png");
+	dazhao->setPosition(ccp(1024/ 2, 600 / 2));
+	addChild(dazhao,100);
+	CCCallFuncN *callback = CCCallFuncN::actionWithTarget(this, callfuncN_selector(GamingLayer::RemovedaZhaoEffect));
+	CCFiniteTimeAction *seq = CCSequence::actions(animate, callback, NULL);
+	dazhao->runAction(seq);
+}
+
+void GamingLayer::RemovedaZhaoEffect(CCNode *pSender)
+{
+	((CCSprite *)pSender)->removeFromParentAndCleanup(true);
+}
+
+void GamingLayer::initGameBg()
 {
 	m_pBg = CCSprite::spriteWithFile("common/actor_gamingbg.png");
 	this->addChild(this->m_pBg);
@@ -154,12 +181,13 @@ void GamingLayer::checkHitMonster()
 			if (Utils::IsRectContianPointCollision(pBullet, pMonster))
 			{
 				bIsHit = true;
-				pMonster->setmonsterHp(pMonster->getmonsterHp()-1);
-				if (pMonster->getmonsterHp() <= 0)
+				//pMonster->setmonsterHp(pMonster->getmonsterHp()-1);
+				/*if (pMonster->getmonsterHp() <= 0)
 				{
 					pMonster->DestroyMonster();
 					break;
-				}					
+				}	*/
+				pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt());
 			}
 		}
 		if (bIsHit)
@@ -345,11 +373,12 @@ void GamingLayer::onClickA(CCKeypadStatus key_status)
 
 void GamingLayer::onClickS(CCKeypadStatus key_status)
 {
+	/*CCDirector::sharedDirector()->pause();*/
 }
 
 void GamingLayer::onClickW(CCKeypadStatus key_status)
 {
-	
+	/*CCDirector::sharedDirector()->resume();*/
 }
 
 void GamingLayer::onClickD(CCKeypadStatus key_status)

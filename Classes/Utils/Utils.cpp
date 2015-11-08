@@ -14,8 +14,11 @@ bool Utils::IsRectContianPointCollision(CCNode *obj1, CCNode *obj2)
 	return (CCRect::CCRectContainsPoint(obj1->boundingBox(), point));
 }
 
-float Utils::getPointToPointDisatance(CCPoint point1, CCPoint point2)
+void Utils::InitLoadPlist(const char*fileName)
 {
-	return sqrt(powf(point1.x - point2.x, 2) + powf(point1.y - point2.y, 2));
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	string ss = fileName;
+	string sss = fileName;
+	cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
 }
 

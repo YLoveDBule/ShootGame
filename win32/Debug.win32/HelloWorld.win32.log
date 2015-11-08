@@ -1,8 +1,8 @@
-﻿生成启动时间为 2015/11/2 23:39:12。
+﻿生成启动时间为 2015/11/8 11:54:22。
      1>项目“D:\projects\cocos2d-1.0.1-x-0.13.0-beta\HelloWorld\win32\HelloWorld.win32.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\platform" /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include" /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx" /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\platform\third_party\win32\OGLES" /I..\Classes /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Classes\Component\Cannon.cpp
-         Cannon.cpp
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\platform" /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include" /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx" /I"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\platform\third_party\win32\OGLES" /I..\Classes /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Classes\Component\GamingLayer.cpp
+         GamingLayer.cpp
      1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\ccanimation.h(49): warning C4251: “cocos2d::CCAnimation::m_nameStr”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“cocos2d::CCAnimation”的客户端使用
      1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\ccuserdefault.h(113): warning C4251: “cocos2d::CCUserDefault::m_sFilePath”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“cocos2d::CCUserDefault”的客户端使用
      1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\ccmenuitem.h(194): warning C4251: “cocos2d::CCMenuItemFont::m_strFontName”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“cocos2d::CCMenuItemFont”的客户端使用
@@ -18,18 +18,25 @@
      1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\cctmxxmlparser.h(109): warning C4251: “cocos2d::CCTMXTilesetInfo::m_sSourceImage”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“cocos2d::CCTMXTilesetInfo”的客户端使用
      1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\cctmxxmlparser.h(181): warning C4251: “cocos2d::CCTMXMapInfo::m_sTMXFileName”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“cocos2d::CCTMXMapInfo”的客户端使用
      1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\cctmxxmlparser.h(183): warning C4251: “cocos2d::CCTMXMapInfo::m_sCurrentString”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“cocos2d::CCTMXMapInfo”的客户端使用
-     1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\helloworld\classes\component\cannon.cpp(57): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\helloworld\classes\component\gaminglayer.h(9): warning C4584: “GamingLayer”: 基类“cocos2d::CCKeypadDelegate”已是“cocos2d::CCLayer”的基类
+                 d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\cckeypaddelegate.h(40) : 参见“cocos2d::CCKeypadDelegate”的声明
+                 d:\projects\cocos2d-1.0.1-x-0.13.0-beta\cocos2dx\include\cclayer.h(50) : 参见“cocos2d::CCLayer”的声明
+     1>d:\projects\cocos2d-1.0.1-x-0.13.0-beta\helloworld\classes\component\gaminglayer.cpp(73): warning C4244: “参数”: 从“cocos2d::ccTime”转换到“int”，可能丢失数据
        Link:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\Debug.win32\HelloWorld.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\Debug.win32\\" libcocos2d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\Debug.win32\HelloWorld.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\projects\cocos2d-1.0.1-x-0.13.0-beta\Debug.win32\HelloWorld.lib" /MACHINE:X86 /SAFESEH Debug.win32\AppDelegate.obj
          Debug.win32\Bullet.obj
          Debug.win32\Cannon.obj
          Debug.win32\ControllPanel.obj
          Debug.win32\GamingLayer.obj
+         Debug.win32\PauseLayer.obj
          Debug.win32\CsvReader.obj
          Debug.win32\MonsterData.obj
+         Debug.win32\MonsterMrg.obj
          Debug.win32\PlayerData.obj
+         Debug.win32\PlayerMrg.obj
          Debug.win32\HelloWorldScene.obj
          Debug.win32\LoginScene.obj
+         Debug.win32\Utils.obj
          Debug.win32\XmlReader.obj
          Debug.win32\main.obj
          "D:\projects\cocos2d-1.0.1-x-0.13.0-beta\Debug.win32\libcocos2d.lib"
@@ -38,4 +45,4 @@
 
 生成成功。
 
-已用时间 00:00:02.07
+已用时间 00:00:01.81

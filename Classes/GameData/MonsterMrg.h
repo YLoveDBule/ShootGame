@@ -15,8 +15,11 @@ public:
 	bool MonsterInit(const int monsterId, GamingLayer* gamingLayer);
 	virtual void InitMonsterData(const int monsterId);
 	void freshPos(float dt);
-	void pause();
-	void resume();
+	CCAnimate * getMonsterAction(const char *filename);
+	void addHpProgress();
+	void freshMonsterHp(const int playerAtt);
+	void shouJiEffect();
+	void RemoveShoujiEffect(CCNode *pSender);
 protected:
 	CC_SYNTHESIZE(int, _Hp,monsterHp);
 	CC_SYNTHESIZE(int, _SkillGrade, monsterSkillGrade);
@@ -27,6 +30,9 @@ protected:
 	CC_SYNTHESIZE(float, _MoveSpeed, monsterMoveSpeed);
 	CC_SYNTHESIZE(const char *, _resfile, monsterResFile);
 	CC_SYNTHESIZE(CCPoint, _NowPos, monsterNowPos);
+	CC_SYNTHESIZE(int, _NowHp, monsterNowHp);
+private:
+	CCProgressTimer *_hpProgress;
 };
 
 

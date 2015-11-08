@@ -113,12 +113,15 @@
     <ClCompile Include="..\Classes\Component\Cannon.cpp" />
     <ClCompile Include="..\Classes\Component\ControllPanel.cpp" />
     <ClCompile Include="..\Classes\Component\GamingLayer.cpp" />
+    <ClCompile Include="..\Classes\Component\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\CsvReader\CsvReader.cpp" />
     <ClCompile Include="..\Classes\GameData\MonsterData.cpp" />
+    <ClCompile Include="..\Classes\GameData\MonsterMrg.cpp" />
     <ClCompile Include="..\Classes\GameData\PlayerData.cpp" />
     <ClCompile Include="..\Classes\GameData\PlayerMrg.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\Utils\Utils.cpp" />
     <ClCompile Include="..\Classes\XmlReader\XmlReader.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -128,14 +131,17 @@
     <ClInclude Include="..\Classes\Component\Cannon.h" />
     <ClInclude Include="..\Classes\Component\ControllPanel.h" />
     <ClInclude Include="..\Classes\Component\GamingLayer.h" />
+    <ClInclude Include="..\Classes\Component\PauseLayer.h" />
     <ClInclude Include="..\Classes\Config\BaseConfig.h" />
     <ClInclude Include="..\Classes\Config\NotificationNameConfig.h" />
     <ClInclude Include="..\Classes\CsvReader\CsvReader.h" />
     <ClInclude Include="..\Classes\GameData\MonsterData.h" />
+    <ClInclude Include="..\Classes\GameData\MonsterMrg.h" />
     <ClInclude Include="..\Classes\GameData\PlayerData.h" />
     <ClInclude Include="..\Classes\GameData\PlayerMrg.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\LoginScene.h" />
+    <ClInclude Include="..\Classes\Utils\Utils.h" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml.hpp" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml_iterators.hpp" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml_print.hpp" />

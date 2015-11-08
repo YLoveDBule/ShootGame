@@ -56,6 +56,7 @@ void Player::UpdatePlayerGrade(CCObject *pSender)
 	CCString* str = static_cast<CCString*>(pSender);
 	_grade += str->toInt();
 	UpdateData();
+	CCLog("playerGrade ===== %d", _grade);
 	PostFreshMonsterVec();
 }
 
@@ -68,7 +69,7 @@ void Player::UpdatePlayerNowHp(CCObject *pSender)
 void Player::PostFreshMonsterVec()
 {
 	stringstream ss;
-	ss >> _grade;
+	ss << _grade;
 	CCString str = CCString(ss.str().c_str());
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_MONSTER_UPDATEKIND,&str);
 	ss.str("");
@@ -111,7 +112,7 @@ MonsterKindVector::~MonsterKindVector()
 
 void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
 {
-	int nowGrade = 0;
+	int nowGrade = PlayerMrg::getInstance()->getPlayer()->getPlayerGrade();
 	if (pSender)
 	{
 		CCString* str = static_cast<CCString*>(pSender);
