@@ -359,7 +359,7 @@ void GamingLayer::onClickK(CCKeypadStatus key_status)
 
 void GamingLayer::onClickL(CCKeypadStatus key_status)
 {
-	daZhaoEffect();
+	/*daZhaoEffect();*/
 }
 
 void GamingLayer::onClickI(CCKeypadStatus key_status)

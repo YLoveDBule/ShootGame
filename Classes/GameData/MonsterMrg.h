@@ -20,6 +20,9 @@ public:
 	void freshMonsterHp(const int playerAtt);
 	void shouJiEffect();
 	void RemoveShoujiEffect(CCNode *pSender);
+	void MonsterSuicideEffect();
+	void MonsterHurtPlayerHp();
+	void RemoveSuicideEffect(CCNode *pSender);
 protected:
 	CC_SYNTHESIZE(int, _Hp,monsterHp);
 	CC_SYNTHESIZE(int, _SkillGrade, monsterSkillGrade);
