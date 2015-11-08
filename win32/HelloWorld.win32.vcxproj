@@ -108,11 +108,18 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\cocos2dx\proj.win32\cocos2d-win32.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Component\Bullet.cpp" />
     <ClCompile Include="..\Classes\Component\Cannon.cpp" />
     <ClCompile Include="..\Classes\Component\ControllPanel.cpp" />
     <ClCompile Include="..\Classes\Component\GamingLayer.cpp" />
+    <ClCompile Include="..\Classes\Component\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\CsvReader\CsvReader.cpp" />
     <ClCompile Include="..\Classes\GameData\MonsterData.cpp" />
     <ClCompile Include="..\Classes\GameData\MonsterMrg.cpp" />
@@ -130,6 +137,7 @@
     <ClInclude Include="..\Classes\Component\Cannon.h" />
     <ClInclude Include="..\Classes\Component\ControllPanel.h" />
     <ClInclude Include="..\Classes\Component\GamingLayer.h" />
+    <ClInclude Include="..\Classes\Component\PauseLayer.h" />
     <ClInclude Include="..\Classes\Config\BaseConfig.h" />
     <ClInclude Include="..\Classes\Config\NotificationNameConfig.h" />
     <ClInclude Include="..\Classes\CsvReader\CsvReader.h" />
@@ -146,12 +154,6 @@
     <ClInclude Include="..\Classes\XmlReader\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\XmlReader\XmlReader.h" />
     <ClInclude Include="main.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\cocos2dx\proj.win32\cocos2d-win32.vcxproj">
-      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
