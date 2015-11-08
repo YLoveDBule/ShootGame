@@ -60,4 +60,5 @@ private:
 
 	void daZhaoEffect();
 	void RemovedaZhaoEffect(CCNode *pSender);
+	void ShowResulitLayer(CCObject *pSender);
 };

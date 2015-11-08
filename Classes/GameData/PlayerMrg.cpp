@@ -6,6 +6,7 @@
 static PlayerMrg* s_playerMrg = nullptr;
 PlayerMrg::PlayerMrg()
 {
+	lastHightGrade = 0;
 }
 
 PlayerMrg::~PlayerMrg()
@@ -63,6 +64,21 @@ void Player::UpdatePlayerGrade(CCObject *pSender)
 void Player::UpdatePlayerNowHp(CCObject *pSender)
 {
 	CCString* str = static_cast<CCString*>(pSender);
+	int tempHp = _nowHp;
+	tempHp += str->toInt();
+	if (tempHp >= _HpLimit)
+	{
+		_nowHp = _HpLimit;
+	}
+	else if (tempHp < _HpLimit && tempHp > 0)
+	{
+		_nowHp = tempHp;
+	}
+	else
+	{
+		//½áËã½çÃæ
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_GETRESLUT);
+	}
 	_nowHp += str->toInt();
 }
 

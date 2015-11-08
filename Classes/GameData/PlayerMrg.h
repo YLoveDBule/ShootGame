@@ -20,6 +20,8 @@ public:
 	}
 private:
 	Player *_player;
+private:
+	CC_SYNTHESIZE(int, lastHightGrade, PlayerLastHightGrade);
 	
 };
 

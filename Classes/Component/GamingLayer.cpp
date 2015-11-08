@@ -9,6 +9,7 @@
 #include "Utils/Utils.h"
 #include "GameData/PlayerMrg.h"
 #include "Component/PauseLayer.h"
+#include "ResulitLayer.h"
 USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
@@ -55,7 +56,7 @@ void GamingLayer::onEnter()
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::updateMonsterFreshPool), NOTIFY_MONSTER_UPDATEFRESHPOOL, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::resumeGame), NOTIFY_RESUME_GAME, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::restartGame), NOTIFY_RESTART_GAME, NULL);
-
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::ShowResulitLayer), NOTIFY_GETRESLUT, NULL);
 }
 
 void GamingLayer::onExit()
@@ -65,7 +66,7 @@ void GamingLayer::onExit()
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_MONSTER_UPDATEFRESHPOOL);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESUME_GAME);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESTART_GAME);
-
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_GETRESLUT);
 }
 
 void GamingLayer::update(ccTime dt)
@@ -273,6 +274,14 @@ void GamingLayer::pauseGame()
 
 }
 
+void GamingLayer::ShowResulitLayer(CCObject *pSender)
+{
+	ResulitLayer *relustlayer = ResulitLayer::create();
+	CCDirector::sharedDirector()->getRunningScene()->addChild(relustlayer);
+
+	CCLayer::setIsKeypadEnabled(false);
+	CCDirector::sharedDirector()->pause();
+}
 void GamingLayer::resumeGame(CCObject *pSender)
 {
 	//恢复按钮功能
@@ -284,15 +293,14 @@ void GamingLayer::restartGame(CCObject *pSender)
 {
 	CCLog("restartGame");
 	CCDirector::sharedDirector()->resume();
-	this->removeFromParentAndCleanup(true);
 	PlayerMrg::getInstance()->Delete();
 	PlayerMrg::getInstance()->Init();
+	this->removeFromParentAndCleanup(true);
 	GamingLayer*layer = GamingLayer::createGamingLayer();
 	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
 	CCScene *scene = CCScene::node();
 	scene->addChild(layer);
 	CCDirector::sharedDirector()->replaceScene(scene);
-
 }
 
 //设置子弹的状态，0为暂停，1为继续
