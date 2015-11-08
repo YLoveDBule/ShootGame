@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,7 +21,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -115,10 +115,12 @@
     <ClCompile Include="..\Classes\Component\GamingLayer.cpp" />
     <ClCompile Include="..\Classes\CsvReader\CsvReader.cpp" />
     <ClCompile Include="..\Classes\GameData\MonsterData.cpp" />
+    <ClCompile Include="..\Classes\GameData\MonsterMrg.cpp" />
     <ClCompile Include="..\Classes\GameData\PlayerData.cpp" />
     <ClCompile Include="..\Classes\GameData\PlayerMrg.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\Utils\Utils.cpp" />
     <ClCompile Include="..\Classes\XmlReader\XmlReader.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -132,10 +134,12 @@
     <ClInclude Include="..\Classes\Config\NotificationNameConfig.h" />
     <ClInclude Include="..\Classes\CsvReader\CsvReader.h" />
     <ClInclude Include="..\Classes\GameData\MonsterData.h" />
+    <ClInclude Include="..\Classes\GameData\MonsterMrg.h" />
     <ClInclude Include="..\Classes\GameData\PlayerData.h" />
     <ClInclude Include="..\Classes\GameData\PlayerMrg.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\LoginScene.h" />
+    <ClInclude Include="..\Classes\Utils\Utils.h" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml.hpp" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml_iterators.hpp" />
     <ClInclude Include="..\Classes\XmlReader\rapidxml_print.hpp" />

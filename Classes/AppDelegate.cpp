@@ -124,6 +124,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Utils::InitLoadPlist("shouji");
 	Utils::InitLoadPlist("dazhao1");
 	Utils::InitLoadPlist("dazhao2");
+	Utils::InitLoadPlist("kulou");
 	return true;
 }
 
