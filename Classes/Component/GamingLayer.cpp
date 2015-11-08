@@ -313,8 +313,8 @@ void GamingLayer::InitPlayerGradeUI()
 {
 	stringstream ss;
 	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerGrade();
-	_gradeLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
-
+	_gradeLabel = CCLabelAtlas::labelWithString(ss.str().c_str(), "grade.png", 32, 45, '/');//CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+	_gradeLabel->setScale(0.75);
 	CCSprite *gradeBg = CCSprite::spriteWithFile("score.png");
 	gradeBg->setAnchorPoint(ccp(0, 1));
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
@@ -351,6 +351,27 @@ void GamingLayer::UpdatePlayerNowHpUI(CCObject *pSender)
 	ss << "/";
 	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerHpLimit();
 	_PlayerCurHpLabel->setString(ss.str().c_str());
+}
+
+void GamingLayer::AllMaigicFireEffect()
+{
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(24);
+	char str[20] = {};
+	for (size_t i = 0; i < 24; ++i)
+	{
+		sprintf(str, "aoe/aoe_%d.png", i);
+		CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage(str);
+		CCSpriteFrame *frame = CCSpriteFrame::frameWithTexture(texture, CCRect(0, 0, 1024, 600));
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.1);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	CCSprite *sprite = CCSprite::spriteWithFile("aoe/aoe_0.png");
+	addChild(sprite,200);
+	//CCSize size = CCDirector::sharedDirector()->getWinSize();
+//	sprite->setPosition(ccp(100, 300));
+	sprite->setAnchorPoint(ccp(0, 0));
+	sprite->runAction(animate);
 }
 
 void GamingLayer::resumeGame(CCObject *pSender)
@@ -394,6 +415,7 @@ void GamingLayer::createMagicFire(CCObject *pSender)
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TO_ZERO);
 	//È«ÆÁÉËº¦
 	hurtAllMonster();
+	AllMaigicFireEffect();
 }
 
 void GamingLayer::hurtAllMonster()
@@ -510,7 +532,6 @@ void GamingLayer::onClickK(CCKeypadStatus key_status)
 void GamingLayer::onClickL(CCKeypadStatus key_status)
 {
 	this->pauseGame(NULL);
-	
 }
 
 void GamingLayer::onClickI(CCKeypadStatus key_status)

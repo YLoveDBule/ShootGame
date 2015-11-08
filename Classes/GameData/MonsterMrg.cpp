@@ -103,7 +103,7 @@ CCAnimate * MonsterMrg::getMonsterAction(const char *filename)
 	//string ss = filename;
 	//string sss = filename;
 	//cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
-	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(2);
 	char str[20] = {};
 	for (size_t i = 0; i < 2; ++i)
 	{
@@ -158,7 +158,7 @@ void MonsterMrg::shouJiEffect()
 	//string ss = filename;
 	//string sss = filename;
 	//cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
-	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(5);
 	char str[20] = {};
 	for (size_t i = 0; i < 5; ++i)
 	{
@@ -184,7 +184,7 @@ void MonsterMrg::RemoveShoujiEffect(CCNode *pSender)
 void MonsterMrg::MonsterSuicideEffect()
 {
 	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
-	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(4);
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(12);
 	char str[20] = {};
 	for (size_t i = 0; i < 12; ++i)
 	{

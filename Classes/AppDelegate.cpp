@@ -125,6 +125,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Utils::InitLoadPlist("dazhao1");
 	Utils::InitLoadPlist("dazhao2");
 	Utils::InitLoadPlist("kulou");
+	Utils::InitLoadAoeEffect();
 	return true;
 }
 

@@ -71,7 +71,8 @@ private:
 	void InitPlayerHpUI();
 
 	void UpdatePlayerNowHpUI(CCObject *pSender);
+	void AllMaigicFireEffect();
 private:
-	CCLabelTTF* _gradeLabel;
+	CCLabelAtlas* _gradeLabel;
 	CCLabelTTF* _PlayerCurHpLabel;
 };

@@ -23,6 +23,16 @@ void Utils::InitLoadPlist(const char *fileName)
 }
 
 
+void Utils::InitLoadAoeEffect()
+{
+	char str[20] = {};
+	for (size_t i = 0; i < 24; ++i)
+	{
+		sprintf(str, "aoe/aoe_%d.png", i);
+		CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage(str);
+	}
+}
+
 float Utils::getPointToPointDisatance(CCPoint point1, CCPoint point2)
 {
 	return sqrt(powf(point1.x - point2.x, 2) + powf(point1.y - point2.y, 2));
