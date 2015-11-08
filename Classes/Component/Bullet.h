@@ -11,9 +11,13 @@ public:
 	void shootBullet();
 	void destroyBullet();
 	void collision();
+	void pause();
+	void resume();
 	CC_SYNTHESIZE(bool, m_bHit, Hit);
 private:
 	Bullet();
 	bool initBullet(GamingLayer* gamingLayer);
 	GamingLayer* m_pGamingLayer;
+	CCPoint m_pEndPoint;
+	void shootAction();
 };

@@ -15,6 +15,8 @@ public:
 	bool MonsterInit(const int monsterId, GamingLayer* gamingLayer);
 	virtual void InitMonsterData(const int monsterId);
 	void freshPos(float dt);
+	void pause();
+	void resume();
 protected:
 	CC_SYNTHESIZE(int, _Hp,monsterHp);
 	CC_SYNTHESIZE(int, _SkillGrade, monsterSkillGrade);

@@ -4,6 +4,7 @@
 #include "Config/BaseConfig.h"
 #include "Config/NotificationNameConfig.h"
 #include "GamingLayer.h"
+#include "Utils/Utils.h"
 #include <iostream>
 
 using namespace std;
@@ -51,14 +52,14 @@ void Bullet::shootBullet()
 	CCLog("toScreenLeftRotation:%f,toScreenRightRotation:%f", toScreenLeftRotation, toScreenRightRotation);
 
 	float fBulletRotation = this->getRotation();						//角度
-	CCPoint endPoint = ccp(0,0);
+	m_pEndPoint = ccp(0,0);
 	if (fBulletRotation < toScreenLeftRotation) {
 		//屏幕左边
 		CCLog("Screen left :%f", fBulletRotation);
 		float fVerticalSideLength = this->getPositionX();	//垂直边的长度
 		float fObliqueSideLength = fVerticalSideLength / cos(90 - fBulletRotation);	//斜边长
 		float fBottomSideLength = tan((90-fabs(fBulletRotation))*M_PI/180)*fVerticalSideLength;
-		endPoint = ccp(0, fBottomSideLength);
+		m_pEndPoint = ccp(0, fBottomSideLength);
 	}
 	else if (fBulletRotation >= toScreenLeftRotation && fBulletRotation <= toScreenRightRotation)
 	{
@@ -66,10 +67,10 @@ void Bullet::shootBullet()
 		CCLog("Screen top");
 		float fVerticalSideLength = winSize.height - this->getPositionY();//垂直边的长度
 		float fBottomSideLength = tan(fabs(fBulletRotation)*M_PI / 180)*fVerticalSideLength;
-		endPoint = ccp(winSize.width / 2 - fBottomSideLength, winSize.height);
+		m_pEndPoint = ccp(winSize.width / 2 - fBottomSideLength, winSize.height);
 		if (fBulletRotation > 0)
 		{
-			endPoint = ccp(winSize.width / 2 + fBottomSideLength, winSize.height);
+			m_pEndPoint = ccp(winSize.width / 2 + fBottomSideLength, winSize.height);
 			
 		}
 	}
@@ -79,13 +80,32 @@ void Bullet::shootBullet()
 		CCLog("Screen right");
 		float fVerticalSideLength = winSize.width - this->getPositionX();//垂直边的长度
 		float fBottomSideLength = tan((90-fabs(fBulletRotation))*M_PI / 180)*fVerticalSideLength;
-		endPoint = ccp(winSize.width, fBottomSideLength);		
+		m_pEndPoint = ccp(winSize.width, fBottomSideLength);
 	}
+	this->shootAction();
+}
+
+//子弹动画
+void Bullet::shootAction()
+{
 	//移动的距离
-	float fDistance = sqrt(powf(endPoint.x - this->getPositionX(),2) + powf(endPoint.y - this->getPositionY(),2));
+	float fDistance = Utils::getPointToPointDisatance(m_pEndPoint, this->getPosition());
 	float duration = fDistance / BULLET_SPEED;
 	CCCallFunc *pCallfunc = CCCallFunc::actionWithTarget(this, callfunc_selector(Bullet::destroyBullet));
-	this->runAction(CCSequence::actions(CCMoveTo::actionWithDuration(duration, endPoint), pCallfunc, NULL));
+	this->runAction(CCSequence::actions(CCMoveTo::actionWithDuration(duration, m_pEndPoint), pCallfunc, NULL));
+}
+
+//暂停
+void Bullet::pause()
+{
+	this->stopAllActions();
+}
+
+//继续
+void Bullet::resume()
+{
+	shootAction();
+
 }
 
 void Bullet::collision()

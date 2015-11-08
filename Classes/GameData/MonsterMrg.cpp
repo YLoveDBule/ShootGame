@@ -92,6 +92,16 @@ void MonsterMrg::freshPos(float dt)
 	//CCLog("posx == %f, posy ==== %f", _NowPos.x, _NowPos.y);
 }
 
+void MonsterMrg::pause()
+{
+	this->unschedule(schedule_selector(MonsterMrg::freshPos));
+}
+
+void MonsterMrg::resume()
+{
+
+}
+
 
 //////////////////////////
 //////////////////////////////////////////////////////////////////////////

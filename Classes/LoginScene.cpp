@@ -188,12 +188,12 @@ void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 	{
 	case MenuState_Star:
 	{
-		PlayerMrg::getInstance()->Init();
+		PlayerMrg::getInstance()->Init();		
 		CCScene *scene = CCScene::node();
 		GamingLayer*layer = GamingLayer::createGamingLayer();
 		scene->addChild(layer);
 		CCDirector::sharedDirector()->replaceScene(scene);
-		PlayerMrg::getInstance()->Init();
+		//PlayerMrg::getInstance()->Init();
 		/*CCString str = CCString("100");
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);*/
 		/*MonsterMrg *monster = MonsterMrg::Create(1001);

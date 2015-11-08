@@ -8,6 +8,7 @@
 #include "GameData/MonsterData.h"
 #include "Utils/Utils.h"
 #include "GameData/PlayerMrg.h"
+#include "Component/PauseLayer.h"
 USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
@@ -52,6 +53,9 @@ void GamingLayer::onEnter()
 	CCLayer::onEnter();
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEGRADE, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::updateMonsterFreshPool), NOTIFY_MONSTER_UPDATEFRESHPOOL, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::resumeGame), NOTIFY_RESUME_GAME, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::restartGame), NOTIFY_RESTART_GAME, NULL);
+
 }
 
 void GamingLayer::onExit()
@@ -59,6 +63,9 @@ void GamingLayer::onExit()
 	CCLayer::onExit();
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEGRADE);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_MONSTER_UPDATEFRESHPOOL);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESUME_GAME);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESTART_GAME);
+
 }
 
 void GamingLayer::update(ccTime dt)
@@ -224,6 +231,55 @@ void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
 	}
 }
 
+void GamingLayer::pauseGame()
+{
+	//添加pause界面
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	PauseLayer *pPauseLayer = PauseLayer::Create();
+	CCDirector::sharedDirector()->getRunningScene()->addChild(pPauseLayer);
+
+	//禁用按钮功能
+	CCLayer::setIsKeypadEnabled(false);
+	CCDirector::sharedDirector()->pause();
+
+}
+
+void GamingLayer::resumeGame(CCObject *pSender)
+{
+	//恢复按钮功能
+	CCLayer::setIsKeypadEnabled(true);
+	CCDirector::sharedDirector()->resume();
+}
+
+void GamingLayer::restartGame(CCObject *pSender)
+{
+	CCLog("restartGame");
+	CCDirector::sharedDirector()->resume();
+	this->removeFromParentAndCleanup(true);
+	PlayerMrg::getInstance()->Delete();
+	PlayerMrg::getInstance()->Init();
+	GamingLayer*layer = GamingLayer::createGamingLayer();
+	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
+	CCScene *scene = CCScene::node();
+	scene->addChild(layer);
+	CCDirector::sharedDirector()->replaceScene(scene);
+
+}
+
+//设置子弹的状态，0为暂停，1为继续
+void GamingLayer::setBulletsState(int state)
+{
+	CCObject *pBulletObj = NULL;
+	CCARRAY_FOREACH(m_pBullets, pBulletObj)
+	{
+		Bullet *pBullet = (Bullet*)pBulletObj;
+		if (state == 0)
+			pBullet->pause();
+		else if (state == 1)
+			pBullet->resume();
+	}
+}
+
 
 bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
 {
@@ -330,9 +386,12 @@ void GamingLayer::onClickK(CCKeypadStatus key_status)
 
 void GamingLayer::onClickL(CCKeypadStatus key_status)
 {
+	this->pauseGame();
+	
 }
 
 void GamingLayer::onClickI(CCKeypadStatus key_status)
 {
+	this->resumeGame(NULL);
 	
 }

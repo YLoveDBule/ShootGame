@@ -51,5 +51,10 @@ private:
 	void freshMonster(int monsterId);					//刷新怪物
 	void checkHitMonster();						//检测是否击中怪物
 	void updateMonsterFreshPool(CCObject* pSender);	//更新怪物刷新池
+
+	void pauseGame();
+	void resumeGame(CCObject *pSender);
+	void restartGame(CCObject *pSender);
+	void setBulletsState(int state);
 	void update(ccTime dt);
 };
