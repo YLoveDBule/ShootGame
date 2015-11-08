@@ -260,6 +260,26 @@ void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
 	}
 }
 
+void GamingLayer::pauseGame()
+{
+	//添加pause界面
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	PauseLayer *pPauseLayer = PauseLayer::Create();
+	CCDirector::sharedDirector()->getRunningScene()->addChild(pPauseLayer);
+
+	//禁用按钮功能
+	CCLayer::setIsKeypadEnabled(false);
+	CCDirector::sharedDirector()->pause();
+
+}
+
+void GamingLayer::resumeGame(CCObject *pSender)
+{
+	//恢复按钮功能
+	CCLayer::setIsKeypadEnabled(true);
+	CCDirector::sharedDirector()->resume();
+}
+
 void GamingLayer::restartGame(CCObject *pSender)
 {
 	CCLog("restartGame");
@@ -288,27 +308,6 @@ void GamingLayer::setBulletsState(int state)
 			pBullet->resume();
 	}
 }
-
-void GamingLayer::pauseGame()
-{
-	//添加pause界面
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	PauseLayer *pPauseLayer = PauseLayer::Create();
-	CCDirector::sharedDirector()->getRunningScene()->addChild(pPauseLayer);
-
-	//禁用按钮功能
-	CCLayer::setIsKeypadEnabled(false);
-	CCDirector::sharedDirector()->pause();
-
-}
-
-void GamingLayer::resumeGame(CCObject *pSender)
-{
-	//恢复按钮功能
-	CCLayer::setIsKeypadEnabled(true);
-	CCDirector::sharedDirector()->resume();
-}
-
 
 
 bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
