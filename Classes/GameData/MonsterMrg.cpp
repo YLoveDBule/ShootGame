@@ -80,6 +80,9 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	setPosition(_NowPos);
     runAction(CCRepeatForever::actionWithAction(getMonsterAction(_resfile)));
 	addHpProgress();
+
+	//是否已经死亡
+	m_bIsDead = false;
 }
 
 void MonsterMrg::freshPos(float dt)
@@ -133,14 +136,13 @@ void MonsterMrg::addHpProgress()
 	_hpProgress->setPercentage(100);
 }
 
-bool MonsterMrg::freshMonsterHp(const int playerAtt)
+void MonsterMrg::freshMonsterHp(const int playerAtt)
 {
-	bool bIsDead = false;
 	_NowHp -= playerAtt;
 	if (_NowHp <= 0)
 	{
+		m_bIsDead = true;
 		DestroyMonster();
-		bIsDead = true;
 	}
 	else
 	{
@@ -148,7 +150,6 @@ bool MonsterMrg::freshMonsterHp(const int playerAtt)
 		_hpProgress->setPercentage(percent);
 		shouJiEffect();
 	}
-	return bIsDead;
 }
 
 void MonsterMrg::shouJiEffect()

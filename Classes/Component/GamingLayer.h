@@ -34,6 +34,7 @@ private:
 	CCNode *m_pHud;			//hud节点
 	ControllPanel* m_pControllPanel; //controll Panel
 	map<int, int> m_mMonsterFreshInfo;		//怪物刷新信息
+	bool m_bIsMagicFireIng;		//是否正在大招中
 
 	virtual void onEnter();
 	virtual void onExit();

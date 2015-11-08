@@ -36,6 +36,8 @@ bool GamingLayer::initGamingLayer()
 	m_pBullets->retain();
 	m_pMonsters = CCArray::array();
 	m_pMonsters->retain();
+	//³õÊ¼»¯´óÕÐ×´Ì¬
+	m_bIsMagicFireIng = false;
 
 	this->initGameBg();
 	this->initHudPanel();
@@ -75,7 +77,8 @@ void GamingLayer::onExit()
 void GamingLayer::update(ccTime dt)
 {
 	this->checkMonsterFresh(dt*1000);
-	this->checkHitMonster();
+	if (!m_bIsMagicFireIng)
+		this->checkHitMonster();
 }
 
 void GamingLayer::daZhaoEffect()
@@ -182,6 +185,8 @@ void GamingLayer::checkHitMonster()
 		CCARRAY_FOREACH(m_pMonsters, pMonsterObj)
 		{
 			MonsterMrg *pMonster = (MonsterMrg*)pMonsterObj;
+			if (pMonster->m_bIsDead)
+				continue;
 			if (Utils::IsRectContianPointCollision(pBullet, pMonster))
 			{
 				bIsHit = true;
@@ -191,9 +196,7 @@ void GamingLayer::checkHitMonster()
 					pMonster->DestroyMonster();
 					break;
 				}	*/
-				if (pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt())){
-					break;
-				}
+				pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt());
 			}
 		}
 		if (bIsHit)
@@ -339,12 +342,16 @@ void GamingLayer::createMagicFire(CCObject *pSender)
 
 void GamingLayer::hurtAllMonster()
 {
+	m_bIsMagicFireIng = true;
 	CCObject *pMonsterObj;
 	CCARRAY_FOREACH(m_pMonsters, pMonsterObj)
 	{
-		MonsterMrg *pMonster = (MonsterMrg*)pMonsterObj;		
+		MonsterMrg *pMonster = (MonsterMrg*)pMonsterObj;	
+		if (pMonster->m_bIsDead)
+			continue;
 		pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt());
 	}
+	m_bIsMagicFireIng = false;
 }
 
 bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
