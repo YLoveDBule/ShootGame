@@ -24,12 +24,15 @@ bool PauseLayer::initPauseLayer()
 {
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	this->setContentSize(winSize);
-	CCLayerColor *maskLayer = CCLayerColor::node();
-	maskLayer->initWithColorWidthHeight(ccc4f(0x00,0x00,0x00,0x80),335,350);
-	//maskLayer->setOpacity(200);
-	maskLayer->setAnchorPoint(ccp(0.5, 0.5));
-	maskLayer->setPosition(ccp(winSize.width/2-maskLayer->getContentSize().width/2, winSize.height/2-maskLayer->getContentSize().height/2));
-	this->addChild(maskLayer);
+	//CCLayerColor *maskLayer = CCLayerColor::node();
+	//maskLayer->initWithColorWidthHeight(ccc4f(0x00,0x00,0x00,0x80),335,350);
+	////maskLayer->setOpacity(200);
+	//maskLayer->setAnchorPoint(ccp(0.5, 0.5));
+	//maskLayer->setPosition(ccp(winSize.width/2-maskLayer->getContentSize().width/2, winSize.height/2-maskLayer->getContentSize().height/2));
+	//this->addChild(maskLayer);
+	CCSprite *bgSprite = CCSprite::spriteWithFile("common/actor_pause_bg.png");
+	this->addChild(bgSprite);
+	bgSprite->setPosition(ccp(winSize.width / 2, winSize.height / 2));
 
 	CCMenuItemImage *continueItem = CCMenuItemImage::itemFromNormalImage("common/actor_btn_continue.png", "common/actor_btn_continue.png", this, menu_selector(PauseLayer::continueGame));
 	CCMenuItemImage *restartItem = CCMenuItemImage::itemFromNormalImage("common/actor_btn_restart.png", "common/actor_btn_restart.png", this, menu_selector(PauseLayer::restartGame));

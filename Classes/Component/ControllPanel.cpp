@@ -3,6 +3,7 @@
 #include "Cannon.h"
 #include "Config/NotificationNameConfig.h"
 #include "GameData/PlayerMrg.h"
+#include <sstream>
 USING_NS_CC;
 
 ControllPanel* ControllPanel::createControllPanel()
@@ -43,6 +44,7 @@ bool ControllPanel::initControllPanel()
 	this->createTurnBarrelButton();
 	this->initCannon();
 	this->setMagicCD(false);
+	this->initMagicCDLabel();
 	return true;
 }
 
@@ -63,6 +65,17 @@ void ControllPanel::initCannon()
 		this->m_pCannon->getConnon()->setPosition(ccp(bgSize.width / 2+40, bgSize.height / 2));
 		this->addChild(this->m_pCannon->getConnon());
 	}
+}
+
+void ControllPanel::initMagicCDLabel()
+{
+	//添加倒计时Label
+	stringstream ss;
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerSkillCd();
+	m_lMagicCDLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+	m_lMagicCDLabel->setPosition(m_pMagicItem->getParent()->getPosition());
+	this->addChild(m_lMagicCDLabel);
+	m_lMagicCDLabel->setIsVisible(false);
 }
 
 CCPoint ControllPanel::getMuzzleWorldPos()
@@ -147,8 +160,9 @@ void ControllPanel::makeSkillCD(CCObject *pSender)
 	this->setMagicCD(true);
 	//设置按钮不可用
 	m_pMagicItem->setIsEnabled(false);
+
 	//创建技能cd样式
-	CCProgressTimer *cd = CCProgressTimer::progressWithFile("common/actor_btn_pause.png");
+	CCProgressTimer *cd = CCProgressTimer::progressWithFile("common/actor_btn_mask.png");
 	cd->setType(kCCProgressTimerTypeRadialCCW);
 	cd->setPosition(m_pMagicItem->getParent()->getPosition());
 	cd->setPercentage(99.99f);
@@ -159,6 +173,10 @@ void ControllPanel::makeSkillCD(CCObject *pSender)
 	CCCallFuncND *callfunn = CCCallFuncND::actionWithTarget(this, callfuncND_selector(ControllPanel::endSkillCD), (void*)cd);
 	 
 	cd->runAction(CCSequence::actions(to, callfunn, NULL));
+
+	m_lMagicCDLabel->setIsVisible(true);
+	schedule(schedule_selector(ControllPanel::updateCountDown), 1.0f);
+
 }
 
 void ControllPanel::endSkillCD(CCNode* sender, void* cd)
@@ -167,8 +185,26 @@ void ControllPanel::endSkillCD(CCNode* sender, void* cd)
 	m_pMagicItem->setIsEnabled(true);
 	((CCProgressTimer*)cd)->removeFromParentAndCleanup(true);
 	this->setMagicCD(false);
+	unschedule(schedule_selector(ControllPanel::updateCountDown));
+	m_lMagicCDLabel->setIsVisible(false);
+	stringstream ss;
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerSkillCd();
+	m_lMagicCDLabel->setString(ss.str().c_str());
 }
 
+
+void ControllPanel::updateCountDown(float dt)
+{
+	stringstream ss;
+	stringstream ss1;
+	int time;
+	ss << m_lMagicCDLabel->getString();
+	ss >> time;
+	time = time - 1;
+	if (time <= 0)	time = 0;
+	ss1 << time;
+	m_lMagicCDLabel->setString(ss1.str().c_str());
+}
 
 void ControllPanel::barrelTurnLeftClick(CCObject *pSender)
 {

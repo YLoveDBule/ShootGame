@@ -18,6 +18,7 @@ private:
 	CCSprite* m_pBg;		//操作台背景
 	Cannon* m_pCannon;		//操作台加农炮
 	CCMenuItemImage *m_pMagicItem;
+	CCLabelTTF* m_lMagicCDLabel;
 	
 	ControllPanel();
 	bool initControllPanel();
@@ -34,4 +35,6 @@ private:
 
 	void makeSkillCD(CCObject *pSender); //技能冷却
 	void endSkillCD(CCNode* sender, void *item);
+	void updateCountDown(float dt);
+	void initMagicCDLabel();
 };

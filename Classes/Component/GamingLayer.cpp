@@ -161,7 +161,7 @@ void GamingLayer::checkMonsterFresh(int dt)
 		
 		int nFreshSpeed = MonsterData::getInstance()->getFreshSpeed(nMosterId)*1000;	//转换成毫秒
 		//if (nMosterId == 1002)
-			CCLog("checkMonsterFresh monsterId: %d,nCurrentTime:%d, nFreshSpeed:%d", nMosterId, nCurrentTime, nFreshSpeed);
+		//	CCLog("checkMonsterFresh monsterId: %d,nCurrentTime:%d, nFreshSpeed:%d", nMosterId, nCurrentTime, nFreshSpeed);
 		if (nCurrentTime >= nFreshSpeed)
 		{
 			this->freshMonster(nMosterId);
@@ -281,9 +281,9 @@ void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
 	//将没有的kindId添加进pool并立即刷新;
 	for (vector<int>::iterator it = diffKindId.begin(); it != diffKindId.end(); it++)
 	{
-		CCLog("MonsterData::getInstance()->getFreshSpeed(*%d):%d", *it,MonsterData::getInstance()->getFreshSpeed(*it));
+		//CCLog("MonsterData::getInstance()->getFreshSpeed(*%d):%d", *it,MonsterData::getInstance()->getFreshSpeed(*it));
 		this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(*it, MonsterData::getInstance()->getFreshSpeed(*it)*1000));
-		CCLog("id:%d, time:%d",*it,this->m_mMonsterFreshInfo[*it]);
+		//CCLog("id:%d, time:%d",*it,this->m_mMonsterFreshInfo[*it]);
 	}
 }
 
