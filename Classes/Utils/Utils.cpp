@@ -22,3 +22,9 @@ void Utils::InitLoadPlist(const char*fileName)
 	cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
 }
 
+
+float Utils::getPointToPointDisatance(CCPoint point1, CCPoint point2)
+{
+	return sqrt(powf(point1.x - point2.x, 2) + powf(point1.y - point2.y, 2));
+}
+
