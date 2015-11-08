@@ -133,12 +133,14 @@ void MonsterMrg::addHpProgress()
 	_hpProgress->setPercentage(100);
 }
 
-void MonsterMrg::freshMonsterHp(const int playerAtt)
+bool MonsterMrg::freshMonsterHp(const int playerAtt)
 {
+	bool bIsDead = false;
 	_NowHp -= playerAtt;
 	if (_NowHp <= 0)
 	{
 		DestroyMonster();
+		bIsDead = true;
 	}
 	else
 	{
@@ -146,6 +148,7 @@ void MonsterMrg::freshMonsterHp(const int playerAtt)
 		_hpProgress->setPercentage(percent);
 		shouJiEffect();
 	}
+	return bIsDead;
 }
 
 void MonsterMrg::shouJiEffect()

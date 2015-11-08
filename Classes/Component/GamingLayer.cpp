@@ -191,7 +191,9 @@ void GamingLayer::checkHitMonster()
 					pMonster->DestroyMonster();
 					break;
 				}	*/
-				pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt());
+				if (pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt())){
+					break;
+				}
 			}
 		}
 		if (bIsHit)
@@ -331,8 +333,19 @@ void GamingLayer::createBullet(CCObject *pSender)
 void GamingLayer::createMagicFire(CCObject *pSender)
 {
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TO_ZERO);
+	//È«ÆÁÉËº¦
+	hurtAllMonster();
 }
 
+void GamingLayer::hurtAllMonster()
+{
+	CCObject *pMonsterObj;
+	CCARRAY_FOREACH(m_pMonsters, pMonsterObj)
+	{
+		MonsterMrg *pMonster = (MonsterMrg*)pMonsterObj;		
+		pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt());
+	}
+}
 
 bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
 {

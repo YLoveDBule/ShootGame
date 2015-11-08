@@ -19,7 +19,7 @@ public:
 	void resume();
 	CCAnimate * getMonsterAction(const char *filename);
 	void addHpProgress();
-	void freshMonsterHp(const int playerAtt);
+	bool freshMonsterHp(const int playerAtt);
 	void shouJiEffect();
 	void RemoveShoujiEffect(CCNode *pSender);
 	void MonsterSuicideEffect();

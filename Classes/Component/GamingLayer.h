@@ -61,6 +61,8 @@ private:
 	void createBullet(CCObject *pSender);	//创建子弹
 	void createMagicFire(CCObject *pSender);	//魔法攻击
 
+	void hurtAllMonster();
+
 	void daZhaoEffect();
 	void RemovedaZhaoEffect(CCNode *pSender);
 };
