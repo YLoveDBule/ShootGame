@@ -34,6 +34,7 @@ private:
 	CCNode *m_pHud;			//hud节点
 	ControllPanel* m_pControllPanel; //controll Panel
 	map<int, int> m_mMonsterFreshInfo;		//怪物刷新信息
+	bool m_bIsMagicFireIng;		//是否正在大招中
 
 	virtual void onEnter();
 	virtual void onExit();
@@ -52,13 +53,25 @@ private:
 	void checkHitMonster();						//检测是否击中怪物
 	void updateMonsterFreshPool(CCObject* pSender);	//更新怪物刷新池
 
-	void pauseGame();
+	void pauseGame(CCObject *pSender);
 	void resumeGame(CCObject *pSender);
-	void restartGame(CCObject *pSender);
 	void setBulletsState(int state);
 	void update(ccTime dt);
+
+	void createBullet(CCObject *pSender);	//创建子弹
+	void createMagicFire(CCObject *pSender);	//魔法攻击
+
+	void hurtAllMonster();
 
 	void daZhaoEffect();
 	void RemovedaZhaoEffect(CCNode *pSender);
 	void ShowResulitLayer(CCObject *pSender);
+
+	void InitPlayerGradeUI();
+	void InitPlayerHpUI();
+
+	void UpdatePlayerNowHpUI(CCObject *pSender);
+private:
+	CCLabelTTF* _gradeLabel;
+	CCLabelTTF* _PlayerCurHpLabel;
 };

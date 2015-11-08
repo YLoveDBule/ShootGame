@@ -56,6 +56,7 @@ void Player::UpdatePlayerGrade(CCObject *pSender)
 {
 	CCString* str = static_cast<CCString*>(pSender);
 	_grade += str->toInt();
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEUIGRADE);
 	UpdateData();
 	CCLog("playerGrade ===== %d", _grade);
 	PostFreshMonsterVec();
@@ -79,7 +80,7 @@ void Player::UpdatePlayerNowHp(CCObject *pSender)
 		//½áËã½çÃæ
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_GETRESLUT);
 	}
-	_nowHp += str->toInt();
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEUINOWHP);
 }
 
 void Player::PostFreshMonsterVec()

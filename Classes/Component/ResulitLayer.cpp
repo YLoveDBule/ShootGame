@@ -2,6 +2,7 @@
 #include <sstream>
 #include "GameData\PlayerMrg.h"
 #include "Config\NotificationNameConfig.h"
+#include "GamingLayer.h"
 ResulitLayer * ResulitLayer::create()
 {
 	ResulitLayer *pResulitLayer = new ResulitLayer();
@@ -91,7 +92,15 @@ bool ResulitLayer::initResulitLayer()
 void ResulitLayer::restartGame(CCObject *pSender)
 {
 	this->removeFromParentAndCleanup(true);
-	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESTART_GAME);
+	/*CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESTART_GAME);*/
+	CCDirector::sharedDirector()->resume();
+	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
+	PlayerMrg::getInstance()->Delete();
+	PlayerMrg::getInstance()->Init();
+	GamingLayer*layer = GamingLayer::createGamingLayer();
+	CCScene *scene = CCScene::node();
+	scene->addChild(layer);
+	CCDirector::sharedDirector()->replaceScene(scene);
 }
 
 void ResulitLayer::menuExitCallBack(CCObject *pSender)

@@ -25,6 +25,9 @@ private:
 	void initCannon();
 	void createAttackButton();
 	void createPauseButton();
+	void createTurnBarrelButton();	//ÒÆ¶¯ÅÚ¹Ü°´Å¥
+	void barrelTurnLeftClick(CCObject *pSender);
+	void barrelTurnRightClick(CCObject *pSender);
 	virtual void normalAttackClick(CCObject* pSender);
 	virtual void magicAttackClick(CCObject* pSender);
 	virtual void pauseBtnClick(CCObject* pSender);

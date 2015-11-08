@@ -72,7 +72,7 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	_showGrade = MonsterData::getInstance()->getShowGrade(monsterId);
 	_SkillGrade = MonsterData::getInstance()->getSkillGrade(monsterId);
 	_SkillReward = MonsterData::getInstance()->getSkillReward(monsterId);
-	_MoveSpeed = MonsterData::getInstance()->getMoveSpeed(monsterId) / 10;
+	_MoveSpeed = float(MonsterData::getInstance()->getMoveSpeed(monsterId)) / 10.0f;
 
 	// beigin pos
 	_NowPos = MonsterPosCreate::getInstance()->getRandomPoint();
@@ -80,6 +80,9 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	setPosition(_NowPos);
     runAction(CCRepeatForever::actionWithAction(getMonsterAction(_resfile)));
 	addHpProgress();
+
+	//是否已经死亡
+	m_bIsDead = false;
 }
 
 void MonsterMrg::freshPos(float dt)
@@ -138,6 +141,7 @@ void MonsterMrg::freshMonsterHp(const int playerAtt)
 	_NowHp -= playerAtt;
 	if (_NowHp <= 0)
 	{
+		m_bIsDead = true;
 		DestroyMonster();
 	}
 	else

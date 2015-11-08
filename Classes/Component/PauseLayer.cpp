@@ -66,7 +66,16 @@ void PauseLayer::continueGame(CCObject *pSender)
 void PauseLayer::restartGame(CCObject *pSender)
 {
 	this->removeFromParentAndCleanup(true);
-	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESTART_GAME);
+	this->removeFromParentAndCleanup(true);
+	/*CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESTART_GAME);*/
+	CCDirector::sharedDirector()->resume();
+	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
+	PlayerMrg::getInstance()->Delete();
+	PlayerMrg::getInstance()->Init();
+	GamingLayer*layer = GamingLayer::createGamingLayer();
+	CCScene *scene = CCScene::node();
+	scene->addChild(layer);
+	CCDirector::sharedDirector()->replaceScene(scene);
 }
 
 void PauseLayer::exitGame(CCObject *pSender)

@@ -9,8 +9,11 @@
 #define NOTIFY_RESTART_GAME		"100011"			//重新开始游戏
 #define NOTIFY_EXIT_GAME		"100012"			//退出游戏
 #define NOTIFY_GETRESLUT		"100013"			//jiesuan
+#define NOTIFY_PAUSE_GAME		"100014"			//暂停游戏
 
 #define NOTIFY_PLAYER_UPDATEGRADE			"200001"            //更新玩家数据
 #define NOTIFY_PLAYER_UPDATENOWHP			"200002"            //更新血量
 #define NOTIFY_MONSTER_UPDATEKIND			"200003"            //更新怪物种类
 #define NOTIFY_MONSTER_UPDATEFRESHPOOL		"200004"			//更新怪物刷新池
+#define NOTIFY_PLAYER_UPDATEUIGRADE         "200005"            //更新ui分数
+#define NOTIFY_PLAYER_UPDATEUINOWHP         "200006"            //更新ui血量

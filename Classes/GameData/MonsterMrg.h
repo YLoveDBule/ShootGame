@@ -10,6 +10,7 @@ public:
 	virtual ~MonsterMrg();
 	static MonsterMrg *Create(const int monsterId, GamingLayer* gamingLayer);
 	GamingLayer *_gamingLayer;
+	bool m_bIsDead;
 public:
 	virtual void DestroyMonster();
 	bool MonsterInit(const int monsterId, GamingLayer* gamingLayer);
