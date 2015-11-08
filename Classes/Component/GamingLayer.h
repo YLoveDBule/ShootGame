@@ -52,11 +52,14 @@ private:
 	void checkHitMonster();						//检测是否击中怪物
 	void updateMonsterFreshPool(CCObject* pSender);	//更新怪物刷新池
 
-	void pauseGame();
+	void pauseGame(CCObject *pSender);
 	void resumeGame(CCObject *pSender);
 	void restartGame(CCObject *pSender);
 	void setBulletsState(int state);
 	void update(ccTime dt);
+
+	void createBullet(CCObject *pSender);	//创建子弹
+	void createMagicFire(CCObject *pSender);	//魔法攻击
 
 	void daZhaoEffect();
 	void RemovedaZhaoEffect(CCNode *pSender);

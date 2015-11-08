@@ -8,6 +8,7 @@
 #define NOTIFY_RESUME_GAME		"100010"			//继续游戏
 #define NOTIFY_RESTART_GAME		"100011"			//重新开始游戏
 #define NOTIFY_EXIT_GAME		"100012"			//退出游戏
+#define NOTIFY_PAUSE_GAME		"100013"			//暂停游戏
 
 #define NOTIFY_PLAYER_UPDATEGRADE			"200001"            //更新玩家数据
 #define NOTIFY_PLAYER_UPDATENOWHP			"200002"            //更新血量

@@ -1,6 +1,7 @@
 #include "ControllPanel.h"
 #include "cocos2d.h"
 #include "Cannon.h"
+#include "Config/NotificationNameConfig.h"
 USING_NS_CC;
 
 ControllPanel* ControllPanel::createControllPanel()
@@ -35,7 +36,8 @@ bool ControllPanel::initControllPanel()
 {
 	this->initBg();
 	this->createAttackButton();
-	//this->createPauseButton();
+	this->createPauseButton();
+	this->createTurnBarrelButton();
 	this->initCannon();
 	return true;
 }
@@ -103,22 +105,52 @@ void ControllPanel::createPauseButton()
 
 	CCMenu *pPauseMenu = CCMenu::menuWithItem(pPauseItem);
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	pPauseMenu->setPosition(ccp(winSize.width-200, winSize.height-100));
-	this->addChild(pPauseItem);
+	pPauseMenu->setPosition(ccp(winSize.width-50, winSize.height-50));
+	this->addChild(pPauseMenu);
+}
+
+void ControllPanel::createTurnBarrelButton()
+{
+	CCMenuItemImage *pTurnLeftItem = CCMenuItemImage::itemFromNormalImage(
+		"common/actor_btn_turnLeft.png",
+		"common/actor_btn_turnLeft.png",
+		this,
+		menu_selector(ControllPanel::barrelTurnLeftClick));
+
+	CCMenuItemImage *pTurnRightItem = CCMenuItemImage::itemFromNormalImage(
+		"common/actor_btn_turnRight.png",
+		"common/actor_btn_turnRight.png",
+		this,
+		menu_selector(ControllPanel::barrelTurnRightClick));
+	CCMenu *pTurnBarrelMenu = CCMenu::menuWithItems(pTurnLeftItem, pTurnRightItem, NULL);
+	
+	CCSize bgSize = this->m_pBg->getContentSize();
+	pTurnBarrelMenu->alignItemsVertically();
+	pTurnBarrelMenu->setPosition(ccp(100, bgSize.height / 2));
+	this->addChild(pTurnBarrelMenu);
+}
+
+void ControllPanel::barrelTurnLeftClick(CCObject *pSender)
+{
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_LEFT);
+}
+
+void ControllPanel::barrelTurnRightClick(CCObject *pSender)
+{
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TURN_RIGHT);
 }
 
 void ControllPanel::pauseBtnClick(CCObject* pSender)
 {
-	CCLog("pauseBtnClick!!");
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PAUSE_GAME);
 }
 
 void ControllPanel::normalAttackClick(CCObject* pSender)
 {
-	CCLog("normalAttackClick!!");
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
 }
 
 void ControllPanel::magicAttackClick(CCObject* pSender)
 {
-	CCLog("magicAttackClick!!");
-
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_MAGIC_FIRE);
 }
