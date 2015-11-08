@@ -282,7 +282,7 @@ void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
 	for (vector<int>::iterator it = diffKindId.begin(); it != diffKindId.end(); it++)
 	{
 		CCLog("MonsterData::getInstance()->getFreshSpeed(*%d):%d", *it,MonsterData::getInstance()->getFreshSpeed(*it));
-		this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(*it, MonsterData::getInstance()->getFreshSpeed(*it)));
+		this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(*it, MonsterData::getInstance()->getFreshSpeed(*it)*1000));
 		CCLog("id:%d, time:%d",*it,this->m_mMonsterFreshInfo[*it]);
 	}
 }
