@@ -9,6 +9,8 @@
 #include "Utils/Utils.h"
 #include "GameData/PlayerMrg.h"
 #include "Component/PauseLayer.h"
+#include "ResulitLayer.h"
+#include <sstream>
 USING_NS_CC;
 
 GamingLayer* GamingLayer::createGamingLayer()
@@ -26,9 +28,13 @@ GamingLayer* GamingLayer::createGamingLayer()
 	}
 }
 
-GamingLayer::GamingLayer(){}
+GamingLayer::GamingLayer(){
+	
+}
 
-GamingLayer::~GamingLayer(){}
+GamingLayer::~GamingLayer(){
+	/*PlayerMrg::getInstance()->Delete();*/
+}
 
 bool GamingLayer::initGamingLayer()
 {
@@ -48,31 +54,38 @@ bool GamingLayer::initGamingLayer()
 
 	CCLayer::setIsKeypadEnabled(true);
 	this->scheduleUpdate();
+
+	//玩家的分数
+	InitPlayerGradeUI();
+	//玩家血量
+	InitPlayerHpUI();
 	return true;
 }
 
 void GamingLayer::onEnter()
 {
 	CCLayer::onEnter();
-	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEGRADE, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEUIGRADE, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::updateMonsterFreshPool), NOTIFY_MONSTER_UPDATEFRESHPOOL, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::resumeGame), NOTIFY_RESUME_GAME, NULL);
-	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::restartGame), NOTIFY_RESTART_GAME, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::ShowResulitLayer), NOTIFY_GETRESLUT, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::pauseGame), NOTIFY_PAUSE_GAME, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::createBullet), NOTIFY_BARREL_FIRE, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::createMagicFire), NOTIFY_BARREL_MAGIC_FIRE, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::UpdatePlayerNowHpUI), NOTIFY_PLAYER_UPDATEUINOWHP, NULL);
 }
 
 void GamingLayer::onExit()
 {
 	CCLayer::onExit();
-	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEGRADE);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEUIGRADE);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_MONSTER_UPDATEFRESHPOOL);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESUME_GAME);
-	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESTART_GAME);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_GETRESLUT);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PAUSE_GAME);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_FIRE);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_MAGIC_FIRE);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEUINOWHP);
 }
 
 void GamingLayer::update(ccTime dt)
@@ -239,7 +252,9 @@ void GamingLayer::checkHitMonster()
 //玩家分数改变
 void GamingLayer::playerScoreChange(CCObject *pSender)
 {
-	
+	stringstream ss;
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerGrade();
+	_gradeLabel->setString(ss.str().c_str());
 }
 
 //更新怪物刷新池
@@ -285,26 +300,64 @@ void GamingLayer::pauseGame(CCObject *pSender)
 
 }
 
+void GamingLayer::ShowResulitLayer(CCObject *pSender)
+{
+	ResulitLayer *relustlayer = ResulitLayer::create();
+	CCDirector::sharedDirector()->getRunningScene()->addChild(relustlayer);
+
+	CCLayer::setIsKeypadEnabled(false);
+	CCDirector::sharedDirector()->pause();
+}
+
+void GamingLayer::InitPlayerGradeUI()
+{
+	stringstream ss;
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerGrade();
+	_gradeLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+
+	CCSprite *gradeBg = CCSprite::spriteWithFile("score.png");
+	gradeBg->setAnchorPoint(ccp(0, 1));
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	gradeBg->setPosition(ccp(10, size.height - 10));
+	addChild(gradeBg);
+	_gradeLabel->setAnchorPoint(ccp(0, 1));
+	_gradeLabel->setPosition(ccp(15 + gradeBg->getContentSize().width, size.height - 10));
+	addChild(_gradeLabel);
+}
+
+void GamingLayer::InitPlayerHpUI()
+{
+	stringstream ss;
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerNowHp();
+	ss << "/";
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerHpLimit();
+	_PlayerCurHpLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+
+	CCSprite *hpBg = CCSprite::spriteWithFile("shouzi.png");
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	hpBg->setAnchorPoint(ccp(0, 1));
+	hpBg->setPosition(ccp(size.width / 2 - 50, size.height - 10));
+	addChild(hpBg);
+
+	_PlayerCurHpLabel->setAnchorPoint(ccp(0, 1));
+	_PlayerCurHpLabel->setPosition(ccp(size.width / 2 - 45 + hpBg->getContentSize().width, size.height - 10));
+	addChild(_PlayerCurHpLabel);
+}
+
+void GamingLayer::UpdatePlayerNowHpUI(CCObject *pSender)
+{
+	stringstream ss;
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerNowHp();
+	ss << "/";
+	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerHpLimit();
+	_PlayerCurHpLabel->setString(ss.str().c_str());
+}
+
 void GamingLayer::resumeGame(CCObject *pSender)
 {
 	//恢复按钮功能
 	CCLayer::setIsKeypadEnabled(true);
 	CCDirector::sharedDirector()->resume();
-}
-
-void GamingLayer::restartGame(CCObject *pSender)
-{
-	CCLog("restartGame");
-	CCDirector::sharedDirector()->resume();
-	this->removeFromParentAndCleanup(true);
-	PlayerMrg::getInstance()->Delete();
-	PlayerMrg::getInstance()->Init();
-	GamingLayer*layer = GamingLayer::createGamingLayer();
-	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
-	CCScene *scene = CCScene::node();
-	scene->addChild(layer);
-	CCDirector::sharedDirector()->replaceScene(scene);
-
 }
 
 //设置子弹的状态，0为暂停，1为继续

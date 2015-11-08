@@ -55,7 +55,6 @@ private:
 
 	void pauseGame(CCObject *pSender);
 	void resumeGame(CCObject *pSender);
-	void restartGame(CCObject *pSender);
 	void setBulletsState(int state);
 	void update(ccTime dt);
 
@@ -66,4 +65,13 @@ private:
 
 	void daZhaoEffect();
 	void RemovedaZhaoEffect(CCNode *pSender);
+	void ShowResulitLayer(CCObject *pSender);
+
+	void InitPlayerGradeUI();
+	void InitPlayerHpUI();
+
+	void UpdatePlayerNowHpUI(CCObject *pSender);
+private:
+	CCLabelTTF* _gradeLabel;
+	CCLabelTTF* _PlayerCurHpLabel;
 };

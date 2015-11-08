@@ -72,7 +72,7 @@ void MonsterMrg::InitMonsterData(const int monsterId)
 	_showGrade = MonsterData::getInstance()->getShowGrade(monsterId);
 	_SkillGrade = MonsterData::getInstance()->getSkillGrade(monsterId);
 	_SkillReward = MonsterData::getInstance()->getSkillReward(monsterId);
-	_MoveSpeed = MonsterData::getInstance()->getMoveSpeed(monsterId) / 10;
+	_MoveSpeed = float(MonsterData::getInstance()->getMoveSpeed(monsterId)) / 10.0f;
 
 	// beigin pos
 	_NowPos = MonsterPosCreate::getInstance()->getRandomPoint();
