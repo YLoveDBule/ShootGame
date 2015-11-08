@@ -17,6 +17,17 @@ ControllPanel* ControllPanel::createControllPanel()
 	}
 }
 
+void ControllPanel::onEnter()
+{
+	CCLayer::onEnter();
+}
+
+void ControllPanel::onExit()
+{
+	CCLayer::onExit();
+	delete(this->m_pCannon);
+}
+
 ControllPanel::ControllPanel(){}
 ControllPanel::~ControllPanel(){}
 

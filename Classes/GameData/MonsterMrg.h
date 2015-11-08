@@ -15,6 +15,8 @@ public:
 	bool MonsterInit(const int monsterId, GamingLayer* gamingLayer);
 	virtual void InitMonsterData(const int monsterId);
 	void freshPos(float dt);
+	void pause();
+	void resume();
 	CCAnimate * getMonsterAction(const char *filename);
 	void addHpProgress();
 	void freshMonsterHp(const int playerAtt);

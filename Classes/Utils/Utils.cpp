@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
+
 bool Utils::IsRectCollision(CCNode *obj1, CCNode *obj2)
 {
 	return (CCRect::CCRectIntersectsRect(obj1->boundingBox(), obj2->boundingBox()));
@@ -19,5 +20,11 @@ void Utils::InitLoadPlist(const char*fileName)
 	string ss = fileName;
 	string sss = fileName;
 	cache->addSpriteFramesWithFile(ss.append(".plist").c_str(), sss.append(".png").c_str());
+}
+
+
+float Utils::getPointToPointDisatance(CCPoint point1, CCPoint point2)
+{
+	return sqrt(powf(point1.x - point2.x, 2) + powf(point1.y - point2.y, 2));
 }
 
