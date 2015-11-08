@@ -24,6 +24,8 @@ private:
 	void initBg();
 	void initCannon();
 	void createAttackButton();
+	void createPauseButton();
 	virtual void normalAttackClick(CCObject* pSender);
 	virtual void magicAttackClick(CCObject* pSender);
+	virtual void pauseBtnClick(CCObject* pSender);
 };

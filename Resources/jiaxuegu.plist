@@ -11,7 +11,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{90,98}}</string>
                 <key>sourceSize</key>
@@ -20,11 +20,11 @@
             <key>jiaxuegu_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{94,2},{90,98}}</string>
+                <string>{{2,94},{90,98}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{90,98}}</string>
                 <key>sourceSize</key>
@@ -38,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>jiaxuegu.png</string>
             <key>size</key>
-            <string>{186,102}</string>
+            <string>{102,186}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:884b49d11460d0bd938369f3ae18885e:4c42acf5d073975d663df7836be01b1b:b3b824a4ff236e63cc0d7e061c3f540d$</string>
+            <string>$TexturePacker:SmartUpdate:224d2c59eb2829c450f9e06c13f1c125:4c42acf5d073975d663df7836be01b1b:b3b824a4ff236e63cc0d7e061c3f540d$</string>
             <key>textureFileName</key>
             <string>jiaxuegu.png</string>
         </dict>

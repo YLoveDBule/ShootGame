@@ -35,6 +35,7 @@ bool ControllPanel::initControllPanel()
 {
 	this->initBg();
 	this->createAttackButton();
+	//this->createPauseButton();
 	this->initCannon();
 	return true;
 }
@@ -90,6 +91,25 @@ void ControllPanel::createAttackButton()
 	pAttackMenu->setPosition(ccp(bgSize.width - 200, bgSize.height / 2 - pNormalItem->getContentSize().height / 2 - 30));
 	this->addChild(pAttackMenu);
 
+}
+
+void ControllPanel::createPauseButton()
+{
+	CCMenuItemImage *pPauseItem = CCMenuItemImage::itemFromNormalImage(
+		"common/actor_btn_pause.png",
+		"common/actor_btn_pause.png",
+		this,
+		menu_selector(ControllPanel::pauseBtnClick));
+
+	CCMenu *pPauseMenu = CCMenu::menuWithItem(pPauseItem);
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	pPauseMenu->setPosition(ccp(winSize.width-200, winSize.height-100));
+	this->addChild(pPauseItem);
+}
+
+void ControllPanel::pauseBtnClick(CCObject* pSender)
+{
+	CCLog("pauseBtnClick!!");
 }
 
 void ControllPanel::normalAttackClick(CCObject* pSender)
