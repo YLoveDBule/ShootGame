@@ -24,6 +24,7 @@ Cannon::Cannon():m_fRotation(0.0f)
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::setRotationRight), NOTIFY_BARREL_TURN_RIGHT, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::fire), NOTIFY_BARREL_FIRE, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::magicFire), NOTIFY_BARREL_MAGIC_FIRE, NULL);
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(Cannon::barrelToZero), NOTIFY_BARREL_TO_ZERO, NULL);
 }
 
 Cannon::~Cannon() 
@@ -33,6 +34,7 @@ Cannon::~Cannon()
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_TURN_RIGHT);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_FIRE);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_MAGIC_FIRE);
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_BARREL_TO_ZERO);
 }
 
 
@@ -69,6 +71,7 @@ void  Cannon::setRotationRight(CCObject *pSender) {
 	this->setRotation(10.0f);
 }
 
+//这里的rotation是相对炮管增加和减少的角度
 void Cannon::setRotation(float rotation) 
 {
 	m_fRotation = this->m_pBarrel->getRotation()+rotation;
@@ -109,6 +112,15 @@ CCPoint Cannon::getMuzzleWorldPos()
 	CCSize barrelSize = this->m_pBarrel->getContentSize();
 	//return ccp(barrelWorldPos.x, barrelWorldPos.y + barrelSize.height);
 	return barrelWorldPos;
+}
+
+void Cannon::barrelToZero(CCObject *pSender)
+{
+	if (this->m_pBarrel)
+	{
+		float fMoveRotation = -(this->m_pBarrel->getRotation());
+		this->setRotation(fMoveRotation);
+	}
 }
 
 //void Cannon::keyboardHook(UINT message, WPARAM wParam, LPARAM lParam)

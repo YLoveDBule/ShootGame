@@ -252,10 +252,11 @@ void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
 		if (!bIsfound)
 			diffKindId.push_back(*it);
 	}
-	//将没有的kindId添加进pool;
+	//将没有的kindId添加进pool并立即刷新;
 	for (vector<int>::iterator it = diffKindId.begin(); it != diffKindId.end(); it++)
 	{
-		this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(*it, 0));
+		this->m_mMonsterFreshInfo.insert(map<int, int>::value_type(*it, MonsterData::getInstance()->getFreshSpeed(*it)));
+		
 	}
 }
 
@@ -392,7 +393,7 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 {	
 	CCLog("onClickJ==>key_status:%d",key_status);
 	if (key_status == EVENT_KEY_DOWN){
-		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+		//CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
 		Bullet* pBullet = Bullet::createBullet(this);
 		//根据炮口的位置和炮管的方向创建子弹
 		CCPoint p = this->m_pControllPanel->getMuzzleWorldPos();
@@ -409,7 +410,9 @@ void GamingLayer::onClickJ(CCKeypadStatus key_status)
 void GamingLayer::onClickK(CCKeypadStatus key_status)
 {
 	if (key_status == EVENT_KEY_DOWN){
-		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_MAGIC_FIRE);
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TO_ZERO);
+		//CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_MAGIC_FIRE);
+		
 	}
 }
 
@@ -421,6 +424,5 @@ void GamingLayer::onClickL(CCKeypadStatus key_status)
 
 void GamingLayer::onClickI(CCKeypadStatus key_status)
 {
-	this->resumeGame(NULL);
-	
+		
 }

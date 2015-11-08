@@ -32,4 +32,5 @@ private:
 	void magicFire(CCObject *pSender);
 	void setRotation(float rotation);
 	bool initCannon();	
+	void barrelToZero(CCObject *pSender);
 };
