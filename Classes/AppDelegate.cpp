@@ -116,15 +116,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	CCScene *pScene = LoginScene::scene();
 	// run
 	pDirector->runWithScene(pScene);
-	Utils::InitLoadPlist("guiren");
-	Utils::InitLoadPlist("jiaxuegu");
-	Utils::InitLoadPlist("langren");
-	Utils::InitLoadPlist("nijiangguai");
-	Utils::InitLoadPlist("shitou");
+	Utils::InitLoadPlist("Monster");
 	Utils::InitLoadPlist("shouji");
 	Utils::InitLoadPlist("dazhao1");
 	Utils::InitLoadPlist("dazhao2");
-	Utils::InitLoadPlist("kulou");
 	Utils::InitLoadAoeEffect();
 	return true;
 }

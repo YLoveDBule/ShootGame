@@ -40,22 +40,24 @@ bool ResulitLayer::initResulitLayer()
 
 	stringstream ss;
 	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerGrade();
-	CCLabelTTF* gradeLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+	CCLabelAtlas* gradeLabel = CCLabelAtlas::labelWithString(ss.str().c_str(), "grade.png", 32, 45, '/');//CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
 	gradeLabel->setAnchorPoint(ccp(0, 0));
 	gradeLabel->setPosition(ccp(50 + nowGrade->getContentSize().width + 5, bgheight - 180));
+	gradeLabel->setScale(0.75);
 	bg->addChild(gradeLabel); 
     //lastHightGrade 
 	CCSprite *lastGrade = CCSprite::spriteWithFile("topscore.png");
-	lastGrade->setPosition(ccp(50, bgheight - 240));
-	lastGrade->setAnchorPoint(ccp(0, 0));
+	lastGrade->setPosition(ccp(50, bgheight - 220));
+	lastGrade->setAnchorPoint(ccp(0, 0.5));
 	bg->addChild(lastGrade);
 
 	ss.str("");
 	ss.clear();
 	ss << PlayerMrg::getInstance()->getPlayerLastHightGrade();
-	CCLabelTTF* lastgradeLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
-	lastgradeLabel->setPosition(ccp(50 + lastGrade->getContentSize().width + 5, bgheight - 240));
-	lastgradeLabel->setAnchorPoint(ccp(0, 0));
+	CCLabelAtlas* lastgradeLabel = CCLabelAtlas::labelWithString(ss.str().c_str(), "grade.png", 32, 45, '/');//CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+	lastgradeLabel->setScale(0.75);
+	lastgradeLabel->setPosition(ccp(50 + lastGrade->getContentSize().width + 5, bgheight - 220));
+	lastgradeLabel->setAnchorPoint(ccp(0, 0.5));
 	bg->addChild(lastgradeLabel);
 	ss.str("");
 	ss.clear();
