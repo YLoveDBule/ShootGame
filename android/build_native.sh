@@ -1,6 +1,6 @@
 # set params
-NDK_ROOT_LOCAL=/cygdrive/e/dev/android-ndk-r9d
-COCOS2DX_ROOT_LOCAL=/cygdrive/d/projects/cocos2d-1.0.1-x-0.13.0-beta
+NDK_ROOT_LOCAL=/cygdrive/d/dev/android-ndk-r9d
+COCOS2DX_ROOT_LOCAL=/cygdrive/d/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta
 buildexternalsfromsource=
 usage(){
 cat << EOF

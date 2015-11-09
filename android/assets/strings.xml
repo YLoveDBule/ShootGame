@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Strings>
+	<String Key="feature" Value="特点：{%s1}"/>
+	<String Key="stunt" Value="绝技：{%s1}"/>
+	<String Key="en_LifeAtt_Silver" Value="铜币"/>
+	<String Key="en_LifeAtt_Gold" Value="元宝"/>
+	<String Key="en_LifeAtt_Exp" Value="主公经验"/>
+</Strings>

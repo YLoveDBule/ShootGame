@@ -1,0 +1,509 @@
+obj/local/armeabi/objs/helloworld_shared/__/__/Classes/XmlReader/XmlReader.o: \
+ jni/../../Classes/XmlReader/XmlReader.cpp \
+ jni/../../Classes/XmlReader/XmlReader.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/cocos2d.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccConfig.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformConfig.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAction.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccTypes.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCGeometry.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCCommon.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformMacros.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccConfig.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformConfig.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/assert.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/cdefs.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/cdefs_elf.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/android/api-level.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCGL.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCGL.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCEGLView.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCEGLView_platform.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCPlatformConfig.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/android/CCEGLView_android.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCGeometry.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCCommon.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/GLES/glplatform.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/KHR/khrplatform.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/stdint.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/_types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/_types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/GLES/gl.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/GLES/glext.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCObject.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCZone.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/stdio.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/posix_types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/stddef.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/compiler.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/posix_types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/kernel.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/sysmacros.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCNode.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccMacros.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCStdC.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/math.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/limits.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/limits.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/limits.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/internal_types.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/limits.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/syslimits.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/page.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/string.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/malloc.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/stdlib.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/alloca.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/strings.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/memory.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/time.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/time.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/time.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/siginfo.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm-generic/siginfo.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAffineTransform.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformMacros.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCArray.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/support/data_support/ccCArray.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccMacros.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCObject.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAnimation.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMutableArray.h \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/vector \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAnimationCache.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMutableDictionary.h \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionManager.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCCamera.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionCamera.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionInterval.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCProtocols.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTexture2D.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSpriteFrame.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCDirector.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformMacros.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCEGLView.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCUserDefault.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionInstant.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionEase.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLabelTTF.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSprite.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTextureAtlas.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLayer.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouchDelegateProtocol.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAccelerometerDelegate.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCKeypadDelegate.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMenu.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMenuItem.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystem.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCString.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCFileUtils.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMutableDictionary.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystemPoint.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystemQuad.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleExamples.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCArchOptimalParticleSystem.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystemQuad.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCScene.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSpriteFrameCache.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTextureCache.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCImage.h \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/list \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTransition.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLabelAtlas.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAtlasNode.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionTiledGrid.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionGrid.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionGrid3D.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLabelBMFont.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSpriteBatchNode.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParallaxNode.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTileMapAtlas.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXTiledMap.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXObjectGroup.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXLayer.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXXMLParser.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCSAXParser.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCCommon.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCRenderTexture.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCData.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMotionStreak.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionPageTurn3D.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTransitionPageTurn.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTexturePVR.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTransitionRadial.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCProgressTimer.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionProgressTimer.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouchHandler.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouchDispatcher.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSet.h \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/set \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCDrawingPrimitives.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCScheduler.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/support/data_support/uthash.h \
+ D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/inttypes.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTextFieldTTF.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCIMEDelegate.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouch.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCPointExtension.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCApplication.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCApplication_platform.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/android/CCApplication_android.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCApplication.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAccelerometer.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCAccelerometer_platform.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/android/CCAccelerometer_android.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAccelerometerDelegate.h \
+ D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/extensions/CCNotificationCenter.h \
+ jni/../../Classes/XmlReader/rapidxml_iterators.hpp \
+ jni/../../Classes/XmlReader/rapidxml.hpp \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/cstdlib \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/cassert \
+ jni/../../Classes/XmlReader/rapidxml_print.hpp \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/ostream \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/iterator \
+ jni/../../Classes/XmlReader/rapidxml_utils.hpp \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/fstream \
+ D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/stdexcept
+
+jni/../../Classes/XmlReader/XmlReader.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/cocos2d.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccConfig.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformConfig.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAction.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccTypes.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCGeometry.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCCommon.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformMacros.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccConfig.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformConfig.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/assert.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/cdefs.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/cdefs_elf.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/android/api-level.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCGL.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCGL.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCEGLView.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCEGLView_platform.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCPlatformConfig.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/android/CCEGLView_android.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCGeometry.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCCommon.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/GLES/glplatform.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/KHR/khrplatform.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/stdint.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/_types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/_types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/GLES/gl.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/GLES/glext.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCObject.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCZone.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/stdio.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/posix_types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/stddef.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/compiler.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/posix_types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/kernel.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/sysmacros.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCNode.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccMacros.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCStdC.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/math.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/limits.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/limits.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/limits.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/internal_types.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/machine/limits.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/syslimits.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/page.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/string.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/malloc.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/stdlib.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/alloca.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/strings.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/memory.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/time.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/sys/time.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/linux/time.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm/siginfo.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/asm-generic/siginfo.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAffineTransform.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformMacros.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCArray.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/support/data_support/ccCArray.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/ccMacros.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCObject.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAnimation.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMutableArray.h:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/vector:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/string:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAnimationCache.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMutableDictionary.h:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionManager.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCCamera.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionCamera.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionInterval.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCProtocols.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTexture2D.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSpriteFrame.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCDirector.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCPlatformMacros.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCEGLView.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCUserDefault.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionInstant.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionEase.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLabelTTF.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSprite.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTextureAtlas.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLayer.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouchDelegateProtocol.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAccelerometerDelegate.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCKeypadDelegate.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMenu.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMenuItem.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystem.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCString.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCFileUtils.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMutableDictionary.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystemPoint.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystemQuad.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleExamples.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCArchOptimalParticleSystem.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParticleSystemQuad.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCScene.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSpriteFrameCache.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTextureCache.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCImage.h:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/list:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTransition.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLabelAtlas.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAtlasNode.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionTiledGrid.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionGrid.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionGrid3D.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCLabelBMFont.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSpriteBatchNode.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCParallaxNode.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTileMapAtlas.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXTiledMap.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXObjectGroup.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXLayer.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTMXXMLParser.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCSAXParser.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/../platform/CCCommon.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCRenderTexture.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCData.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCMotionStreak.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionPageTurn3D.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTransitionPageTurn.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTexturePVR.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTransitionRadial.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCProgressTimer.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCActionProgressTimer.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouchHandler.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouchDispatcher.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCSet.h:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/set:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCDrawingPrimitives.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCScheduler.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/support/data_support/uthash.h:
+
+D:/dev/android-ndk-r9d/platforms/android-8/arch-arm/usr/include/inttypes.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTextFieldTTF.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCIMEDelegate.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCTouch.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCPointExtension.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCApplication.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCApplication_platform.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/android/CCApplication_android.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCApplication.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAccelerometer.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/CCAccelerometer_platform.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/platform/android/CCAccelerometer_android.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/include/CCAccelerometerDelegate.h:
+
+D:/projects/cocos2d-1.0.1-x-0.13.0-beta/cocos2d-1.0.1-x-0.13.0-beta/cocos2dx/extensions/CCNotificationCenter.h:
+
+jni/../../Classes/XmlReader/rapidxml_iterators.hpp:
+
+jni/../../Classes/XmlReader/rapidxml.hpp:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/cstdlib:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/cassert:
+
+jni/../../Classes/XmlReader/rapidxml_print.hpp:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/ostream:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/iterator:
+
+jni/../../Classes/XmlReader/rapidxml_utils.hpp:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/fstream:
+
+D:/dev/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.6/include/stdexcept:

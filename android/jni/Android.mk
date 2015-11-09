@@ -15,18 +15,18 @@ LOCAL_SRC_FILES := helloworld/main.cpp \
                    ../../Classes/Component/GamingLayer.cpp \
                    ../../Classes/Component/PauseLayer.cpp \
                    ../../Classes/Component/ResulitLayer.cpp \
-                   ../../Classes/Config/BaseConfig.cpp \
-                   ../../Classes/Config/NotificationNameConfig.cpp \
                    ../../Classes/CsvReader/CsvReader.cpp \
                    ../../Classes/GameData/MonsterData.cpp \
                    ../../Classes/GameData/MonsterMrg.cpp \
                    ../../Classes/GameData/PlayerData.cpp \
                    ../../Classes/GameData/PlayerMrg.cpp \
-                   ../../Classes/XmlReader/XmlReader.cpp 
+				   ../../Classes/Utils/Utils.cpp
 
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES += $(shell ls -FR $(LOCAL_C_INCLUDES) | grep $(LOCAL_PATH)/$ )
+LOCAL_C_INCLUDES := $(LOCAL_C_INCLUDES:$(LOCAL_PATH)/%:=$(LOCAL_PATH)/%)
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 
