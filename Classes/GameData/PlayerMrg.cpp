@@ -139,7 +139,31 @@ void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
 	bool bIsAdded = false;
 	for (size_t i = 0; i < Monster_KindNumber; ++i)
 	{
-		if (std::find(_monsterKindId.begin(),_monsterKindId.end(), _monsterId[i]) == _monsterKindId.end())
+		bool bExist = false;
+		for (std::vector<int>::iterator it = _monsterKindId.begin(); it != _monsterKindId.end(); it++) 
+		{
+			if (*it == _monsterId[i])
+			{
+				bExist = true;
+				break;
+			}
+		}
+
+		if (!bExist)
+		{
+			int showGrade = MonsterData::getInstance()->getShowGrade(_monsterId[i]);
+			if (nowGrade < showGrade)
+			{
+				//break;
+				continue;
+			}
+			else
+			{
+				_monsterKindId.push_back(_monsterId[i]);
+				bIsAdded = true;
+			}
+		}
+		/*if (std::find(_monsterKindId.begin(), _monsterKindId.end(), _monsterId[i]) == _monsterKindId.end())
 		{
 			int showGrade = MonsterData::getInstance()->getShowGrade(_monsterId[i]);
 			if (nowGrade < showGrade)
@@ -152,7 +176,7 @@ void MonsterKindVector::UpdateMonsterKind(CCObject *pSender)
 				bIsAdded = true;
 			}
 		}
-		continue;
+		continue;*/
 	}
 	if(bIsAdded)
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_MONSTER_UPDATEFRESHPOOL);

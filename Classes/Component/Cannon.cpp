@@ -1,5 +1,6 @@
 #include "Cannon.h"
 #include "Config/NotificationNameConfig.h"
+#include "Config/BaseConfig.h"
 
 USING_NS_CC;
 
@@ -64,11 +65,11 @@ void Cannon::rotateToPoint(CCPoint ptTo)
 }
 
 void  Cannon::setRotationLeft(CCObject *pSender) {
-	this->setRotation(-10.0f);
+	this->setRotation(-BARREL_MOVE_ANGLE);
 }
 
 void  Cannon::setRotationRight(CCObject *pSender) {
-	this->setRotation(10.0f);
+	this->setRotation(BARREL_MOVE_ANGLE);
 }
 
 //这里的rotation是相对炮管增加和减少的角度
@@ -78,12 +79,13 @@ void Cannon::setRotation(float rotation)
 	m_fRotation = m_fRotation <= -80 ? -80 : m_fRotation;
 	m_fRotation = m_fRotation >= 80 ? 80 : m_fRotation;
 	float absf_rotation = fabsf(rotation);
-	float duration = absf_rotation / 180.0f*0.2f;
+	float duration = absf_rotation/180.0f*0.01f;
 	CCFiniteTimeAction *pAction = CCRotateTo::actionWithDuration(duration, m_fRotation);
 	this->m_pBarrel->runAction(pAction);
 	CCPoint p = getMuzzleWorldPos();
-	
-	CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
+	//移动炮台同时再发射子弹
+	//CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+	//CCLog("pBullet PositionX:%f,PositionY:%f", p.x,p.y);
 }
 
 void Cannon::fire(CCObject *pSender)
