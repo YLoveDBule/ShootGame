@@ -8,6 +8,8 @@
 #include "GameData\MonsterData.h"
 #include "Utils\Utils.h"
 
+#include "Utils\AudioManager.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -95,7 +97,6 @@ bool AppDelegate::initInstance() {
 bool AppDelegate::applicationDidFinishLaunching() {
 	// initialize director
 	CCDirector *pDirector = CCDirector::sharedDirector();
-
 	pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
 
 	// enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
@@ -123,6 +124,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Utils::InitLoadPlist("siwang");
 	Utils::InitLoadPlist("diaoxue");
 	Utils::InitLoadAoeEffect();
+	//preload music && preload effect
+	AudioManager::getInstance()->preLoadMusic("background.mp3");
 	return true;
 }
 

@@ -3,8 +3,12 @@
 #include "Component/GamingLayer.h"
 #include "Config/NotificationNameConfig.h"
 #include "GameData/MonsterMrg.h"
+#include "Config/BaseConfig.h"
+#include "Utils/AudioManager.h"
 bool LoginScene::init()
 {
+	//play background music
+	AudioManager::getInstance()->playMusic("background.mp3", true);
 	_nowSate = MenuState_Star;
 	if (!CCLayer::init())
 	{
@@ -177,18 +181,7 @@ void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 	switch (_nowSate)
 	{
 	case MenuState_Star:
-	{
-		PlayerMrg::getInstance()->Init();		
-		CCScene *scene = CCScene::node();
-		GamingLayer*layer = GamingLayer::createGamingLayer();
-		scene->addChild(layer);
-		CCDirector::sharedDirector()->replaceScene(scene);
-		//PlayerMrg::getInstance()->Init();
-		/*CCString str = CCString("100");
-		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);*/
-		/*MonsterMrg *monster = MonsterMrg::Create(1001);
-		addChild(monster);*/
-	}
+		clickStar(NULL);
 		break;
 	case MenuState_Exit:
 	{
@@ -211,7 +204,16 @@ void LoginScene::onClickK(cocos2d::CCKeypadStatus key_status)
 
 void LoginScene::clickStar(CCObject* pSender)
 {
-	CCLog("sart");
+	PlayerMrg::getInstance()->Init();
+	CCScene *scene = CCScene::node();
+	GamingLayer*layer = GamingLayer::createGamingLayer();
+	scene->addChild(layer);
+	CCDirector::sharedDirector()->replaceScene(scene);
+	//PlayerMrg::getInstance()->Init();
+	/*CCString str = CCString("100");
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEGRADE, &str);*/
+	/*MonsterMrg *monster = MonsterMrg::Create(1001);
+	addChild(monster);*/
 }
 
 void LoginScene::clickExit(CCObject* pSender)
