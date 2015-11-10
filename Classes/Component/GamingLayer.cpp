@@ -331,8 +331,8 @@ void GamingLayer::InitPlayerHpUI()
 	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerNowHp();
 	ss << "/";
 	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerHpLimit();
-	_PlayerCurHpLabel = CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
-
+	_PlayerCurHpLabel = CCLabelAtlas::labelWithString(ss.str().c_str(), "grade.png", 32, 45, '/');//CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
+	_PlayerCurHpLabel->setScale(0.75);
 	CCSprite *hpBg = CCSprite::spriteWithFile("shouzi.png");
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	hpBg->setAnchorPoint(ccp(0, 1));

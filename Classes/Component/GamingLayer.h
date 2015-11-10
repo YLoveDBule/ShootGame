@@ -74,5 +74,5 @@ private:
 	void AllMaigicFireEffect();
 private:
 	CCLabelAtlas* _gradeLabel;
-	CCLabelTTF* _PlayerCurHpLabel;
+	CCLabelAtlas* _PlayerCurHpLabel;
 };
