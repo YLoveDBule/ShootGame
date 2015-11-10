@@ -8,6 +8,8 @@
 #include "GameData\MonsterData.h"
 #include "Utils\Utils.h"
 
+#include "Utils\AudioManager.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -120,6 +122,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Utils::InitLoadPlist("dazhao1");
 	Utils::InitLoadPlist("dazhao2");
 	Utils::InitLoadAoeEffect();
+	//preload music && preload effect
+	AudioManager::getInstance()->preLoadMusic("background.mp3");
 	return true;
 }
 

@@ -4,8 +4,11 @@
 #include "Config/NotificationNameConfig.h"
 #include "GameData/MonsterMrg.h"
 #include "Config/BaseConfig.h"
+#include "Utils/AudioManager.h"
 bool LoginScene::init()
 {
+	//play background music
+	AudioManager::getInstance()->playMusic("background.mp3", true);
 	_nowSate = MenuState_Star;
 	if (!CCLayer::init())
 	{
