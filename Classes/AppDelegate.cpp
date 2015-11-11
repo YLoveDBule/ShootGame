@@ -121,6 +121,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Utils::InitLoadPlist("shouji");
 	Utils::InitLoadPlist("dazhao1");
 	Utils::InitLoadPlist("dazhao2");
+	Utils::InitLoadPlist("siwang");
+	Utils::InitLoadPlist("diaoxue");
 	Utils::InitLoadAoeEffect();
 	//preload music && preload effect
 	AudioManager::getInstance()->preLoadMusic("background.mp3");

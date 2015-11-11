@@ -31,8 +31,8 @@ MonsterMrg * MonsterMrg::Create(const int monsterId, GamingLayer* gamingLayer)
 
 void MonsterMrg::DestroyMonster()
 {
+	stopAllActions();
 	this->unschedule(schedule_selector(MonsterMrg::freshPos));
-	//֪ͨ
 	stringstream stream;
 	stream << _SkillGrade;
 	CCString str = CCString(stream.str().c_str());
@@ -47,10 +47,38 @@ void MonsterMrg::DestroyMonster()
 	stream.str("");
 	stream.clear();
 
-	removeFromParentAndCleanup(true);	
-	_gamingLayer->m_pMonsters->removeObject(this);
+	/*removeFromParentAndCleanup(true);
+	_gamingLayer->m_pMonsters->removeObject(this);*/
+	DestoryMonsterEffect();
 }
 
+void MonsterMrg::DestoryMonsterEffect()
+{
+	CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(7);
+	char str[20] = {};
+	for (size_t i = 0; i < 7; ++i)
+	{
+		sprintf(str, "%s_%d.png", "siwang", i);
+		CCSpriteFrame *frame = cache->spriteFrameByName(str);
+		animFrames->addObject(frame);
+	}
+	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.1);
+	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
+	CCSprite * zibao = CCSprite::spriteWithSpriteFrameName("siwang_0.png");
+	zibao->setPosition(ccp(getContentSize().width / 2, getContentSize().height / 2));
+	addChild(zibao);
+	CCCallFuncN *callback = CCCallFuncN::actionWithTarget(this, callfuncN_selector(MonsterMrg::ReMoveMonsterDieEffect));
+	CCFiniteTimeAction *seq = CCSequence::actions(animate, callback, NULL);
+	zibao->runAction(seq);
+}
+
+void MonsterMrg::ReMoveMonsterDieEffect(CCNode *pSender)
+{
+	((CCSprite *)pSender)->removeFromParentAndCleanup(true);
+	removeFromParentAndCleanup(true);
+	_gamingLayer->m_pMonsters->removeObject(this);
+}
 bool MonsterMrg::MonsterInit(const int monsterId, GamingLayer* gamingLayer)
 {
 	if (!CCSprite::init())
@@ -141,6 +169,7 @@ void MonsterMrg::freshMonsterHp(const int playerAtt)
 	_NowHp -= playerAtt;
 	if (_NowHp <= 0)
 	{
+		_hpProgress->setPercentage(0);
 		m_bIsDead = true;
 		DestroyMonster();
 	}

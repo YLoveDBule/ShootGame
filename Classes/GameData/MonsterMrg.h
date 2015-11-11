@@ -13,6 +13,8 @@ public:
 	bool m_bIsDead;
 public:
 	virtual void DestroyMonster();
+	void DestoryMonsterEffect();
+	void ReMoveMonsterDieEffect(CCNode *pSender);
 	bool MonsterInit(const int monsterId, GamingLayer* gamingLayer);
 	virtual void InitMonsterData(const int monsterId);
 	void freshPos(float dt);
