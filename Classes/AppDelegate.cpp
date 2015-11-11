@@ -125,7 +125,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Utils::InitLoadPlist("diaoxue");
 	Utils::InitLoadAoeEffect();
 	//preload music && preload effect
-	AudioManager::getInstance()->preLoadMusic("background.mp3");
+	AudioManager::getInstance()->preLoadMusic("audio/background.mp3");
+	AudioManager::getInstance()->preLoadEffect("audio/dead1.mp3");
+	AudioManager::getInstance()->preLoadEffect("audio/dead2.mp3");
+	AudioManager::getInstance()->preLoadEffect("audio/escape.mp3");
+	AudioManager::getInstance()->preLoadEffect("audio/hit.mp3");
+	AudioManager::getInstance()->preLoadEffect("audio/magic.mp3");
+	AudioManager::getInstance()->preLoadEffect("audio/shoot.mp3");
 	return true;
 }
 

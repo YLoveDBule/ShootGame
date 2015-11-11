@@ -3,6 +3,7 @@
 #include "Config\NotificationNameConfig.h"
 #include "MonsterData.h"
 #include "Component\GamingLayer.h"
+#include "Utils\AudioManager.h"
 
 MonsterMrg::MonsterMrg()
 {
@@ -31,6 +32,12 @@ MonsterMrg * MonsterMrg::Create(const int monsterId, GamingLayer* gamingLayer)
 
 void MonsterMrg::DestroyMonster()
 {
+
+	if(rand() / double(RAND_MAX) >= 0.5)
+		AudioManager::getInstance()->playEffect("audio/dead1.mp3");
+	else
+		AudioManager::getInstance()->playEffect("audio/dead2.mp3");
+
 	stopAllActions();
 	this->unschedule(schedule_selector(MonsterMrg::freshPos));
 	stringstream stream;
@@ -233,6 +240,7 @@ void MonsterMrg::MonsterSuicideEffect()
 
 void MonsterMrg::MonsterHurtPlayerHp()
 {
+	AudioManager::getInstance()->playEffect("audio/escape.mp3");
 	this->unschedule(schedule_selector(MonsterMrg::freshPos));
 	stringstream stream;
 	stream << (-1 *_Hurt);
