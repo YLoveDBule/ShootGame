@@ -10,6 +10,7 @@
 #include "GameData/PlayerMrg.h"
 #include "Component/PauseLayer.h"
 #include "ResulitLayer.h"
+#include "Utils/AudioManager.h"
 #include <sstream>
 USING_NS_CC;
 
@@ -211,6 +212,7 @@ void GamingLayer::checkHitMonster()
 					pMonster->DestroyMonster();
 					break;
 				}	*/
+				AudioManager::getInstance()->playEffect("audio/hit.mp3");
 				pMonster->freshMonsterHp(PlayerMrg::getInstance()->getPlayer()->getPlayerNowAtt());
 			}
 		}
@@ -398,6 +400,7 @@ void GamingLayer::setBulletsState(int state)
 void GamingLayer::createBullet(CCObject *pSender)
 {
 	//CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_FIRE);
+	AudioManager::getInstance()->playEffect("audio/shoot.mp3");
 	Bullet* pBullet = Bullet::createBullet(this);
 	//根据炮口的位置和炮管的方向创建子弹
 	CCPoint p = this->m_pControllPanel->getMuzzleWorldPos();
@@ -412,6 +415,7 @@ void GamingLayer::createBullet(CCObject *pSender)
 
 void GamingLayer::createMagicFire(CCObject *pSender)
 {
+	AudioManager::getInstance()->playEffect("audio/magic.mp3");
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TO_ZERO);
 	//全屏伤害
 	hurtAllMonster();

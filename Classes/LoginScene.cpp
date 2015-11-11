@@ -8,7 +8,7 @@
 bool LoginScene::init()
 {
 	//play background music
-	AudioManager::getInstance()->playMusic("background.mp3", true);
+	AudioManager::getInstance()->playMusic("audio/background.mp3", true);
 	_nowSate = MenuState_Star;
 	if (!CCLayer::init())
 	{
