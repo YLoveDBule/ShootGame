@@ -81,7 +81,6 @@ void PauseLayer::continueGame(CCObject *pSender)
 void PauseLayer::restartGame(CCObject *pSender)
 {
 	this->removeFromParentAndCleanup(true);
-	this->removeFromParentAndCleanup(true);
 	/*CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESTART_GAME);*/
 	CCDirector::sharedDirector()->resume();
 	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
