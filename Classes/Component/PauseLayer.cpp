@@ -3,6 +3,7 @@
 #include "Config/NotificationNameConfig.h"
 #include "GameData/PlayerMrg.h"
 #include "GamingLayer.h"
+#include "Config/BaseConfig.h"
 
 USING_NS_CC;
 
@@ -33,10 +34,21 @@ bool PauseLayer::initPauseLayer()
 	CCSprite *bgSprite = CCSprite::spriteWithFile("common/actor_pause_bg.png");
 	this->addChild(bgSprite);
 	bgSprite->setPosition(ccp(winSize.width / 2, winSize.height / 2));
-
-	CCMenuItemImage *continueItem = CCMenuItemImage::itemFromNormalImage("common/actor_btn_continue.png", "common/actor_btn_continue.png", this, menu_selector(PauseLayer::continueGame));
-	CCMenuItemImage *restartItem = CCMenuItemImage::itemFromNormalImage("common/actor_btn_restart.png", "common/actor_btn_restart.png", this, menu_selector(PauseLayer::restartGame));
-	CCMenuItemImage *exitItem = CCMenuItemImage::itemFromNormalImage("common/actor_btn_exit.png", "common/actor_btn_exit.png", this, menu_selector(PauseLayer::exitGame));
+	std::string stdNameOne = "";
+	std::string stdNameTwo = "";
+	std::string stdNameThree = "";
+#if defined LANG_CH 
+	stdNameOne = "common/actor_btn_continue.png";
+	stdNameTwo = "common/actor_btn_restart.png";
+	stdNameThree = "common/actor_btn_exit.png";
+#else
+	stdNameOne = "En/actor_btn_continue.png";
+	stdNameTwo = "En/actor_btn_restart.png";
+	stdNameThree = "En/actor_btn_exit.png";
+#endif
+	CCMenuItemImage *continueItem = CCMenuItemImage::itemFromNormalImage(stdNameOne.c_str(), stdNameOne.c_str(), this, menu_selector(PauseLayer::continueGame));
+	CCMenuItemImage *restartItem = CCMenuItemImage::itemFromNormalImage(stdNameTwo.c_str(), stdNameTwo.c_str(), this, menu_selector(PauseLayer::restartGame));
+	CCMenuItemImage *exitItem = CCMenuItemImage::itemFromNormalImage(stdNameThree.c_str(), stdNameThree.c_str(), this, menu_selector(PauseLayer::exitGame));
 	CCMenu *menu = CCMenu::menuWithItems(continueItem, restartItem, exitItem, NULL);
 	menu->alignItemsVertically();
 	this->addChild(menu);
@@ -92,56 +104,46 @@ void PauseLayer::exitGame(CCObject *pSender)
 #endif
 }
 
-bool PauseLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
+bool PauseLayer::keyAllClicked(int iKeyID, CCKeypadStatus iKeyState)
 {
-	switch (iKeyID)
+
+	if (iKeyID == 'w' || iKeyID == 'W' || iKeyID == HANDSET_UP || iKeyID == HANDSET_DOWN_)
 	{
-	case 'w':
-	case 'W':
-		//	case KEY_UP:
-		onClickW(key_status);
-		break;
-	case 's':
-	case 'S':
-		//	case KEY_DOWN:
-		onClickS(key_status);
-		break;
-	case 'a':
-	case 'A':
-		//	case KEY_LEFT:
-		onClickA(key_status);
-		break;
-	case 'd':
-	case 'D':
-		//	case KEY_RIGHT:
-		onClickD(key_status);
-		break;
-
-	case 'i':
-	case 'I':
-		//	case KEY_A:
-		onClickI(key_status);
-		break;
-	case 'k':
-	case 'K':
-		//	case KEY_B:
-		onClickK(key_status);
-		break;
-	case 'l':
-	case 'L':
-		//	case KEY_X:
-		onClickL(key_status);
-		break;
-	case 'j':
-	case 'J':
-		//	case KEY_Y:
-		onClickJ(key_status);
-		break;
-	default:
-		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, key_status);
-		break;
+		onClickW(iKeyState);
 	}
-
+	else if (iKeyID == 's' || iKeyID == 'S' || iKeyID == HANDSET_DOWN || iKeyID == HANDSET_DOWN_)
+	{
+		onClickS(iKeyState);
+	}
+	else if (iKeyID == 'a' || iKeyID == 'A' || iKeyID == HANDSET_LEFT || iKeyID == HANDSET_LEFT_)
+	{
+		onClickA(iKeyState);
+	}
+	else if (iKeyID == 'd' || iKeyID == 'D' || iKeyID == HANDSET_RIGHT || iKeyID == HANDSET_RIGHT_)
+	{
+		onClickD(iKeyState);
+	}
+	else if (iKeyID == 'j' || iKeyID == 'J' || iKeyID == HANDSET_Y || iKeyID == HANDSET_Y_)
+	{
+		onClickJ(iKeyState);
+	}
+	else if (iKeyID == 'i' || iKeyID == 'I' || iKeyID == HANDSET_A || iKeyID == HANDSET_A_)
+	{
+		onClickI(iKeyState);
+	}
+	else if (iKeyID == 'k' || iKeyID == 'K' || iKeyID == HANDSET_B || iKeyID == HANDSET_B_)
+	{
+		onClickK(iKeyState);
+	}
+	else if (iKeyID == 'l' || iKeyID == 'L' || iKeyID == HANDSET_X || iKeyID == HANDSET_X_)
+	{
+		onClickL(iKeyState);
+	}
+	else
+	{
+		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, iKeyState);
+		return false;
+	}
 	return true;
 }
 

@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Cannon.h"
 #include "Config/NotificationNameConfig.h"
+#include "Config/BaseConfig.h"
 #include "GameData/PlayerMrg.h"
 #include <sstream>
 USING_NS_CC;
@@ -90,16 +91,25 @@ float ControllPanel::getConnonBarrelRotation()
 
 void ControllPanel::createAttackButton()
 {
+	std::string nameOne = "";
+	std::string nameTwo = "";
+#if defined LANG_CH
+	nameOne = "common/actor_btn_noramlAtt.png";
+	nameTwo = "common/actor_btn_magicAtt.png";
+#else
+	nameOne = "En/actor_btn_noramlAtt.png";
+	nameTwo = "En/actor_btn_magicAtt.png";
+#endif
 	//ÆÕÍ¨¹¥»÷item
 	CCMenuItemImage *pNormalItem = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_noramlAtt.png",
-		"common/actor_btn_noramlAtt.png",
+		nameOne.c_str(),
+		nameOne.c_str(),
 		this,
 		menu_selector(ControllPanel::normalAttackClick));
 	//Ä§·¨¹¥»÷item
 	m_pMagicItem = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_magicAtt.png",
-		"common/actor_btn_magicAtt.png",
+		nameTwo.c_str(),
+		nameTwo.c_str(),
 		this,
 		menu_selector(ControllPanel::magicAttackClick));
 
@@ -119,9 +129,15 @@ void ControllPanel::createAttackButton()
 
 void ControllPanel::createPauseButton()
 {
+	std::string nameOne = "";
+#if defined LANG_CH 
+	nameOne = "common/actor_btn_pause.png";
+#else 
+	nameOne = "En/actor_btn_pause.png";
+#endif
 	CCMenuItemImage *pPauseItem = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_pause.png",
-		"common/actor_btn_pause.png",
+		nameOne.c_str(),
+		nameOne.c_str(),
 		this,
 		menu_selector(ControllPanel::pauseBtnClick));
 

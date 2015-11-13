@@ -3,6 +3,7 @@
 #include "GameData\PlayerMrg.h"
 #include "Config\NotificationNameConfig.h"
 #include "GamingLayer.h"
+#include "Config\BaseConfig.h"
 ResulitLayer * ResulitLayer::create()
 {
 	ResulitLayer *pResulitLayer = new ResulitLayer();
@@ -27,13 +28,24 @@ bool ResulitLayer::initResulitLayer()
 	CCLayer::setIsKeypadEnabled(true);
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	this->setContentSize(winSize);
-
-	CCSprite *bg = CCSprite::spriteWithFile("tongji.png");
+	std::string strName = "";
+#if defined LANG_CH 
+	strName = "tongji.png";
+#else
+	strName = "En/tongji.png";
+#endif
+	CCSprite *bg = CCSprite::spriteWithFile(strName.c_str());
 	bg->setPosition(ccp(winSize.width / 2, winSize.height / 2));
 	addChild(bg);
 	float bgheight = bg->getContentSize().height;
 	//grade 
-	CCSprite *nowGrade = CCSprite::spriteWithFile("score.png");
+	std::string StrOne = "";
+#if defined LANG_CH 
+	StrOne = "score.png";
+#else 
+	StrOne = "En/score.png";
+#endif
+	CCSprite *nowGrade = CCSprite::spriteWithFile(StrOne.c_str());
 	nowGrade->setPosition(ccp(50, bgheight - 180));
 	nowGrade->setAnchorPoint(ccp(0, 0));
 	bg->addChild(nowGrade);
@@ -46,7 +58,13 @@ bool ResulitLayer::initResulitLayer()
 	gradeLabel->setScale(0.75);
 	bg->addChild(gradeLabel); 
     //lastHightGrade 
-	CCSprite *lastGrade = CCSprite::spriteWithFile("topscore.png");
+	std::string stdName = "";
+#if defined LANG_CH 
+	stdName = "topscore.png";
+#else 
+	stdName = "En/topscore.png";
+#endif
+	CCSprite *lastGrade = CCSprite::spriteWithFile(stdName.c_str());
 	lastGrade->setPosition(ccp(50, bgheight - 220));
 	lastGrade->setAnchorPoint(ccp(0, 0.5));
 	bg->addChild(lastGrade);
@@ -67,9 +85,15 @@ bool ResulitLayer::initResulitLayer()
 		PlayerMrg::getInstance()->setPlayerLastHightGrade(PlayerMrg::getInstance()->getPlayer()->getPlayerGrade());
 	}
 
-	//chongxin kaishi 
+	//chongxin kaishi
+	std::string nameOne = "";
+#if defined LANG_CH 
+	nameOne = "common/actor_btn_restart.png";
+#else
+	nameOne = "En/actor_btn_restart.png";
+#endif
 	CCMenuItemImage *pContinue = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_restart.png",
+		nameOne.c_str(),
 		NULL,
 		this,
 		menu_selector(ResulitLayer::restartGame));
@@ -118,56 +142,44 @@ void ResulitLayer::menuExitCallBack(CCObject *pSender)
 
 bool ResulitLayer::keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus iKeyState)
 {
-	switch (iKeyID)
+
+	if (iKeyID == 'w' || iKeyID == 'W' || iKeyID == HANDSET_UP || iKeyID == HANDSET_DOWN_)
 	{
-	case 'w':
-	case 'W':
-		//	case KEY_UP:
-		{
-			onClickW(iKeyState);
-		}
-		break;
-	case 's':
-	case 'S':
-		//	case KEY_DOWN:
-			onClickS(iKeyState);
-		break;
-	case 'a':
-	case 'A':
-		//	case KEY_LEFT:
-			onClickA(iKeyState);
-		break;
-	case 'd':
-	case 'D':
-		//	case KEY_RIGHT:
-			onClickD(iKeyState);
-		break;
-
-	case 'i':
-	case 'I':
-		//	case KEY_A:
-			onClickI(iKeyState);
-		break;
-	case 'k':
-	case 'K':
-		//	case KEY_B:
-			onClickK(iKeyState);
-		break;
-	case 'l':
-	case 'L':
-		//	case KEY_X:
-			onClickL(iKeyState);
-		break;
-	case 'j':
-	case 'J':
-		//	case KEY_Y:
-			onClickJ(iKeyState);
-
-	default:
-		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, iKeyState);
-		break;
+		onClickW(iKeyState);
 	}
-
+	else if (iKeyID == 's' || iKeyID == 'S' || iKeyID == HANDSET_DOWN || iKeyID == HANDSET_DOWN_)
+	{
+		onClickS(iKeyState);
+	}
+	else if (iKeyID == 'a' || iKeyID == 'A' || iKeyID == HANDSET_LEFT || iKeyID == HANDSET_LEFT_)
+	{
+		onClickA(iKeyState);
+	}
+	else if (iKeyID == 'd' || iKeyID == 'D' || iKeyID == HANDSET_RIGHT || iKeyID == HANDSET_RIGHT_)
+	{
+		onClickD(iKeyState);
+	}
+	else if (iKeyID == 'j' || iKeyID == 'J' || iKeyID == HANDSET_Y || iKeyID == HANDSET_Y_)
+	{
+		onClickJ(iKeyState);
+	}
+	else if (iKeyID == 'i' || iKeyID == 'I' || iKeyID == HANDSET_A || iKeyID == HANDSET_A_)
+	{
+		onClickI(iKeyState);
+	}
+	else if (iKeyID == 'k' || iKeyID == 'K' || iKeyID == HANDSET_B || iKeyID == HANDSET_B_)
+	{
+		onClickK(iKeyState);
+	}
+	else if (iKeyID == 'l' || iKeyID == 'L' || iKeyID == HANDSET_X || iKeyID == HANDSET_X_)
+	{
+		onClickL(iKeyState);
+	}
+	else
+	{
+		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, iKeyState);
+		return false;
+	}
 	return true;
 }
 

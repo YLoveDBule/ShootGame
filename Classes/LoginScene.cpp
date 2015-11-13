@@ -19,7 +19,11 @@ bool LoginScene::init()
 	bg->setPosition(ccp(size.width / 2, size.height / 2));
 	addChild(bg);
 	//logo
+#if defined LANG_CH 
 	CCSprite *logo = CCSprite::spriteWithFile("logo.png");
+#else 
+	CCSprite *logo = CCSprite::spriteWithFile("En/logo.png");
+#endif 
 	logo->setPosition(ccp(size.width / 2, size.height / 2 + size.height / 4));
 	addChild(logo);
 
@@ -28,14 +32,23 @@ bool LoginScene::init()
 	chenbao->setAnchorPoint(ccp(0, 0));
 	addChild(chenbao);
 	//menu
+	std::string nemuOneName = "";
+	std::string nemuTwoName = "";
+#if defined LANG_CH 
+	nemuOneName = "kaishi.png";
+	nemuTwoName = "tuichu.png";
+#else
+	nemuOneName = "En/kaishi.png";
+	nemuTwoName = "En/tuichu.png";
+#endif
 	_pStarMenu = CCMenuItemImage::itemFromNormalImage(
-		"kaishi.png",
+		nemuOneName.c_str(),
 		NULL,
 		this,
 		menu_selector(LoginScene::clickStar));
 	_pStarMenu->setPosition(ccp(size.width / 2, size.height / 2 - 15));
 	_pExitMenu = CCMenuItemImage::itemFromNormalImage(
-		"tuichu.png",
+		nemuTwoName.c_str(),
 		NULL,
 		this,
 		menu_selector(LoginScene::clickExit));
@@ -74,136 +87,146 @@ CCScene* LoginScene::scene()
 
 bool LoginScene::keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus iKeyState)
 {
-	switch (iKeyID)
+
+
+	if (iKeyID == 'w' || iKeyID == 'W' || iKeyID == HANDSET_UP || iKeyID == HANDSET_DOWN_)
 	{
-	case 'w':
-	case 'W':
-//	case KEY_UP:
-		if (iKeyState == EVENT_KEY_DOWN)
-		{
-			onClickW(iKeyState);
-		}
-		break;
-	case 's':
-	case 'S':
-//	case KEY_DOWN:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickS(iKeyState);
-		break;
-	case 'a':
-	case 'A':
-//	case KEY_LEFT:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickA(iKeyState);
-		break;
-	case 'd':
-	case 'D':
-//	case KEY_RIGHT:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickD(iKeyState);
-		break;
-
-	case 'i':
-	case 'I':
-//	case KEY_A:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickI(iKeyState);
-		break;
-	case 'k':
-	case 'K':
-//	case KEY_B:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickK(iKeyState);
-		break;
-	case 'l':
-	case 'L':
-//	case KEY_X:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickL(iKeyState);
-		break;
-	case 'j':
-	case 'J':
-//	case KEY_Y:
-		if (iKeyState == EVENT_KEY_DOWN)
-		    onClickJ(iKeyState);
-		break;
-
-	default:
-		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, iKeyState);
-		break;
+		onClickW(iKeyState);
 	}
-
+	else if (iKeyID == 's' || iKeyID == 'S' || iKeyID == HANDSET_DOWN || iKeyID == HANDSET_DOWN_)
+	{
+		onClickS(iKeyState);
+	}
+	else if (iKeyID == 'a' || iKeyID == 'A' || iKeyID == HANDSET_LEFT || iKeyID == HANDSET_LEFT_)
+	{
+		onClickA(iKeyState);
+	}
+	else if (iKeyID == 'd' || iKeyID == 'D' || iKeyID == HANDSET_RIGHT || iKeyID == HANDSET_RIGHT_)
+	{
+		onClickD(iKeyState);
+	}
+	else if (iKeyID == 'j' || iKeyID == 'J' || iKeyID == HANDSET_Y || iKeyID == HANDSET_Y_)
+	{
+		onClickJ(iKeyState);
+	}
+	else if (iKeyID == 'i' || iKeyID == 'I' || iKeyID == HANDSET_A || iKeyID == HANDSET_A_)
+	{
+		onClickI(iKeyState);
+	}
+	else if (iKeyID == 'k' || iKeyID == 'K' || iKeyID == HANDSET_B || iKeyID == HANDSET_B_)
+	{
+		onClickK(iKeyState);
+	}
+	else if (iKeyID == 'l' || iKeyID == 'L' || iKeyID == HANDSET_X || iKeyID == HANDSET_X_)
+	{
+		onClickL(iKeyState);
+	}
+	else 
+	{
+		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, iKeyState);
+		return false;
+	}
 	return true;
 }
 
 void LoginScene::onClickA(cocos2d::CCKeypadStatus key_status)
 {
-
+	if (key_status == EVENT_KEY_DOWN)
+	{
+		_nowSate = MenuState(_nowSate + 1);
+		if (_nowSate == MenuState_End)
+		{
+			_nowSate = MenuState_Star;
+		}
+		ChangeRowPosition();
+	}
 }
 
 void LoginScene::onClickS(cocos2d::CCKeypadStatus key_status)
 {
-	_nowSate = MenuState(_nowSate + 1);
-	if (_nowSate == MenuState_End)
+	if (key_status == EVENT_KEY_DOWN)
 	{
-		_nowSate = MenuState_Star;
+		_nowSate = MenuState(_nowSate + 1);
+		if (_nowSate == MenuState_End)
+		{
+			_nowSate = MenuState_Star;
+		}
+		ChangeRowPosition();
 	}
-	ChangeRowPosition();
+	
 }
 
 void LoginScene::onClickD(cocos2d::CCKeypadStatus key_status)
 {
-
+	if (key_status == EVENT_KEY_DOWN)
+	{
+	}
 }
 
 void LoginScene::onClickW(cocos2d::CCKeypadStatus key_status)
 {
-	_nowSate = MenuState(_nowSate - 1);
-	if (_nowSate == MenuState_Begin)
+	if (key_status == EVENT_KEY_DOWN)
 	{
-		_nowSate = MenuState_Exit;
+		_nowSate = MenuState(_nowSate - 1);
+		if (_nowSate == MenuState_Begin)
+		{
+			_nowSate = MenuState_Exit;
+		}
+		ChangeRowPosition();
 	}
-	ChangeRowPosition();
+	
 }
 
 void LoginScene::onClickI(cocos2d::CCKeypadStatus key_status)
 {
-
+	if (key_status == EVENT_KEY_DOWN)
+	{
+	}
 }
 
 void LoginScene::onClickL(cocos2d::CCKeypadStatus key_status)
 {
-
+	if (key_status == EVENT_KEY_DOWN)
+	{
+	}
 }
 
 void LoginScene::onClickJ(cocos2d::CCKeypadStatus key_status)
 {
-	switch (_nowSate)
+	if (key_status == EVENT_KEY_DOWN)
 	{
-	case MenuState_Star:
-		clickStar(NULL);
-		break;
-	case MenuState_Exit:
-	{
-	CCDirector::sharedDirector()->end();
+		switch (_nowSate)
+		{
+		case MenuState_Star:
+			clickStar(NULL);
+			break;
+		case MenuState_Exit:
+		{
+			CCDirector::sharedDirector()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-		exit(0);
+			exit(0);
 #endif
-	}
+		}
 		break;
-	default:
-		break;
+		default:
+			break;
 	}
+	}
+	
 }
 
 void LoginScene::onClickK(cocos2d::CCKeypadStatus key_status)
 {
+	if (key_status == EVENT_KEY_DOWN)
+	{
 
+	}
 }
 
 void LoginScene::clickStar(CCObject* pSender)
 {
+
 	PlayerMrg::getInstance()->Init();
 	CCScene *scene = CCScene::node();
 	GamingLayer*layer = GamingLayer::createGamingLayer();

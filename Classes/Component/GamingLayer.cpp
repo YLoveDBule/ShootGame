@@ -436,57 +436,46 @@ void GamingLayer::hurtAllMonster()
 	m_bIsMagicFireIng = false;
 }
 
-bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus key_status)
+bool GamingLayer::keyAllClicked(int iKeyID, CCKeypadStatus iKeyState)
 {
-	switch (iKeyID)
+
+	if (iKeyID == 'w' || iKeyID == 'W' || iKeyID == HANDSET_UP || iKeyID == HANDSET_DOWN_)
 	{
-	case 'w':
-	case 'W':
-		//	case KEY_UP:
-		onClickW(key_status);
-		break;
-	case 's':
-	case 'S':
-		//	case KEY_DOWN:
-		onClickS(key_status);
-		break;
-	case 'a':
-	case 'A':
-		//	case KEY_LEFT:
-		onClickA(key_status);
-		break;
-	case 'd':
-	case 'D':
-		//	case KEY_RIGHT:
-		onClickD(key_status);
-		break;
-
-	case 'i':
-	case 'I':
-		//	case KEY_A:
-		onClickI(key_status);
-		break;
-	case 'k':
-	case 'K':
-		//	case KEY_B:
-		onClickK(key_status);
-		break;
-	case 'l':
-	case 'L':
-		//	case KEY_X:
-		onClickL(key_status);
-		break;
-	case 'j':
-	case 'J':
-		//	case KEY_Y:
-		onClickJ(key_status);
-		break;
-
-	default:
-		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, key_status);
-		break;
+		onClickW(iKeyState);
 	}
-
+	else if (iKeyID == 's' || iKeyID == 'S' || iKeyID == HANDSET_DOWN || iKeyID == HANDSET_DOWN_)
+	{
+		onClickS(iKeyState);
+	}
+	else if (iKeyID == 'a' || iKeyID == 'A' || iKeyID == HANDSET_LEFT || iKeyID == HANDSET_LEFT_)
+	{
+		onClickA(iKeyState);
+	}
+	else if (iKeyID == 'd' || iKeyID == 'D' || iKeyID == HANDSET_RIGHT || iKeyID == HANDSET_RIGHT_)
+	{
+		onClickD(iKeyState);
+	}
+	else if (iKeyID == 'j' || iKeyID == 'J' || iKeyID == HANDSET_Y || iKeyID == HANDSET_Y_)
+	{
+		onClickJ(iKeyState);
+	}
+	else if (iKeyID == 'i' || iKeyID == 'I' || iKeyID == HANDSET_A || iKeyID == HANDSET_A_)
+	{
+		onClickI(iKeyState);
+	}
+	else if (iKeyID == 'k' || iKeyID == 'K' || iKeyID == HANDSET_B || iKeyID == HANDSET_B_)
+	{
+		onClickK(iKeyState);
+	}
+	else if (iKeyID == 'l' || iKeyID == 'L' || iKeyID == HANDSET_X || iKeyID == HANDSET_X_)
+	{
+		onClickL(iKeyState);
+	}
+	else
+	{
+		CCLog("-------KeyNotFind----KeyID = %d -------KeyState = %d-----\n", iKeyID, iKeyState);
+		return false;
+	}
 	return true;
 }
 
