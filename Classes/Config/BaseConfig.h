@@ -28,3 +28,13 @@
 #define HANDSET_UP_ 'w'
 #define HANDSET_DOWN 's'
 #define HANDSET_DOWN_ 's'
+
+#define KEY_UP    51 //W
+#define KEY_DOWN  47 //S
+#define KEY_LEFT  29 //A
+#define KEY_RIGHT 32 //D
+
+#define KEY_A	37 //I
+#define KEY_B	39 //K
+#define KEY_X	40 //L
+#define KEY_Y	38 //J
