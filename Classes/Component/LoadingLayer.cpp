@@ -1,5 +1,8 @@
 #include "LoadingLayer.h"
 #include "cocos2d.h"
+#include "Utils\Utils.h"
+#include "Utils\AudioManager.h"
+#include "LoginScene.h"
 USING_NS_CC;
 bool LoadingLayer::init()
 {
@@ -28,13 +31,32 @@ bool LoadingLayer::init()
 	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.2);
 	CCActionInterval*  action = CCAnimate::actionWithAnimation(animation, true);
 	loadingSprite->runAction(CCRepeatForever::actionWithAction(action));
-	
+	this->schedule(schedule_selector(LoadingLayer::update),0.5);
 	return true;
 }
 
 void LoadingLayer::update(float dt)
 {
-
+	if (_index <= 5)
+	{
+		Utils::InitLoadPlist(_Effect.at(_index).c_str());
+		++_index;
+	}
+	else if (_index <= 12)
+	{
+		AudioManager::getInstance()->preLoadMusic(_Audio.at(_index - 6).c_str());
+		++_index;
+	}
+	else if (_index == 13)
+	{
+		Utils::InitLoadAoeEffect();
+		++_index;
+	}
+	else
+	{
+		CCScene *sence = LoginScene::scene();
+		CCDirector::sharedDirector()->replaceScene(sence);
+	}
 }
 
 CCScene* LoadingLayer::scene()
@@ -50,4 +72,27 @@ CCScene* LoadingLayer::scene()
 
 	// return the scene
 	return scene;
+}
+
+LoadingLayer::LoadingLayer()
+{
+	_Effect.push_back("Monster");
+	_Effect.push_back("shouji");
+	_Effect.push_back("dazhao1");
+	_Effect.push_back("dazhao2");
+	_Effect.push_back("siwang");
+	_Effect.push_back("diaoxue");
+	_Audio.push_back("audio/background.mp3");
+	_Audio.push_back("audio/dead1.mp3");
+	_Audio.push_back("audio/dead2.mp3");
+	_Audio.push_back("audio/escape.mp3");
+	_Audio.push_back("audio/hit.mp3");
+	_Audio.push_back("audio/magic.mp3");
+	_Audio.push_back("audio/shoot.mp3");
+	_index = 0;
+}
+
+LoadingLayer::~LoadingLayer()
+{
+	this->unschedule(schedule_selector(LoadingLayer::update));
 }
