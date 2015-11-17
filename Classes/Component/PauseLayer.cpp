@@ -4,6 +4,7 @@
 #include "GameData/PlayerMrg.h"
 #include "GamingLayer.h"
 #include "Config/BaseConfig.h"
+#include "../LoginScene.h"
 
 USING_NS_CC;
 
@@ -31,21 +32,15 @@ bool PauseLayer::initPauseLayer()
 	//maskLayer->setAnchorPoint(ccp(0.5, 0.5));
 	//maskLayer->setPosition(ccp(winSize.width/2-maskLayer->getContentSize().width/2, winSize.height/2-maskLayer->getContentSize().height/2));
 	//this->addChild(maskLayer);
-	CCSprite *bgSprite = CCSprite::spriteWithFile("common/actor_pause_bg.png");
+	CCSprite *bgSprite = CCSprite::spriteWithFile("actor_pause_bg.png");
 	this->addChild(bgSprite);
 	bgSprite->setPosition(ccp(winSize.width / 2, winSize.height / 2));
 	std::string stdNameOne = "";
 	std::string stdNameTwo = "";
 	std::string stdNameThree = "";
-#if defined LANG_CH 
-	stdNameOne = "common/actor_btn_continue.png";
-	stdNameTwo = "common/actor_btn_restart.png";
-	stdNameThree = "common/actor_btn_exit.png";
-#else
-	stdNameOne = "En/actor_btn_continue.png";
-	stdNameTwo = "En/actor_btn_restart.png";
-	stdNameThree = "En/actor_btn_exit.png";
-#endif
+	stdNameOne = s_language + "actor_btn_continue.png";
+	stdNameTwo = s_language + "actor_btn_restart.png";
+	stdNameThree = s_language + "actor_btn_exit.png";
 	CCMenuItemImage *continueItem = CCMenuItemImage::itemFromNormalImage(stdNameOne.c_str(), stdNameOne.c_str(), this, menu_selector(PauseLayer::continueGame));
 	CCMenuItemImage *restartItem = CCMenuItemImage::itemFromNormalImage(stdNameTwo.c_str(), stdNameTwo.c_str(), this, menu_selector(PauseLayer::restartGame));
 	CCMenuItemImage *exitItem = CCMenuItemImage::itemFromNormalImage(stdNameThree.c_str(), stdNameThree.c_str(), this, menu_selector(PauseLayer::exitGame));
@@ -95,12 +90,18 @@ void PauseLayer::restartGame(CCObject *pSender)
 void PauseLayer::exitGame(CCObject *pSender)
 {
 	
-	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_EXIT_GAME);
+	/*CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_EXIT_GAME);
 
 	CCDirector::sharedDirector()->end();
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
-#endif
+	#endif*/
+	CCDirector::sharedDirector()->resume();
+	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
+	PlayerMrg::getInstance()->Delete();
+	PlayerMrg::getInstance()->Init();
+	CCScene *secen = LoginScene::scene();
+	CCDirector::sharedDirector()->replaceScene(secen);
 }
 
 bool PauseLayer::keyAllClicked(int iKeyID, CCKeypadStatus iKeyState)

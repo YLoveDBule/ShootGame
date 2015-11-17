@@ -1,6 +1,6 @@
 #include "AudioManager.h"
 
-static AudioManager* s_audioInstance = nullptr;
+static AudioManager* s_audioInstance = NULL;
 AudioManager* AudioManager::getInstance()
 {
 	if (!s_audioInstance)

@@ -124,7 +124,7 @@ void GamingLayer::RemovedaZhaoEffect(CCNode *pSender)
 
 void GamingLayer::initGameBg()
 {
-	m_pBg = CCSprite::spriteWithFile("common/actor_gamingbg.png");
+	m_pBg = CCSprite::spriteWithFile("actor_gamingbg.png");
 	this->addChild(this->m_pBg);
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	m_pBg->setPosition(ccp(winSize.width / 2, winSize.height / 2));
@@ -317,7 +317,8 @@ void GamingLayer::InitPlayerGradeUI()
 	ss << PlayerMrg::getInstance()->getPlayer()->getPlayerGrade();
 	_gradeLabel = CCLabelAtlas::labelWithString(ss.str().c_str(), "grade.png", 32, 45, '/');//CCLabelTTF::labelWithString(ss.str().c_str(), "Arial", 30);
 	_gradeLabel->setScale(0.75);
-	CCSprite *gradeBg = CCSprite::spriteWithFile("score.png");
+	std::string str = s_language + "score.png";
+	CCSprite *gradeBg = CCSprite::spriteWithFile(str.c_str());
 	gradeBg->setAnchorPoint(ccp(0, 1));
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	gradeBg->setPosition(ccp(10, size.height - 10));

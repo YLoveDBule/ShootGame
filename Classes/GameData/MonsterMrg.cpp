@@ -1,9 +1,9 @@
 #include "MonsterMrg.h"
 #include <sstream>
-#include "Config\NotificationNameConfig.h"
+#include "Config/NotificationNameConfig.h"
 #include "MonsterData.h"
-#include "Component\GamingLayer.h"
-#include "Utils\AudioManager.h"
+#include "Component/GamingLayer.h"
+#include "Utils/AudioManager.h"
 
 MonsterMrg::MonsterMrg()
 {
@@ -262,7 +262,7 @@ void MonsterMrg::RemoveSuicideEffect(CCNode *pSender)
 //////////////////////////////////////////////////////////////////////////
 /////////////        MonsterPosCreate      //////////////////////////////
 
-static MonsterPosCreate* s_monsterPosCreate = nullptr;
+static MonsterPosCreate* s_monsterPosCreate = NULL;
 MonsterPosCreate::MonsterPosCreate()
 {
 	CCSize size = CCDirector::sharedDirector()->getWinSize();

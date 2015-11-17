@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 
 #define BULLET_SPEED			300.0f			//子弹速度
 #define BULLET_ZORDER			99				//子弹层级
@@ -8,8 +8,6 @@
 #define BARREL_MOVE_ANGLE		20				//炮台每次移动角度
 
 
-#define LANG_CH
-//#defined LANG_EN
 
 
 #define HANDSET_Y  'j'  // 键盘的j
@@ -38,3 +36,5 @@
 #define KEY_B	39 //K
 #define KEY_X	40 //L
 #define KEY_Y	38 //J
+
+extern std::string s_language;

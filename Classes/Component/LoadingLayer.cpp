@@ -3,6 +3,7 @@
 #include "Utils\Utils.h"
 #include "Utils\AudioManager.h"
 #include "LoginScene.h"
+#include "Config/BaseConfig.h"
 USING_NS_CC;
 bool LoadingLayer::init()
 {
@@ -31,6 +32,7 @@ bool LoadingLayer::init()
 	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.2);
 	CCActionInterval*  action = CCAnimate::actionWithAnimation(animation, true);
 	loadingSprite->runAction(CCRepeatForever::actionWithAction(action));
+	CheckLanguage();
 	this->schedule(schedule_selector(LoadingLayer::update),0.5);
 	return true;
 }
@@ -95,4 +97,30 @@ LoadingLayer::LoadingLayer()
 LoadingLayer::~LoadingLayer()
 {
 	this->unschedule(schedule_selector(LoadingLayer::update));
+}
+
+void LoadingLayer::CheckLanguage()
+{
+	//еп╤ожпндс╒нд
+	ccLanguageType language_id = CCApplication::getCurrentLanguage();
+	switch (language_id)
+	{
+	case kLanguageEnglish:
+		s_language = "En/";
+		break;
+	case kLanguageChinese:
+		s_language = "En/";
+		break;
+	case kLanguageGerman:
+		s_language = "German/";
+		break;
+	case kLanguageFrench:
+	case kLanguageItalian:
+	case kLanguageSpanish:
+	case kLanguageRussian:
+		s_language = "En/";
+		break;
+	default:break;
+	}
+
 }

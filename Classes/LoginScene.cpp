@@ -15,32 +15,24 @@ bool LoginScene::init()
 		return false;
 	}
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	CCSprite *bg = CCSprite::spriteWithFile("common/actor_gamingbg.png");
+	CCSprite *bg = CCSprite::spriteWithFile("actor_gamingbg.png");
 	bg->setPosition(ccp(size.width / 2, size.height / 2));
 	addChild(bg);
 	//logo
-#if defined LANG_CH 
-	CCSprite *logo = CCSprite::spriteWithFile("logo.png");
-#else 
-	CCSprite *logo = CCSprite::spriteWithFile("En/logo.png");
-#endif 
+	std::string tempstr = s_language + "logo.png";
+	CCSprite *logo = CCSprite::spriteWithFile(tempstr.c_str());
 	logo->setPosition(ccp(size.width / 2, size.height / 2 + size.height / 4));
 	addChild(logo);
 
 	//chenbao
-	CCSprite *chenbao = CCSprite::spriteWithFile("common/actor_controllBg.png");
+	CCSprite *chenbao = CCSprite::spriteWithFile("actor_controllBg.png");
 	chenbao->setAnchorPoint(ccp(0, 0));
 	addChild(chenbao);
 	//menu
 	std::string nemuOneName = "";
 	std::string nemuTwoName = "";
-#if defined LANG_CH 
-	nemuOneName = "kaishi.png";
-	nemuTwoName = "tuichu.png";
-#else
-	nemuOneName = "En/kaishi.png";
-	nemuTwoName = "En/tuichu.png";
-#endif
+	nemuOneName = s_language + "kaishi.png";
+	nemuTwoName = s_language + "tuichu.png";
 	_pStarMenu = CCMenuItemImage::itemFromNormalImage(
 		nemuOneName.c_str(),
 		NULL,
@@ -188,6 +180,7 @@ void LoginScene::onClickL(cocos2d::CCKeypadStatus key_status)
 {
 	if (key_status == EVENT_KEY_DOWN)
 	{
+		clickExit(NULL);
 	}
 }
 

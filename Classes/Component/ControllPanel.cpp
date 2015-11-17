@@ -51,7 +51,7 @@ bool ControllPanel::initControllPanel()
 
 void ControllPanel::initBg()
 {
-	this->m_pBg = CCSprite::spriteWithFile("common/actor_controllBg.png");
+	this->m_pBg = CCSprite::spriteWithFile("actor_controllBg.png");
 	CCSize bgSize = this->m_pBg->getContentSize();
 	this->m_pBg->setPosition(ccp(bgSize.width/2,bgSize.height/2));
 	this->addChild(this->m_pBg);
@@ -93,13 +93,8 @@ void ControllPanel::createAttackButton()
 {
 	std::string nameOne = "";
 	std::string nameTwo = "";
-#if defined LANG_CH
-	nameOne = "common/actor_btn_noramlAtt.png";
-	nameTwo = "common/actor_btn_magicAtt.png";
-#else
-	nameOne = "En/actor_btn_noramlAtt.png";
-	nameTwo = "En/actor_btn_magicAtt.png";
-#endif
+	nameOne = s_language + "actor_btn_noramlAtt.png";
+	nameTwo = s_language + "actor_btn_magicAtt.png";
 	//普通攻击item
 	CCMenuItemImage *pNormalItem = CCMenuItemImage::itemFromNormalImage(
 		nameOne.c_str(),
@@ -130,11 +125,7 @@ void ControllPanel::createAttackButton()
 void ControllPanel::createPauseButton()
 {
 	std::string nameOne = "";
-#if defined LANG_CH 
-	nameOne = "common/actor_btn_pause.png";
-#else 
-	nameOne = "En/actor_btn_pause.png";
-#endif
+	nameOne = s_language + "actor_btn_pause.png";
 	CCMenuItemImage *pPauseItem = CCMenuItemImage::itemFromNormalImage(
 		nameOne.c_str(),
 		nameOne.c_str(),
@@ -150,14 +141,14 @@ void ControllPanel::createPauseButton()
 void ControllPanel::createTurnBarrelButton()
 {
 	CCMenuItemImage *pTurnLeftItem = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_turnLeft.png",
-		"common/actor_btn_turnLeft.png",
+		"actor_btn_turnLeft.png",
+		"actor_btn_turnLeft.png",
 		this,
 		menu_selector(ControllPanel::barrelTurnLeftClick));
 
 	CCMenuItemImage *pTurnRightItem = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_turnRight.png",
-		"common/actor_btn_turnRight.png",
+		"actor_btn_turnRight.png",
+		"actor_btn_turnRight.png",
 		this,
 		menu_selector(ControllPanel::barrelTurnRightClick));
 	CCMenu *pTurnBarrelMenu = CCMenu::menuWithItems(pTurnLeftItem, pTurnRightItem, NULL);
@@ -178,7 +169,7 @@ void ControllPanel::makeSkillCD(CCObject *pSender)
 	m_pMagicItem->setIsEnabled(false);
 
 	//创建技能cd样式
-	CCProgressTimer *cd = CCProgressTimer::progressWithFile("common/actor_btn_mask.png");
+	CCProgressTimer *cd = CCProgressTimer::progressWithFile("actor_btn_mask.png");
 	cd->setType(kCCProgressTimerTypeRadialCCW);
 	cd->setPosition(m_pMagicItem->getParent()->getPosition());
 	cd->setPercentage(99.99f);

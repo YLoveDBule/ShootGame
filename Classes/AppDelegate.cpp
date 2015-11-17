@@ -4,12 +4,12 @@
 #include "HelloWorldScene.h"
 
 #include "CCEGLView.h"
-#include "GameData\PlayerData.h"
-#include "GameData\MonsterData.h"
-#include "Utils\Utils.h"
+#include "GameData/PlayerData.h"
+#include "GameData/MonsterData.h"
+#include "Utils/Utils.h"
 #include "Component/LoadingLayer.h"
 
-#include "Utils\AudioManager.h"
+#include "Utils/AudioManager.h"
 
 USING_NS_CC;
 
@@ -119,21 +119,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	CCScene *pScene = LoadingLayer::scene();
 	// run
 	pDirector->runWithScene(pScene);
-	//Utils::InitLoadPlist("Monster");
-	//Utils::InitLoadPlist("shouji");
-	//Utils::InitLoadPlist("dazhao1");
-	//Utils::InitLoadPlist("dazhao2");
-	//Utils::InitLoadPlist("siwang");
-	//Utils::InitLoadPlist("diaoxue");
-	//Utils::InitLoadAoeEffect();
-	////preload music && preload effect
-	//AudioManager::getInstance()->preLoadMusic("audio/background.mp3");
-	//AudioManager::getInstance()->preLoadEffect("audio/dead1.mp3");
-	//AudioManager::getInstance()->preLoadEffect("audio/dead2.mp3");
-	//AudioManager::getInstance()->preLoadEffect("audio/escape.mp3");
-	//AudioManager::getInstance()->preLoadEffect("audio/hit.mp3");
-	//AudioManager::getInstance()->preLoadEffect("audio/magic.mp3");
-	//AudioManager::getInstance()->preLoadEffect("audio/shoot.mp3");
 	return true;
 }
 

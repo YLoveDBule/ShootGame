@@ -1,6 +1,6 @@
 #include "MonsterData.h"
 
-static MonsterData *s_monsterData = nullptr;
+static MonsterData *s_monsterData = NULL;
 MonsterData::MonsterData()
 {
 	_csvParse = new CCSVParse();

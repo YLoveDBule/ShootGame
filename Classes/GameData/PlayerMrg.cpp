@@ -3,7 +3,7 @@
 #include "Config/NotificationNameConfig.h"
 #include <sstream>
 #include "MonsterData.h"
-static PlayerMrg* s_playerMrg = nullptr;
+static PlayerMrg* s_playerMrg = NULL;
 PlayerMrg::PlayerMrg()
 {
 	lastHightGrade = 0;
@@ -78,6 +78,7 @@ void Player::UpdatePlayerNowHp(CCObject *pSender)
 	else
 	{
 		//½áËã½çÃæ
+		_nowHp = 0;
 		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_GETRESLUT);
 	}
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PLAYER_UPDATEUINOWHP);

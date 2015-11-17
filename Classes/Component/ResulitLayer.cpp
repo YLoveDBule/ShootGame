@@ -1,9 +1,9 @@
 #include "ResulitLayer.h"
 #include <sstream>
-#include "GameData\PlayerMrg.h"
-#include "Config\NotificationNameConfig.h"
+#include "GameData/PlayerMrg.h"
+#include "Config/NotificationNameConfig.h"
 #include "GamingLayer.h"
-#include "Config\BaseConfig.h"
+#include "Config/BaseConfig.h"
 ResulitLayer * ResulitLayer::create()
 {
 	ResulitLayer *pResulitLayer = new ResulitLayer();
@@ -29,22 +29,14 @@ bool ResulitLayer::initResulitLayer()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	this->setContentSize(winSize);
 	std::string strName = "";
-#if defined LANG_CH 
-	strName = "tongji.png";
-#else
-	strName = "En/tongji.png";
-#endif
+	strName = s_language + "tongji.png";
 	CCSprite *bg = CCSprite::spriteWithFile(strName.c_str());
 	bg->setPosition(ccp(winSize.width / 2, winSize.height / 2));
 	addChild(bg);
 	float bgheight = bg->getContentSize().height;
 	//grade 
 	std::string StrOne = "";
-#if defined LANG_CH 
-	StrOne = "score.png";
-#else 
-	StrOne = "En/score.png";
-#endif
+	StrOne = s_language + "score.png";
 	CCSprite *nowGrade = CCSprite::spriteWithFile(StrOne.c_str());
 	nowGrade->setPosition(ccp(50, bgheight - 180));
 	nowGrade->setAnchorPoint(ccp(0, 0));
@@ -59,11 +51,7 @@ bool ResulitLayer::initResulitLayer()
 	bg->addChild(gradeLabel); 
     //lastHightGrade 
 	std::string stdName = "";
-#if defined LANG_CH 
-	stdName = "topscore.png";
-#else 
-	stdName = "En/topscore.png";
-#endif
+	stdName = s_language + "topscore.png";
 	CCSprite *lastGrade = CCSprite::spriteWithFile(stdName.c_str());
 	lastGrade->setPosition(ccp(50, bgheight - 220));
 	lastGrade->setAnchorPoint(ccp(0, 0.5));
@@ -87,11 +75,7 @@ bool ResulitLayer::initResulitLayer()
 
 	//chongxin kaishi
 	std::string nameOne = "";
-#if defined LANG_CH 
-	nameOne = "common/actor_btn_restart.png";
-#else
-	nameOne = "En/actor_btn_restart.png";
-#endif
+	nameOne = s_language + "actor_btn_restart.png";
 	CCMenuItemImage *pContinue = CCMenuItemImage::itemFromNormalImage(
 		nameOne.c_str(),
 		NULL,
@@ -100,8 +84,9 @@ bool ResulitLayer::initResulitLayer()
 	pContinue->setPosition(ccp(bg->getContentSize().width / 2 - pContinue->getContentSize().width / 2 + 30, bgheight - 320));
 	pContinue->setAnchorPoint(ccp(0, 0));
 	pContinue->setScale(0.75);
+	std::string str = s_language + "actor_btn_exit.png";
 	CCMenuItemImage *pExit = CCMenuItemImage::itemFromNormalImage(
-		"common/actor_btn_exit.png",
+		str.c_str(),
 		NULL,
 		this,
 		menu_selector(ResulitLayer::menuExitCallBack));

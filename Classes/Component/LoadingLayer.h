@@ -8,6 +8,7 @@ public:
 	LAYER_NODE_FUNC(LoadingLayer);
 	LoadingLayer();
 	virtual ~LoadingLayer();
+	void CheckLanguage();
 private:
 	virtual void update(float dt);
 private:

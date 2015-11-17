@@ -31,7 +31,7 @@ Bullet::~Bullet(){}
 bool Bullet::initBullet(GamingLayer* gamingLayer)
 {
 	this->m_bHit = false;
-	this->initWithFile("common/actor_bullet.png");
+	this->initWithFile("actor_bullet.png");
 	this->setAnchorPoint(ccp(0.5, 0));
 	this->m_pGamingLayer = gamingLayer;
 	return true;
