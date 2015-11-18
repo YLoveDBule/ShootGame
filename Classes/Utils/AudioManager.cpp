@@ -10,7 +10,11 @@ AudioManager* AudioManager::getInstance()
 	return s_audioInstance;
 }
 
-AudioManager::AudioManager(){}
+AudioManager::AudioManager(){
+	//defualt is on
+	setMusicState(true);
+	setEffectState(true);
+}
 AudioManager::~AudioManager(){
 	SimpleAudioEngine::sharedEngine()->end();
 }
@@ -45,6 +49,7 @@ void AudioManager::setMusicVolume(float volume)
 {
 	assert(volume >= 0.0 && volume <= 1.0, "music volume is'nt in 0.0 -> 1.0");
 	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(volume);
+	
 }
 
 float AudioManager::getMusicVolume()
@@ -65,6 +70,8 @@ void AudioManager::subMusicVolume()
 	volume = volume < 0.0 ? 0.0 : volume;
 	setMusicVolume(volume);
 }
+
+
 
 /*******************************************	effect   ***********************************************/
 
@@ -113,6 +120,12 @@ void AudioManager::subEffectVolume()
 	float volume = getEffectVolume() - 0.1;
 	volume = volume > 1.0 ? 1.0 : volume;
 	setEffectVolume(volume);
+}
+
+void AudioManager::stopAllEffects()
+{
+	SimpleAudioEngine::sharedEngine()->stopAllEffects();
+	m_bIsEffectON = false;
 }
 
 

@@ -27,7 +27,10 @@ public:
 	float getEffectVolume();
 	void addEffectVolume();
 	void subEffectVolume();
+	void stopAllEffects();
+
+	CC_SYNTHESIZE(bool, m_bIsMusicON, MusicState);
+	CC_SYNTHESIZE(bool, m_bIsEffectON, EffectState);
 private:
 	std::vector<string> m_musicVector;
-	
 };

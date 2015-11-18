@@ -7,8 +7,6 @@
 #include "Utils/AudioManager.h"
 bool LoginScene::init()
 {
-	//play background music
-	AudioManager::getInstance()->playMusic("audio/background.mp3", true);
 	_nowSate = MenuState_Star;
 	if (!CCLayer::init())
 	{
@@ -57,6 +55,18 @@ bool LoginScene::init()
 	ChangeRowPosition();
 	addChild(_rowSp);
 
+	//music btn
+	m_pMusicItem = CCMenuItemSprite::itemFromNormalSprite(
+		CCSprite::spriteWithFile("actor_btn_music_on.png"),
+		NULL,
+		this,
+		menu_selector(LoginScene::musicBtnClick)
+		);
+	CCMenu *pMusicMenu = CCMenu::menuWithItem(m_pMusicItem);
+	pMusicMenu->setPosition(ccp(size.width - 50, size.height - 50));
+	addChild(pMusicMenu);
+	//set music is on or off
+	setMusicBtnState();
 	//init data 
 	//PlayerMrg::getInstance()->Init();
 	return true;
@@ -257,5 +267,29 @@ void LoginScene::ChangeRowPosition()
 		break;
 	default:
 		break;
+	}
+}
+
+
+void LoginScene::musicBtnClick(CCObject *pSender)
+{
+	AudioManager::getInstance()->setMusicState(!AudioManager::getInstance()->getMusicState());
+	AudioManager::getInstance()->setEffectState(!AudioManager::getInstance()->getEffectState());
+	this->setMusicBtnState();
+}
+
+void LoginScene::setMusicBtnState()
+{
+	if (AudioManager::getInstance()->getMusicState())
+	{
+		AudioManager::getInstance()->playMusic("audio/background.mp3", true);
+		AudioManager::getInstance()->resumeAllEffects();
+		m_pMusicItem->setNormalImage(CCSprite::spriteWithFile("actor_btn_music_on.png"));
+	}
+	else
+	{
+		AudioManager::getInstance()->stopMusic();
+		AudioManager::getInstance()->pauseAllEffects();
+		m_pMusicItem->setNormalImage(CCSprite::spriteWithFile("actor_btn_music_off.png"));
 	}
 }

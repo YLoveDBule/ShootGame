@@ -44,9 +44,12 @@ protected:
 
 
 	void ChangeRowPosition();
+	void musicBtnClick(CCObject *pSender);
+	void setMusicBtnState();
 private:
 	CCMenuItemImage *_pStarMenu;
 	CCMenuItemImage *_pExitMenu;
+	CCMenuItemSprite *m_pMusicItem;
 	MenuState _nowSate;
 	CCSprite *_rowSp;
 };
