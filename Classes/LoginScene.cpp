@@ -223,7 +223,7 @@ void LoginScene::onClickK(cocos2d::CCKeypadStatus key_status)
 {
 	if (key_status == EVENT_KEY_DOWN)
 	{
-
+		musicBtnClick(NULL);
 	}
 }
 
