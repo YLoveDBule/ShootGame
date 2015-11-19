@@ -1,7 +1,7 @@
 #include "LoadingLayer.h"
 #include "cocos2d.h"
-#include "Utils\Utils.h"
-#include "Utils\AudioManager.h"
+#include "Utils/Utils.h"
+#include "Utils/AudioManager.h"
 #include "LoginScene.h"
 #include "Config/BaseConfig.h"
 USING_NS_CC;
