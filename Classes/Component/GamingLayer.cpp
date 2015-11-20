@@ -294,7 +294,7 @@ void GamingLayer::pauseGame(CCObject *pSender)
 	//添加pause界面
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	PauseLayer *pPauseLayer = PauseLayer::Create();
-	CCDirector::sharedDirector()->getRunningScene()->addChild(pPauseLayer);
+	CCDirector::sharedDirector()->getRunningScene()->addChild(pPauseLayer,TOP_ZORDER);
 
 	//禁用按钮功能
 	CCLayer::setIsKeypadEnabled(false);

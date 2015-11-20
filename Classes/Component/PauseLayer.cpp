@@ -5,6 +5,7 @@
 #include "GamingLayer.h"
 #include "Config/BaseConfig.h"
 #include "../LoginScene.h"
+#include "Component/TipLayer.h"
 
 USING_NS_CC;
 
@@ -25,7 +26,6 @@ PauseLayer* PauseLayer::Create()
 bool PauseLayer::initPauseLayer()
 {
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	this->setContentSize(winSize);
 	//CCLayerColor *maskLayer = CCLayerColor::node();
 	//maskLayer->initWithColorWidthHeight(ccc4f(0x00,0x00,0x00,0x80),335,350);
 	////maskLayer->setOpacity(200);
@@ -48,7 +48,8 @@ bool PauseLayer::initPauseLayer()
 	menu->alignItemsVertically();
 	this->addChild(menu);
 
-	CCLayer::setIsKeypadEnabled(true);
+	//CCLayer::setIsKeypadEnabled(true);
+	this->setKeyPadEnable(NULL);
 	return true;
 }
 
@@ -57,15 +58,34 @@ PauseLayer::~PauseLayer(){};
 
 void PauseLayer::onEnter()
 {
+	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, -128, true);
 	CCLayer::onEnter();
-	
+	//CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(PauseLayer::setKeyPadEnable), NOTIFY_LAYER_KEYPAD_ENABLED, NULL);
 }
+
+
+
 
 void PauseLayer::onExit()
 {
+	CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
 	CCLayer::onExit();
+	//CCNotificationCenter::sharedNotifCenter()->removeObserver(this,NOTIFY_LAYER_KEYPAD_ENABLED);
 }
 
+bool PauseLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent) {
+	return true;
+}
+
+void PauseLayer::setKeyPadEnable(CCObject *pSender)
+{
+	this->setIsKeypadEnabled(true);
+}
+
+void PauseLayer::setKeyPadDisable(CCObject *pSender)
+{
+	this->setIsKeypadEnabled(false);
+}
 
 void PauseLayer::continueGame(CCObject *pSender)
 {
@@ -96,12 +116,14 @@ void PauseLayer::exitGame(CCObject *pSender)
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
 	#endif*/
-	CCDirector::sharedDirector()->resume();
+	/*CCDirector::sharedDirector()->resume();
 	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
 	PlayerMrg::getInstance()->Delete();
 	PlayerMrg::getInstance()->Init();
 	CCScene *secen = LoginScene::scene();
-	CCDirector::sharedDirector()->replaceScene(secen);
+	CCDirector::sharedDirector()->replaceScene(secen);*/
+	CCDirector::sharedDirector()->getRunningScene()->addChild(TipLayer::Create());
+	this->removeFromParentAndCleanup(true);
 }
 
 bool PauseLayer::keyAllClicked(int iKeyID, CCKeypadStatus iKeyState)

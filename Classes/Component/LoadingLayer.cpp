@@ -4,6 +4,7 @@
 #include "Utils/AudioManager.h"
 #include "LoginScene.h"
 #include "Config/BaseConfig.h"
+#include "AirlineDefine.h"
 USING_NS_CC;
 bool LoadingLayer::init()
 {
@@ -17,12 +18,12 @@ bool LoadingLayer::init()
 	//loading条
 	CCSprite *loadingSprite = CCSprite::spriteWithFile("loading/loading_1.png");
 	this->addChild(loadingSprite);
-	loadingSprite->setPosition(ccp(bgSprite->getContentSize().width / 2 + 120, bgSprite->getContentSize().height/4-16));
+	loadingSprite->setPosition(ccp(LOADING_ANIM_POS_X, winSize.height - LOADING_ANIM_POS_Y - 7));
 	//loading动画
 	//加入textrue
 	CCMutableArray<CCSpriteFrame*>* animFrames = new CCMutableArray<CCSpriteFrame*>(3);
 	char str[25] = {};
-	for (size_t i = 1; i <= 3; ++i)
+	for (size_t i = 1; i <= LOADING_IMG_CNT; ++i)
 	{
 		sprintf(str, "loading/loading_%d.png", i);
 		CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage(str);

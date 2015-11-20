@@ -2,11 +2,11 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
-class PauseLayer : public CCLayer
+class TipLayer : public CCLayer
 {
 public:
-	static PauseLayer* Create();
-	virtual ~PauseLayer();
+	static TipLayer* Create();
+	virtual ~TipLayer();
 	virtual bool keyAllClicked(int iKeyID, CCKeypadStatus key_status);
 	virtual void onEnter();
 	virtual void onExit();
@@ -22,11 +22,8 @@ protected:
 	void onClickJ(cocos2d::CCKeypadStatus key_status);
 	void onClickK(cocos2d::CCKeypadStatus key_status);
 private:
-	PauseLayer();
-	bool initPauseLayer();
-	void continueGame(CCObject *pSender);
-	void restartGame(CCObject *pSender);
-	void exitGame(CCObject *pSender);
-	void setKeyPadEnable(CCObject *pSender);
-	void setKeyPadDisable(CCObject *pSender);
+	TipLayer();
+	bool initTipLayer();
+	void cancel(CCObject *pSender);
+	void confirm(CCObject *pSender);
 };

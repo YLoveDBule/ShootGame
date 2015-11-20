@@ -17,3 +17,5 @@
 #define NOTIFY_MONSTER_UPDATEFRESHPOOL		"200004"			//更新怪物刷新池
 #define NOTIFY_PLAYER_UPDATEUIGRADE         "200005"            //更新ui分数
 #define NOTIFY_PLAYER_UPDATEUINOWHP         "200006"            //更新ui血量
+
+#define NOTIFY_LAYER_KEYPAD_ENABLED			"300001"			//layer key pad enable
