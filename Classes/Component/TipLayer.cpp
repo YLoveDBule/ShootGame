@@ -38,8 +38,8 @@ bool TipLayer::initTipLayer()
 	std::string stdNameOne = "";
 	std::string stdNameTwo = "";
 	std::string contentImageName = "";
-	stdNameOne = s_language + "actor_btn_cancel.png";
-	stdNameTwo = s_language + "actor_btn_confirm.png";
+	stdNameOne = s_touchfile + s_language + "actor_btn_cancel.png";
+	stdNameTwo = s_touchfile + s_language + "actor_btn_confirm.png";
 	contentImageName = s_language + "actor_img_tipContent.png";
 	//content
 	CCSprite *pContentSprite = CCSprite::spriteWithFile(contentImageName.c_str());

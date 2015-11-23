@@ -34,6 +34,7 @@ bool LoadingLayer::init()
 	CCActionInterval*  action = CCAnimate::actionWithAnimation(animation, true);
 	loadingSprite->runAction(CCRepeatForever::actionWithAction(action));
 	CheckLanguage();
+	checkTouch();
 	this->schedule(schedule_selector(LoadingLayer::update),0.5);
 	return true;
 }
@@ -122,6 +123,22 @@ void LoadingLayer::CheckLanguage()
 		s_language = "En/";
 		break;
 	default:break;
+	}
+
+}
+
+void LoadingLayer::checkTouch()
+{
+	if (CCDirector::sharedDirector()->isHandset())
+	{
+		//CCSprite* ...... your code
+		s_touchfile = "";
+	}
+	else
+	{
+		//CCSprite* ...... your code
+		CCLog("%s%d====This is none-handset version!\n", __FILE__, __LINE__);
+		s_touchfile = "Touch/";
 	}
 
 }

@@ -29,8 +29,8 @@ bool LoginScene::init()
 	//menu
 	std::string nemuOneName = "";
 	std::string nemuTwoName = "";
-	nemuOneName = s_language + "kaishi.png";
-	nemuTwoName = s_language + "tuichu.png";
+	nemuOneName = s_touchfile + s_language + "kaishi.png";
+	nemuTwoName = s_touchfile + s_language + "tuichu.png";
 	_pStarMenu = CCMenuItemImage::itemFromNormalImage(
 		nemuOneName.c_str(),
 		NULL,
@@ -56,8 +56,9 @@ bool LoginScene::init()
 	addChild(_rowSp);
 
 	//music btn
+	std::string str = s_touchfile  + "actor_btn_music_on.png";
 	m_pMusicItem = CCMenuItemSprite::itemFromNormalSprite(
-		CCSprite::spriteWithFile("actor_btn_music_on.png"),
+		CCSprite::spriteWithFile(str.c_str()),
 		NULL,
 		this,
 		menu_selector(LoginScene::musicBtnClick)
@@ -282,14 +283,16 @@ void LoginScene::setMusicBtnState()
 {
 	if (AudioManager::getInstance()->getMusicState())
 	{
+		std::string str = s_touchfile  + "actor_btn_music_on.png";
 		AudioManager::getInstance()->playMusic("audio/background.mp3", true);
 		AudioManager::getInstance()->resumeAllEffects();
-		m_pMusicItem->setNormalImage(CCSprite::spriteWithFile("actor_btn_music_on.png"));
+		m_pMusicItem->setNormalImage(CCSprite::spriteWithFile(str.c_str()));
 	}
 	else
 	{
+		std::string str = s_touchfile  + "actor_btn_music_off.png";
 		AudioManager::getInstance()->stopMusic();
 		AudioManager::getInstance()->pauseAllEffects();
-		m_pMusicItem->setNormalImage(CCSprite::spriteWithFile("actor_btn_music_off.png"));
+		m_pMusicItem->setNormalImage(CCSprite::spriteWithFile(str.c_str()));
 	}
 }

@@ -38,9 +38,9 @@ bool PauseLayer::initPauseLayer()
 	std::string stdNameOne = "";
 	std::string stdNameTwo = "";
 	std::string stdNameThree = "";
-	stdNameOne = s_language + "actor_btn_continue.png";
-	stdNameTwo = s_language + "actor_btn_restart.png";
-	stdNameThree = s_language + "actor_btn_exit.png";
+	stdNameOne = s_touchfile + s_language + "actor_btn_continue.png";
+	stdNameTwo = s_touchfile + s_language + "actor_btn_restart.png";
+	stdNameThree = s_touchfile + s_language + "actor_btn_exit.png";
 	CCMenuItemImage *continueItem = CCMenuItemImage::itemFromNormalImage(stdNameOne.c_str(), stdNameOne.c_str(), this, menu_selector(PauseLayer::continueGame));
 	CCMenuItemImage *restartItem = CCMenuItemImage::itemFromNormalImage(stdNameTwo.c_str(), stdNameTwo.c_str(), this, menu_selector(PauseLayer::restartGame));
 	CCMenuItemImage *exitItem = CCMenuItemImage::itemFromNormalImage(stdNameThree.c_str(), stdNameThree.c_str(), this, menu_selector(PauseLayer::exitGame));

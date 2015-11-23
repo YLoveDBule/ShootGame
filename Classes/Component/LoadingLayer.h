@@ -9,6 +9,7 @@ public:
 	LoadingLayer();
 	virtual ~LoadingLayer();
 	void CheckLanguage();
+	void checkTouch();
 private:
 	virtual void update(float dt);
 private:

@@ -93,8 +93,8 @@ void ControllPanel::createAttackButton()
 {
 	std::string nameOne = "";
 	std::string nameTwo = "";
-	nameOne = s_language + "actor_btn_noramlAtt.png";
-	nameTwo = s_language + "actor_btn_magicAtt.png";
+	nameOne = s_touchfile + s_language + "actor_btn_noramlAtt.png";
+	nameTwo = s_touchfile + s_language + "actor_btn_magicAtt.png";
 	//ÆÕÍ¨¹¥»÷item
 	CCMenuItemImage *pNormalItem = CCMenuItemImage::itemFromNormalImage(
 		nameOne.c_str(),
@@ -125,7 +125,7 @@ void ControllPanel::createAttackButton()
 void ControllPanel::createPauseButton()
 {
 	std::string nameOne = "";
-	nameOne = s_language + "actor_btn_pause.png";
+	nameOne = s_touchfile + s_language + "actor_btn_pause.png";
 	CCMenuItemImage *pPauseItem = CCMenuItemImage::itemFromNormalImage(
 		nameOne.c_str(),
 		nameOne.c_str(),

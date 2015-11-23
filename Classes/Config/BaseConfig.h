@@ -39,3 +39,4 @@
 #define KEY_Y	38 //J
 
 extern std::string s_language;
+extern std::string s_touchfile;
