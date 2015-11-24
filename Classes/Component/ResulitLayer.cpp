@@ -4,6 +4,7 @@
 #include "Config/NotificationNameConfig.h"
 #include "GamingLayer.h"
 #include "Config/BaseConfig.h"
+#include "TipLayer.h"
 ResulitLayer * ResulitLayer::create()
 {
 	ResulitLayer *pResulitLayer = new ResulitLayer();
@@ -117,12 +118,8 @@ void ResulitLayer::restartGame(CCObject *pSender)
 
 void ResulitLayer::menuExitCallBack(CCObject *pSender)
 {
-	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_EXIT_GAME);
-
-	CCDirector::sharedDirector()->end();
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-	exit(0);
-#endif
+	CCDirector::sharedDirector()->getRunningScene()->addChild(TipLayer::Create());
+	this->removeFromParentAndCleanup(true);
 }
 
 bool ResulitLayer::keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus iKeyState)
