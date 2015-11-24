@@ -10,6 +10,7 @@
 #include "Component/LoadingLayer.h"
 
 #include "Utils/AudioManager.h"
+#include "Config/BaseConfig.h"
 
 USING_NS_CC;
 
@@ -134,7 +135,8 @@ void AppDelegate::applicationDidEnterBackground() {
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
-	CCDirector::sharedDirector()->resume();
+	if(!bIsPaused)
+		CCDirector::sharedDirector()->resume();
 
 	// if you use SimpleAudioEngine, it must resume here
 	// SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();

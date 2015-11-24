@@ -12,6 +12,7 @@ public:
 	void playMusic(const char *musicName, bool bIsLoop);
 	void pauseMusic();
 	void stopMusic();
+	void resumeMusic();
 	bool isMusicPlay();
 	void preLoadMusic(const char *musicName);
 	void setMusicVolume(float volume);

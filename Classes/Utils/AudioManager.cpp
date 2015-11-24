@@ -40,6 +40,11 @@ void AudioManager::stopMusic()
 	SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 }
 
+void AudioManager::resumeMusic()
+{
+	SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+}
+
 bool AudioManager::isMusicPlay()
 {
 	return SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying();

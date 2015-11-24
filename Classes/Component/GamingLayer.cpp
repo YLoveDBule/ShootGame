@@ -299,7 +299,16 @@ void GamingLayer::pauseGame(CCObject *pSender)
 	//禁用按钮功能
 	CCLayer::setIsKeypadEnabled(false);
 	CCDirector::sharedDirector()->pause();
+	bIsPaused = true;
 
+}
+
+void GamingLayer::resumeGame(CCObject *pSender)
+{
+	//恢复按钮功能
+	CCLayer::setIsKeypadEnabled(true);
+	CCDirector::sharedDirector()->resume();
+	bIsPaused = false;
 }
 
 void GamingLayer::ShowResulitLayer(CCObject *pSender)
@@ -375,13 +384,6 @@ void GamingLayer::AllMaigicFireEffect()
 //	sprite->setPosition(ccp(100, 300));
 	sprite->setAnchorPoint(ccp(0, 0));
 	sprite->runAction(animate);
-}
-
-void GamingLayer::resumeGame(CCObject *pSender)
-{
-	//恢复按钮功能
-	CCLayer::setIsKeypadEnabled(true);
-	CCDirector::sharedDirector()->resume();
 }
 
 //设置子弹的状态，0为暂停，1为继续
