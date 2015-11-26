@@ -1,4 +1,6 @@
 #include "AudioManager.h"
+#include "../CocosDenshion/include/SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 static AudioManager* s_audioInstance = NULL;
 AudioManager* AudioManager::getInstance()
@@ -52,7 +54,7 @@ bool AudioManager::isMusicPlay()
 
 void AudioManager::setMusicVolume(float volume)
 {
-	assert(volume >= 0.0 && volume <= 1.0, "music volume is'nt in 0.0 -> 1.0");
+	//assert(volume >= 0.0 && volume <= 1.0, "music volume is'nt in 0.0 -> 1.0");
 	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(volume);
 	
 }
@@ -103,7 +105,7 @@ void AudioManager::resumeAllEffects()
 
 void AudioManager::setEffectVolume(const float volume)
 {
-	assert(volume >= 0.0 && volume <= 1.0, "effect volume is'nt in 0.0 -> 1.0");
+	//assert(volume >= 0.0 && volume <= 1.0, "effect volume is'nt in 0.0 -> 1.0");
 	SimpleAudioEngine::sharedEngine()->setEffectsVolume(volume);
 }
 
