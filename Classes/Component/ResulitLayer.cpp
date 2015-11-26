@@ -5,6 +5,7 @@
 #include "GamingLayer.h"
 #include "Config/BaseConfig.h"
 #include "TipLayer.h"
+#include "../LoginScene.h"
 ResulitLayer * ResulitLayer::create()
 {
 	ResulitLayer *pResulitLayer = new ResulitLayer();
@@ -118,8 +119,12 @@ void ResulitLayer::restartGame(CCObject *pSender)
 
 void ResulitLayer::menuExitCallBack(CCObject *pSender)
 {
-	CCDirector::sharedDirector()->getRunningScene()->addChild(TipLayer::Create());
-	this->removeFromParentAndCleanup(true);
+	CCDirector::sharedDirector()->resume();
+	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
+	PlayerMrg::getInstance()->Delete();
+	PlayerMrg::getInstance()->Init();
+	CCScene *secen = LoginScene::scene();
+	CCDirector::sharedDirector()->replaceScene(secen);
 }
 
 bool ResulitLayer::keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus iKeyState)

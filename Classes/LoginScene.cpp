@@ -5,6 +5,7 @@
 #include "GameData/MonsterMrg.h"
 #include "Config/BaseConfig.h"
 #include "Utils/AudioManager.h"
+#include "Component/TipLayer.h"
 bool LoginScene::init()
 {
 	_nowSate = MenuState_Star;
@@ -245,11 +246,8 @@ void LoginScene::clickStar(CCObject* pSender)
 
 void LoginScene::clickExit(CCObject* pSender)
 {
-	CCDirector::sharedDirector()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-	exit(0);
-#endif
+	CCDirector::sharedDirector()->getRunningScene()->addChild(TipLayer::Create());
+	//this->removeFromParentAndCleanup(true);
 }
 
 void LoginScene::ChangeRowPosition()

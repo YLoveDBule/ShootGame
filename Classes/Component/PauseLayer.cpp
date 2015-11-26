@@ -122,8 +122,12 @@ void PauseLayer::exitGame(CCObject *pSender)
 	PlayerMrg::getInstance()->Init();
 	CCScene *secen = LoginScene::scene();
 	CCDirector::sharedDirector()->replaceScene(secen);*/
-	CCDirector::sharedDirector()->getRunningScene()->addChild(TipLayer::Create());
-	this->removeFromParentAndCleanup(true);
+	CCDirector::sharedDirector()->resume();
+	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
+	PlayerMrg::getInstance()->Delete();
+	PlayerMrg::getInstance()->Init();
+	CCScene *secen = LoginScene::scene();
+	CCDirector::sharedDirector()->replaceScene(secen);
 }
 
 bool PauseLayer::keyAllClicked(int iKeyID, CCKeypadStatus iKeyState)

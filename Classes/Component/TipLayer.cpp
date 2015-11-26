@@ -82,7 +82,7 @@ bool TipLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 void TipLayer::cancel(CCObject *pSender)
 {
 	this->removeFromParentAndCleanup(true);
-	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESUME_GAME);
+	/*CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESUME_GAME);*/
 }
 
 
@@ -95,12 +95,11 @@ void TipLayer::confirm(CCObject *pSender)
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
 	#endif*/
-	CCDirector::sharedDirector()->resume();
-	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
-	PlayerMrg::getInstance()->Delete();
-	PlayerMrg::getInstance()->Init();
-	CCScene *secen = LoginScene::scene();
-	CCDirector::sharedDirector()->replaceScene(secen);
+	CCDirector::sharedDirector()->end();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+	exit(0);
+#endif
 }
 
 bool TipLayer::keyAllClicked(int iKeyID, CCKeypadStatus iKeyState)
