@@ -21,6 +21,10 @@ public:
 	void onClickL(cocos2d::CCKeypadStatus key_status);
 	void onClickJ(cocos2d::CCKeypadStatus key_status);
 	void onClickK(cocos2d::CCKeypadStatus key_status);
+
+	virtual void onEnter();
+	virtual void onExit();
+	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 private:
 	ResulitLayer();
 };

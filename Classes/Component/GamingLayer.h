@@ -75,5 +75,5 @@ private:
 private:
 	CCLabelAtlas* _gradeLabel;
 	CCLabelAtlas* _PlayerCurHpLabel;
-	bool _isCanTouch;
+	//bool _isCanTouch;
 };

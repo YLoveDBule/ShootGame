@@ -90,7 +90,8 @@ void AudioManager::preLoadEffect(const char *effectName)
 
 void AudioManager::playEffect(const char *effectName)
 {
-	SimpleAudioEngine::sharedEngine()->playEffect(effectName);
+	if(this->getEffectState())
+		SimpleAudioEngine::sharedEngine()->playEffect(effectName);
 }
 
 void AudioManager::pauseAllEffects()

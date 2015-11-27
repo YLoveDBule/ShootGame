@@ -82,7 +82,7 @@ bool TipLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 void TipLayer::cancel(CCObject *pSender)
 {
 	this->removeFromParentAndCleanup(true);
-	/*CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESUME_GAME);*/
+	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_RESUME_GAME);
 }
 
 

@@ -39,7 +39,7 @@ GamingLayer::~GamingLayer(){
 
 bool GamingLayer::initGamingLayer()
 {
-	_isCanTouch = true;
+	//_isCanTouch = true;
 	m_pBullets = CCArray::array();
 	m_pBullets->retain();
 	m_pMonsters = CCArray::array();
@@ -292,10 +292,10 @@ void GamingLayer::updateMonsterFreshPool(CCObject *pSender)
 
 void GamingLayer::pauseGame(CCObject *pSender)
 {
-	if (!_isCanTouch)
+	/*if (!_isCanTouch)
 	{
 		return;
-	}
+	}*/
 	//添加pause界面
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	PauseLayer *pPauseLayer = PauseLayer::Create();
@@ -322,7 +322,9 @@ void GamingLayer::ShowResulitLayer(CCObject *pSender)
 
 	CCLayer::setIsKeypadEnabled(false);
 	CCDirector::sharedDirector()->pause();
-	_isCanTouch = false;
+	//禁用按钮功能
+	CCLayer::setIsKeypadEnabled(false);
+	//_isCanTouch = false;
 }
 
 void GamingLayer::InitPlayerGradeUI()
@@ -380,6 +382,7 @@ void GamingLayer::AllMaigicFireEffect()
 		CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage(str);
 		CCSpriteFrame *frame = CCSpriteFrame::frameWithTexture(texture, CCRect(0, 0, 1024, 600));
 		animFrames->addObject(frame);
+
 	}
 	CCAnimation* animation = CCAnimation::animationWithFrames(animFrames, 0.1);
 	CCAnimate* animate = CCAnimate::actionWithAnimation(animation);
@@ -423,10 +426,10 @@ void GamingLayer::createBullet(CCObject *pSender)
 
 void GamingLayer::createMagicFire(CCObject *pSender)
 {
-	if (!_isCanTouch)
+	/*if (!_isCanTouch)
 	{
 		return;
-	}
+	}*/
 	AudioManager::getInstance()->playEffect("audio/magic.mp3");
 	CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_BARREL_TO_ZERO);
 	//全屏伤害

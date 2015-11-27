@@ -25,6 +25,24 @@ ResulitLayer::~ResulitLayer()
 
 }
 
+void ResulitLayer::onEnter()
+{	
+	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, -128, true);
+	CCLayer::onEnter();
+}
+
+void ResulitLayer::onExit()
+{
+	CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
+	CCLayer::onExit();
+}
+
+bool ResulitLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+{
+	return true;
+}
+
+
 bool ResulitLayer::initResulitLayer()
 {
 	CCLayer::setIsKeypadEnabled(true);

@@ -89,6 +89,23 @@ CCScene* LoginScene::scene()
 	return scene;
 }
 
+void LoginScene::onEnter()
+{
+	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(LoginScene::resumeGame), NOTIFY_RESUME_GAME, NULL);
+	CCLayer::onEnter();
+}
+
+void LoginScene::onExit()
+{
+	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_RESUME_GAME);
+	CCLayer::onExit();
+}
+
+void LoginScene::resumeGame(CCObject *pSender)
+{
+	this->setIsKeypadEnabled(true);
+}
+
 bool LoginScene::keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus iKeyState)
 {
 
@@ -246,6 +263,7 @@ void LoginScene::clickStar(CCObject* pSender)
 
 void LoginScene::clickExit(CCObject* pSender)
 {
+	this->setIsKeypadEnabled(false);
 	CCDirector::sharedDirector()->getRunningScene()->addChild(TipLayer::Create());
 	//this->removeFromParentAndCleanup(true);
 }

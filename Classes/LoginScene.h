@@ -28,6 +28,9 @@ public:
 
 	virtual bool keyAllClicked(int iKeyID, cocos2d::CCKeypadStatus key_status);
 	LAYER_NODE_FUNC(LoginScene);
+	virtual void onEnter();
+	virtual void onExit();
+	void resumeGame(CCObject *pSender);
 protected:
 	void onClickA(cocos2d::CCKeypadStatus key_status);
 	void onClickS(cocos2d::CCKeypadStatus key_status);
