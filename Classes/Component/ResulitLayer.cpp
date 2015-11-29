@@ -95,7 +95,7 @@ bool ResulitLayer::initResulitLayer()
 
 	//chongxin kaishi
 	std::string nameOne = "";
-	nameOne = s_language + "actor_btn_restart.png";
+	nameOne = s_touchfile + s_language + "actor_btn_restart.png";
 	CCMenuItemImage *pContinue = CCMenuItemImage::itemFromNormalImage(
 		nameOne.c_str(),
 		NULL,
@@ -104,7 +104,7 @@ bool ResulitLayer::initResulitLayer()
 	pContinue->setPosition(ccp(bg->getContentSize().width / 2 - pContinue->getContentSize().width / 2 + 30, bgheight - 320));
 	pContinue->setAnchorPoint(ccp(0, 0));
 	pContinue->setScale(0.75);
-	std::string str = s_language + "actor_btn_exit.png";
+	std::string str = s_touchfile + s_language + "actor_btn_exit.png";
 	CCMenuItemImage *pExit = CCMenuItemImage::itemFromNormalImage(
 		str.c_str(),
 		NULL,
@@ -140,7 +140,7 @@ void ResulitLayer::menuExitCallBack(CCObject *pSender)
 	CCDirector::sharedDirector()->resume();
 	CCDirector::sharedDirector()->getRunningScene()->removeAllChildrenWithCleanup(true);
 	PlayerMrg::getInstance()->Delete();
-	PlayerMrg::getInstance()->Init();
+//	PlayerMrg::getInstance()->Init();
 	CCScene *secen = LoginScene::scene();
 	CCDirector::sharedDirector()->replaceScene(secen);
 }
