@@ -60,6 +60,7 @@ void PauseLayer::onEnter()
 {
 	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, -128, true);
 	CCLayer::onEnter();
+	bIsPaused = true;
 	//CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(PauseLayer::setKeyPadEnable), NOTIFY_LAYER_KEYPAD_ENABLED, NULL);
 }
 
@@ -70,6 +71,7 @@ void PauseLayer::onExit()
 {
 	CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
 	CCLayer::onExit();
+	bIsPaused = false;
 	//CCNotificationCenter::sharedNotifCenter()->removeObserver(this,NOTIFY_LAYER_KEYPAD_ENABLED);
 }
 

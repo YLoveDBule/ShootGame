@@ -66,6 +66,7 @@ bool GamingLayer::initGamingLayer()
 
 void GamingLayer::onEnter()
 {
+	bIsGaming = true;
 	CCLayer::onEnter();
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::playerScoreChange), NOTIFY_PLAYER_UPDATEUIGRADE, NULL);
 	CCNotificationCenter::sharedNotifCenter()->addObserver(this, callfuncO_selector(GamingLayer::updateMonsterFreshPool), NOTIFY_MONSTER_UPDATEFRESHPOOL, NULL);
@@ -79,6 +80,7 @@ void GamingLayer::onEnter()
 
 void GamingLayer::onExit()
 {
+	bIsGaming = false;
 	CCLayer::onExit();
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_PLAYER_UPDATEUIGRADE);
 	CCNotificationCenter::sharedNotifCenter()->removeObserver(this, NOTIFY_MONSTER_UPDATEFRESHPOOL);
@@ -304,7 +306,6 @@ void GamingLayer::pauseGame(CCObject *pSender)
 	//禁用按钮功能
 	CCLayer::setIsKeypadEnabled(false);
 	CCDirector::sharedDirector()->pause();
-	bIsPaused = true;
 }
 
 void GamingLayer::resumeGame(CCObject *pSender)
@@ -312,7 +313,6 @@ void GamingLayer::resumeGame(CCObject *pSender)
 	//恢复按钮功能
 	CCLayer::setIsKeypadEnabled(true);
 	CCDirector::sharedDirector()->resume();
-	bIsPaused = false;
 }
 
 void GamingLayer::ShowResulitLayer(CCObject *pSender)
@@ -322,8 +322,6 @@ void GamingLayer::ShowResulitLayer(CCObject *pSender)
 
 	CCLayer::setIsKeypadEnabled(false);
 	CCDirector::sharedDirector()->pause();
-	//禁用按钮功能
-	CCLayer::setIsKeypadEnabled(false);
 	//_isCanTouch = false;
 }
 

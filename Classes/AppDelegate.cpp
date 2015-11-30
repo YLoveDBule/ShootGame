@@ -12,6 +12,8 @@
 #include "Utils/AudioManager.h"
 #include "Config/BaseConfig.h"
 
+#include "Config/NotificationNameConfig.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -127,7 +129,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
-	CCDirector::sharedDirector()->pause();
+	if (bIsGaming && !bIsPaused) 
+	{
+		CCNotificationCenter::sharedNotifCenter()->postNotification(NOTIFY_PAUSE_GAME);
+	}
+	else 
+	{
+		CCDirector::sharedDirector()->pause();
+	}
+
 
 	// if you use SimpleAudioEngine, it must be pause
 	// SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
@@ -135,7 +145,7 @@ void AppDelegate::applicationDidEnterBackground() {
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
-	if(!bIsPaused)
+	if(!bIsGaming && !bIsPaused)
 		CCDirector::sharedDirector()->resume();
 
 	// if you use SimpleAudioEngine, it must resume here
